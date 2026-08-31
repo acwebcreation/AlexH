@@ -1,44 +1,86 @@
-# Alex H. — Site vitrine
+# Alex Harper — Poèmes personnalisés
 
-Site vitrine d'Alex H. (compositeur, poète et designer) référençant ses produits digitaux : recueils de poésie, papeterie d'écriture et chansons composées avec l'aide de l'IA.
+Section "poèmes personnalisés" du site Alex Harper : deux façons de commander.
 
-Un projet **ActivityWeb Studio** — BCE 0558.805.548.
+## Les deux options
 
-🔗 **Site en ligne :** https://acwebcreation.github.io/AlexH/
-🔗 **Domaine final (à venir) :** activityweb.be
+**Option 1 — Poème existant (7€)** : le client choisit une catégorie, puis un
+poème dans la liste, le personnalise (destinataire, date, dédicace courte),
+et télécharge un PDF A4 immédiatement. Entièrement automatisé, même mécanique
+que CrazyCertif (paiement avant accès au contenu, génération PDF serveur).
 
-## Structure du site
+**Option 2 — Poème sur-mesure (20€)** : le client remplit un formulaire
+(occasion, destinataire, ton, détails/anecdotes), paie, et reçoit son poème
+par email sous 2 à 3 jours. **Pas de génération automatique** — la commande
+est stockée puis doit déclencher une notification email vers toi (voir
+"À brancher" ci-dessous) pour que tu écrives le poème et l'envoies toi-même.
 
-| Fichier | Page |
-|---|---|
-| `index.html` | Accueil — présentation, univers, 3 catégories de produits |
-| `boutique.html` | Boutique — redirige vers Payhip (ebooks) / Etsy (papeterie) |
-| `blog.html` | Liste des articles de blog |
-| `article-ecrire-des-paroles-qui-sonnent-vrai.html` | Article — écriture de paroles |
-| `article-poesie-ia-musique.html` | Article — poésie et musique assistée par l'IA |
-| `article-papeterie-rituel-ecriture.html` | Article — rituel du carnet |
-| `contact.html` | Formulaire de contact (Web3Forms) |
-| `merci.html` | Page de confirmation après envoi du formulaire |
-| `style.css` | Feuille de style unique, partagée par toutes les pages |
-| `script.js` | Menu mobile (toggle nav) |
-| `og-image.png` | Image d'aperçu pour les réseaux sociaux (Open Graph) |
+## ⚠️ À FAIRE EN PRIORITÉ : remplir les poèmes
 
-## Stack
+`src/data/poems.js` contient la structure des 7 catégories, avec un tableau
+`poems` **vide** pour chacune. Rien n'apparaîtra sur le site tant que tu n'y
+as pas ajouté de poèmes. Pour chaque poème, ajoute un objet de cette forme
+dans le tableau de la bonne catégorie :
 
-- HTML/CSS/JS statique, sans framework
-- Hébergement : GitHub Pages
-- Formulaire de contact : [Web3Forms](https://web3forms.com/)
-- Typographies : Fraunces (display), Literata (texte), Space Mono (labels) — via Google Fonts
+```js
+{
+  id: "un-identifiant-unique",       // slug, ne change jamais après publication
+  title: "Titre du poème",
+  excerpt: "Une ligne d'accroche, sans tout dévoiler avant achat",
+  text: `Le texte complet du poème,
+sur plusieurs lignes,
+exactement comme il doit apparaître sur la carte.`,
+}
+```
 
-## ⚠️ À faire avant mise en ligne définitive
+Tant qu'une catégorie n'a aucun poème, elle s'affiche sur le site avec
+"Bientôt disponible" et un lien vers l'option sur-mesure — rien ne casse,
+mais rien n'est vendable non plus pour cette catégorie.
 
-- [ ] Remplacer le lien Payhip fictif (`index.html`, `boutique.html`) par le vrai lien
-- [ ] Remplacer le lien Etsy fictif (`index.html`, `boutique.html`) par le vrai lien
-- [ ] Activer le bouton "Musique" une fois les MP3 mis en ligne sur Payhip
-- [ ] Ajouter un vrai portrait/photo (actuellement un cadre placeholder sur `index.html`)
-- [ ] Basculer le DNS d'activityweb.be vers ce site une fois validé
-- [ ] Vérifier les URLs Open Graph (`activityweb.be`) une fois le domaine actif
+## Structure
 
-## Déploiement
+```
+index.html                  Accueil : présentation des 2 options + catégories
+category.html?cat=xxx        Liste des poèmes d'une catégorie (option 1)
+personalize.html             Personnalisation après paiement (option 1)
+commande-sur-mesure.html     Formulaire de commande (option 2)
+commande-confirmee.html      Confirmation après paiement (option 2)
+category-select.js / poem-select.js / personalize.js / commande-sur-mesure.js / commande-confirmee.js
+styles.css                   Identité Alex Harper (fond sombre, or, Cormorant Garamond)
 
-Le site est servi directement depuis la branche `main` via GitHub Pages (Settings → Pages). Tout push sur `main` met le site à jour automatiquement.
+src/data/
+  poems.js                    7 catégories + poèmes (à remplir), pricing
+  renderPoemCard.js            Génère la carte SVG, avec retour à la ligne
+                               automatique pour poèmes de longueur variable
+
+netlify/functions/
+  create-checkout-poem.js      Paiement option 1 (7€)
+  verify-session-poem.js       Vérifie le paiement, renvoie le poème acheté
+  generate-poem-pdf.js          Revérifie le paiement, génère le PDF final
+  download-poem-pdf.js          Sert le PDF (24h)
+  create-custom-order.js        Paiement option 2 (20€), stocke les détails
+  notify-custom-order.js        Vérifie le paiement, doit notifier Alex par email
+```
+
+## À brancher avant mise en prod
+
+- Variables d'environnement : `STRIPE_SECRET_KEY`, `SITE_URL`, `ALEX_NOTIFICATION_EMAIL`
+- **Email pour la commande sur-mesure** : `notify-custom-order.js` a un bloc
+  TODO commenté (exemple avec Resend) — sans ça, les commandes sur-mesure
+  sont payées et stockées mais tu ne seras jamais notifié automatiquement.
+  Vérifie aussi manuellement `alexharper-custom-orders` dans Netlify Blobs
+  en attendant.
+- Email de confirmation au client pour l'option 1 (PDF par email en plus du
+  téléchargement) — même TODO que sur CrazyCertif.
+- **Hébergement** : ce système a besoin de fonctions serverless (Stripe,
+  génération PDF) — incompatible avec GitHub Pages. Prévoir soit un
+  sous-domaine Netlify séparé (ex. `poemes.alexharper.be`), soit migrer le
+  site principal.
+- Police Cormorant Garamond : actuellement en fallback système/Georgia dans
+  le CSS — importer la vraie police (Google Fonts ou fichier local) pour un
+  rendu fidèle, y compris dans le PDF généré par Puppeteer.
+
+## Étendre
+
+Ajouter une catégorie → nouvel objet dans `POEM_CATEGORIES` + une entrée
+correspondante (même id) dans `POEMS`. Rien d'autre à toucher.

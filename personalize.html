@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Personnalisez votre poème — Alex Harper</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">Alex Harper</a>
+    <span class="tagline">Paiement confirmé — personnalisez votre poème</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="personalize-layout">
+
+    <form class="personalize-form" id="personalize-form">
+      <div class="field">
+        <label for="recipient">Destinataire (prénom, ou "Julie & Marc"…)</label>
+        <input type="text" id="recipient" name="recipient" placeholder="Julie & Marc" maxlength="60" required />
+      </div>
+
+      <div class="field">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+
+      <div class="field">
+        <label for="dedication">Dédicace courte (optionnel)</label>
+        <input type="text" id="dedication" name="dedication" placeholder="Pour votre premier automne ensemble" maxlength="80" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email (optionnel — pour recevoir le PDF)</label>
+        <input type="email" id="email" name="email" placeholder="vous@exemple.com" />
+      </div>
+
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="download-btn">Télécharger le PDF</button>
+      </div>
+    </form>
+
+    <div class="preview-pane">
+      <div class="preview-frame" id="preview-frame">
+        <!-- SVG injecté par personalize.js -->
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Votre lien de téléchargement reste valable 24h. Pensez à indiquer votre email si vous voulez une copie de secours.</p>
+  </div>
+</footer>
+
+<script type="module" src="personalize.js"></script>
+</body>
+</html>
