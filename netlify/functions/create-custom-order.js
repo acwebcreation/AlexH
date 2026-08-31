@@ -70,8 +70,8 @@ export async function handler(event) {
         },
       ],
       metadata: { orderId },
-      success_url: `${SITE_URL}/commande-confirmee.html?session={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/commande-sur-mesure.html`,
+      success_url: `${SITE_URL}/poemes/commande-confirmee.html?session={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${SITE_URL}/poemes/commande-sur-mesure.html`,
     });
 
     return { statusCode: 200, body: JSON.stringify({ url: session.url }) };

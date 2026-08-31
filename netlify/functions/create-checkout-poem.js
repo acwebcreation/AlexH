@@ -44,8 +44,8 @@ export async function handler(event) {
         },
       ],
       metadata: { categoryId, poemId },
-      success_url: `${SITE_URL}/personalize.html?session={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/category.html?cat=${encodeURIComponent(categoryId)}`,
+      success_url: `${SITE_URL}/poemes/personalize.html?session={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${SITE_URL}/poemes/category.html?cat=${encodeURIComponent(categoryId)}`,
     });
 
     return { statusCode: 200, body: JSON.stringify({ url: session.url }) };
