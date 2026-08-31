@@ -10,7 +10,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="/">Alex Harper</a>
+    <a class="logo" href="index.html">Alex Harper</a>
     <span class="tagline">Paiement confirmé — personnalisez votre poème</span>
   </div>
 </header>
@@ -20,6 +20,14 @@
   <section class="personalize-layout">
 
     <form class="personalize-form" id="personalize-form">
+      <div class="field">
+        <label for="theme">Thème visuel</label>
+        <select id="theme" name="theme">
+          <option value="dark">Foncé</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
+
       <div class="field">
         <label for="recipient">Destinataire (prénom, ou "Julie & Marc"…)</label>
         <input type="text" id="recipient" name="recipient" placeholder="Julie & Marc" maxlength="60" required />

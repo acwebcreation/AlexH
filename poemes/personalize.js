@@ -3,13 +3,14 @@ import { renderPoemCard } from "../src/data/renderPoemCard.js";
 
 // Après paiement, le client est redirigé ici avec un token de session en query string.
 // Ce token est vérifié côté serveur (fonction verify-session-poem) et renvoie :
-// { categoryId, poemId }.
+// { categoryId, poemId, theme }.
 
 const params = new URLSearchParams(window.location.search);
 const sessionToken = params.get("session");
 const isTestMode = params.get("test") === "1";
 
 const form = document.getElementById("personalize-form");
+const themeSelect = document.getElementById("theme");
 const recipientInput = document.getElementById("recipient");
 const dateInput = document.getElementById("date");
 const dedicationInput = document.getElementById("dedication");
@@ -31,10 +32,10 @@ function updatePreview() {
     date: dateInput.value,
     dedication: dedicationInput.value.trim(),
   };
-  previewFrame.innerHTML = renderPoemCard(content);
+  previewFrame.innerHTML = renderPoemCard(content, themeSelect.value);
 }
 
-[recipientInput, dateInput, dedicationInput].forEach((el) =>
+[themeSelect, recipientInput, dateInput, dedicationInput].forEach((el) =>
   el.addEventListener("input", updatePreview)
 );
 
@@ -71,6 +72,7 @@ form.addEventListener("submit", async (e) => {
         recipient: recipientInput.value.trim(),
         date: dateInput.value,
         dedication: dedicationInput.value.trim(),
+        theme: themeSelect.value,
       }),
     });
     if (!res.ok) throw new Error("generate_failed");
@@ -99,21 +101,24 @@ async function init() {
   if (!sessionToken) {
     formError.textContent = "Session de paiement introuvable. Retournez à la page d'accueil.";
     formError.hidden = false;
-    form.querySelectorAll("input, button").forEach((el) => (el.disabled = true));
+    form.querySelectorAll("input, select, button").forEach((el) => (el.disabled = true));
     return;
   }
 
   try {
     const res = await fetch(`/.netlify/functions/verify-session-poem?session=${encodeURIComponent(sessionToken)}`);
     if (!res.ok) throw new Error("invalid_session");
-    const data = await res.json(); // { categoryId, poemId }
+    const data = await res.json(); // { categoryId, poemId, theme }
     const poem = getPoem(data.categoryId, data.poemId);
     if (!poem) throw new Error("poem_not_found");
     purchasedPoem = { categoryId: data.categoryId, poemId: data.poemId, title: poem.title, text: poem.text };
+    if (data.theme === "light" || data.theme === "dark") {
+      themeSelect.value = data.theme;
+    }
   } catch (err) {
     formError.textContent = "Paiement introuvable, expiré, ou poème indisponible. Retournez à la page d'accueil.";
     formError.hidden = false;
-    form.querySelectorAll("input, button").forEach((el) => (el.disabled = true));
+    form.querySelectorAll("input, select, button").forEach((el) => (el.disabled = true));
     return;
   }
 
