@@ -1,8 +1,8 @@
 // netlify/functions/generate-poem-pdf.js
 // Revérifie le paiement, récupère le texte du poème depuis la source de
 // vérité (poems.js — jamais depuis ce que le client enverrait), régénère la
-// carte SVG avec les infos de personnalisation, exporte en PDF A4 via
-// Puppeteer.
+// carte SVG avec les infos de personnalisation, exporte en PDF au format
+// carte 5x7 pouces via Puppeteer.
 
 import Stripe from "stripe";
 import chromium from "@sparticuz/chromium";
@@ -20,9 +20,9 @@ function buildPrintableHtml(svgMarkup) {
 <head>
 <meta charset="UTF-8" />
 <style>
-  @page { size: A4 portrait; margin: 0; }
+  @page { size: 5in 7in; margin: 0; }
   html, body { margin: 0; padding: 0; }
-  svg { width: 210mm; height: 297mm; display: block; }
+  svg { width: 5in; height: 7in; display: block; }
 </style>
 </head>
 <body>${svgMarkup}</body>
@@ -93,9 +93,8 @@ export async function handler(event) {
     // secondes sur la limite de 10s des fonctions Netlify en plan gratuit.
     await page.setContent(html, { waitUntil: "load" });
     const pdfBuffer = await page.pdf({
-      format: "A4",
       printBackground: true,
-      margin: { top: 0, bottom: 0, left: 0, right: 0 },
+      preferCSSPageSize: true, // laisse le @page CSS (5in x 7in) définir le format
     });
 
     await browser.close();
