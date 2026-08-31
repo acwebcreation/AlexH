@@ -195,14 +195,44 @@ body {
   font-style: italic;
 }
 
-/* Liste des poèmes d'une catégorie */
+/* Sélecteur de thème (page catégorie) */
+.theme-toggle {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px;
+  background: var(--bg-panel);
+}
+.theme-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: calc(var(--radius) - 2px);
+  cursor: pointer;
+}
+.theme-btn:hover { color: var(--ink); }
+.theme-btn.selected {
+  background: var(--gold);
+  color: #1a1712;
+  font-weight: 600;
+}
+
+/* Liste des poèmes d'une catégorie — vignettes avec aperçu visuel réel */
 .poem-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin: 30px 0 100px;
 }
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .poem-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
   .poem-list { grid-template-columns: 1fr; }
 }
 .poem-card {
@@ -211,24 +241,24 @@ body {
   border-radius: var(--radius);
   background: var(--bg-panel);
   color: var(--ink);
-  padding: 18px 20px;
+  padding: 0;
   cursor: pointer;
   font-family: "Cormorant Garamond", Georgia, serif;
+  overflow: hidden;
 }
 .poem-card:hover { border-color: var(--gold-soft); }
 .poem-card.selected { border-color: var(--gold); border-width: 2px; }
+.poem-card-thumb {
+  aspect-ratio: 210 / 297;
+  background: #0f0d0b;
+}
+.poem-card-thumb svg { width: 100%; height: 100%; display: block; }
 .poem-card-title {
   display: block;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--gold);
-  margin-bottom: 4px;
-}
-.poem-card-excerpt {
-  display: block;
-  font-size: 14px;
-  font-style: italic;
-  color: var(--ink-muted);
+  padding: 10px 14px;
 }
 .empty-state {
   text-align: center;
