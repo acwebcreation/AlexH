@@ -20,11 +20,11 @@ export async function handler(event) {
       return { statusCode: 402, body: JSON.stringify({ error: "not_paid" }) };
     }
 
-    const { categoryId, poemId } = session.metadata;
+    const { categoryId, poemId, theme } = session.metadata;
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ categoryId, poemId }),
+      body: JSON.stringify({ categoryId, poemId, theme: theme === "light" ? "light" : "dark" }),
     };
   } catch (err) {
     console.error("Stripe verify error", err);

@@ -41,7 +41,8 @@ export async function handler(event) {
     return { statusCode: 400, body: JSON.stringify({ error: "invalid_json" }) };
   }
 
-  const { sessionToken, recipient, date, dedication, email } = body;
+  const { sessionToken, recipient, date, dedication, email, theme } = body;
+  const safeTheme = theme === "light" ? "light" : "dark"; // choix purement visuel, pas de risque de sécurité
 
   if (!sessionToken || !recipient || !date) {
     return { statusCode: 400, body: JSON.stringify({ error: "invalid_payload" }) };
@@ -64,14 +65,17 @@ export async function handler(event) {
   }
 
   // 2. Régénérer la carte SVG côté serveur (texte du poème = source de vérité,
-  //    seuls destinataire/date/dédicace viennent du client).
-  const svg = renderPoemCard({
-    title: poem.title,
-    text: poem.text,
-    recipient,
-    date,
-    dedication: dedication || "",
-  });
+  //    seuls destinataire/date/dédicace/thème viennent du client).
+  const svg = renderPoemCard(
+    {
+      title: poem.title,
+      text: poem.text,
+      recipient,
+      date,
+      dedication: dedication || "",
+    },
+    safeTheme
+  );
   const html = buildPrintableHtml(svg);
 
   let browser;

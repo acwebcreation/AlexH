@@ -22,8 +22,9 @@ export async function handler(event) {
     return { statusCode: 400, body: JSON.stringify({ error: "invalid_json" }) };
   }
 
-  const { categoryId, poemId } = body;
+  const { categoryId, poemId, theme } = body;
   const poem = getPoem(categoryId, poemId);
+  const safeTheme = theme === "light" ? "light" : "dark"; // "dark" par défaut si absent/invalide
 
   if (!poem) {
     return { statusCode: 400, body: JSON.stringify({ error: "poem_not_found" }) };
@@ -43,9 +44,9 @@ export async function handler(event) {
           quantity: 1,
         },
       ],
-      metadata: { categoryId, poemId },
-      success_url: `${SITE_URL}/poemes/personalize.html?session={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/poemes/category.html?cat=${encodeURIComponent(categoryId)}`,
+      metadata: { categoryId, poemId, theme: safeTheme },
+      success_url: `${SITE_URL}/personalize.html?session={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${SITE_URL}/category.html?cat=${encodeURIComponent(categoryId)}`,
     });
 
     return { statusCode: 200, body: JSON.stringify({ url: session.url }) };
