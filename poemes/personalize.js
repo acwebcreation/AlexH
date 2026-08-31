@@ -34,6 +34,7 @@ function updatePreview() {
     recipient: recipientInput.value.trim() || "Votre prénom",
     date: dateInput.value,
     dedication: dedicationInput.value.trim(),
+    categoryId: purchasedPoem.categoryId,
   };
   previewFrame.innerHTML = renderPoemCard(content, themeSelect.value);
 }

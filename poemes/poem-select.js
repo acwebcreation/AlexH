@@ -29,6 +29,7 @@ function previewContentFor(poem) {
     text: poem.excerpt || "Aperçu à venir…",
     recipient: "Votre prénom",
     date: new Date().toISOString().slice(0, 10),
+    categoryId,
   };
 }
 
