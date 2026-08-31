@@ -1,13 +1,28 @@
 // renderPoemCard.js
 // Génère la carte-poème en SVG, dans l'identité visuelle Alex Harper
-// (fond sombre, Cormorant Garamond, or #c8a96e). Utilisé côté navigateur
-// (aperçu live) ET côté serveur (génération PDF finale).
+// (Cormorant Garamond, accents or #c8a96e), déclinée en deux thèmes au choix
+// du client : sombre (fond nuit, texte clair) et clair (fond ivoire, texte
+// sombre). Utilisé côté navigateur (aperçu live) ET côté serveur (PDF final).
 
-const GOLD = "#c8a96e";
-const GOLD_SOFT = "#8a7550";
-const INK = "#f1efe8";
-const INK_MUTED = "#b8b3a6";
-const BG = "#161412";
+const THEMES = {
+  dark: {
+    bg: "#161412",
+    gold: "#c8a96e",
+    goldSoft: "#8a7550",
+    ink: "#f1efe8",
+    inkMuted: "#b8b3a6",
+  },
+  light: {
+    bg: "#FBF8F2",
+    gold: "#a8823f",
+    goldSoft: "#c9ab78",
+    ink: "#2b2419",
+    inkMuted: "#7a7263",
+  },
+};
+
+export const THEME_IDS = Object.keys(THEMES);
+export const THEME_LABELS = { dark: "Foncé", light: "Clair" };
 
 function escapeXml(str) {
   return String(str)
@@ -60,9 +75,11 @@ function wrapPoemText(text, maxCharsPerLine = 42) {
  * @param {string} content.recipient - destinataire(s) ("Julie & Marc", "petit Léo", etc.)
  * @param {string} content.date - date ISO (YYYY-MM-DD)
  * @param {string} [content.dedication] - courte dédicace optionnelle
+ * @param {"dark"|"light"} [theme="dark"] - thème visuel choisi par le client
  * @returns {string} SVG complet, viewBox 420x594 (A4 portrait)
  */
-export function renderPoemCard(content) {
+export function renderPoemCard(content, theme = "dark") {
+  const t = THEMES[theme] || THEMES.dark;
   const title = content.title || "";
   const text = content.text || "";
   const recipient = content.recipient || "Votre prénom";
@@ -80,28 +97,28 @@ export function renderPoemCard(content) {
     .map((line, i) =>
       line === ""
         ? ""
-        : `<text x="210" y="${startY + i * lineHeight}" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" fill="${INK}">${escapeXml(line)}</text>`
+        : `<text x="210" y="${startY + i * lineHeight}" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="15" fill="${t.ink}">${escapeXml(line)}</text>`
     )
     .join("\n");
 
   const dedicationSvg = dedication
-    ? `<text x="210" y="${startY + visibleLines.length * lineHeight + 30}" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="13" fill="${INK_MUTED}">« ${escapeXml(dedication)} »</text>`
+    ? `<text x="210" y="${startY + visibleLines.length * lineHeight + 30}" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="13" fill="${t.inkMuted}">« ${escapeXml(dedication)} »</text>`
     : "";
 
   return `<svg viewBox="0 0 420 594" xmlns="http://www.w3.org/2000/svg" role="img">
 <title>${escapeXml(title)}</title>
-<rect x="0" y="0" width="420" height="594" fill="${BG}"/>
-<rect x="18" y="18" width="384" height="558" fill="none" stroke="${GOLD}" stroke-width="1"/>
-<rect x="24" y="24" width="372" height="546" fill="none" stroke="${GOLD_SOFT}" stroke-width="0.5"/>
-<line x1="160" y1="70" x2="260" y2="70" stroke="${GOLD}" stroke-width="1"/>
-<text x="210" y="120" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="24" font-weight="500" fill="${GOLD}" letter-spacing="1">${escapeXml(title)}</text>
-<text x="210" y="150" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="14" fill="${INK_MUTED}">pour ${escapeXml(recipient)}</text>
-<line x1="160" y1="172" x2="260" y2="172" stroke="${GOLD_SOFT}" stroke-width="0.5"/>
+<rect x="0" y="0" width="420" height="594" fill="${t.bg}"/>
+<rect x="18" y="18" width="384" height="558" fill="none" stroke="${t.gold}" stroke-width="1"/>
+<rect x="24" y="24" width="372" height="546" fill="none" stroke="${t.goldSoft}" stroke-width="0.5"/>
+<line x1="160" y1="70" x2="260" y2="70" stroke="${t.gold}" stroke-width="1"/>
+<text x="210" y="120" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="24" font-weight="500" fill="${t.gold}" letter-spacing="1">${escapeXml(title)}</text>
+<text x="210" y="150" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="14" fill="${t.inkMuted}">pour ${escapeXml(recipient)}</text>
+<line x1="160" y1="172" x2="260" y2="172" stroke="${t.goldSoft}" stroke-width="0.5"/>
 ${poemLinesSvg}
 ${dedicationSvg}
-<text x="210" y="540" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="12" fill="${INK_MUTED}">${escapeXml(formatDate(date))}</text>
-<line x1="180" y1="558" x2="240" y2="558" stroke="${GOLD_SOFT}" stroke-width="0.5"/>
-<text x="210" y="575" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="2" fill="${GOLD_SOFT}">ALEX HARPER</text>
+<text x="210" y="540" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="12" fill="${t.inkMuted}">${escapeXml(formatDate(date))}</text>
+<line x1="180" y1="558" x2="240" y2="558" stroke="${t.goldSoft}" stroke-width="0.5"/>
+<text x="210" y="575" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="2" fill="${t.goldSoft}">ALEX HARPER</text>
 </svg>`;
 }
 
