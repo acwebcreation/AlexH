@@ -249,7 +249,7 @@ body {
 .poem-card:hover { border-color: var(--gold-soft); }
 .poem-card.selected { border-color: var(--gold); border-width: 2px; }
 .poem-card-thumb {
-  aspect-ratio: 210 / 297;
+  aspect-ratio: 5 / 7;
   background: #0f0d0b;
 }
 .poem-card-thumb svg { width: 100%; height: 100%; display: block; }
@@ -336,6 +336,11 @@ body {
   color: var(--ink-muted);
   margin: 0;
 }
+.field-warning {
+  font-size: 12px;
+  color: #c9a34e;
+  margin: 4px 0 0;
+}
 
 .form-error {
   color: #d98a6b;
@@ -355,7 +360,7 @@ body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #0f0d0b;
-  aspect-ratio: 210 / 297;
+  aspect-ratio: 5 / 7;
   display: flex;
   align-items: center;
   justify-content: center;

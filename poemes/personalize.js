@@ -1,5 +1,5 @@
 import { getPoem } from "../src/data/poems.js";
-import { renderPoemCard } from "../src/data/renderPoemCard.js";
+import { renderPoemCard, poemExceedsCardSpace } from "../src/data/renderPoemCard.js";
 
 // Après paiement, le client est redirigé ici avec un token de session en query string.
 // Ce token est vérifié côté serveur (fonction verify-session-poem) et renvoie :
@@ -16,6 +16,7 @@ const dateInput = document.getElementById("date");
 const dedicationInput = document.getElementById("dedication");
 const emailInput = document.getElementById("email");
 const formError = document.getElementById("form-error");
+const overflowWarning = document.getElementById("overflow-warning");
 const previewFrame = document.getElementById("preview-frame");
 const downloadBtn = document.getElementById("download-btn");
 
@@ -25,6 +26,8 @@ dateInput.value = new Date().toISOString().slice(0, 10);
 
 function updatePreview() {
   if (!purchasedPoem) return;
+  const hasDedication = Boolean(dedicationInput.value.trim());
+  overflowWarning.hidden = !poemExceedsCardSpace(purchasedPoem.text, hasDedication);
   const content = {
     title: purchasedPoem.title,
     text: purchasedPoem.text,
