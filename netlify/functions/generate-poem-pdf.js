@@ -50,6 +50,7 @@ export async function handler(event) {
 
   // 1. Re-vérifier le paiement et récupérer le poème réellement acheté.
   let poem;
+  let poemCategoryId;
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionToken);
     if (session.payment_status !== "paid") {
@@ -57,6 +58,7 @@ export async function handler(event) {
     }
     const { categoryId, poemId } = session.metadata;
     poem = getPoem(categoryId, poemId);
+    poemCategoryId = categoryId;
     if (!poem) {
       return { statusCode: 404, body: JSON.stringify({ error: "poem_not_found" }) };
     }
@@ -73,6 +75,7 @@ export async function handler(event) {
       recipient,
       date,
       dedication: dedication || "",
+      categoryId: poemCategoryId,
     },
     safeTheme
   );
