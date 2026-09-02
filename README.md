@@ -2,6 +2,15 @@
 
 Site principal (présentation, boutique, blog, contact) + section poèmes personnalisés.
 
+## ⚠️ IMPORTANT avant de déployer ce zip
+
+Ce zip contient **tout sauf deux fichiers** : `style.css` et `script.js`.
+Je n'ai pas réussi à les récupérer automatiquement depuis ton dépôt GitHub
+(limitation technique de mon côté). **Ne les supprime pas** de ton dépôt —
+ce zip est fait pour compléter/remplacer tout le reste, en gardant ces deux
+fichiers existants tels quels. Toutes les pages du site principal en
+dépendent (`<link rel="stylesheet" href="style.css">` et
+`<script src="script.js">`), donc le site sera visuellement cassé sans eux.
 
 ## Structure
 
@@ -12,7 +21,7 @@ boutique.html                 Boutique (liens Payhip, Etsy)
 contact.html                  Formulaire de contact (web3forms)
 merci.html                    Page de confirmation après contact
 article-*.html (x3)           Les 3 articles du blog
-style.css, script.js          
+style.css, script.js          ⚠️ PAS DANS CE ZIP — à garder tels quels
 CNAME                         Domaine personnalisé (alexharper.fr)
 netlify.toml, package.json    Configuration Netlify
 
