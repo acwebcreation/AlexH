@@ -12,7 +12,7 @@ import { renderPoemCard } from "../../src/data/renderPoemCard.js";
 import { getStore } from "@netlify/blobs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const SITE_URL = process.env.SITE_URL || "https://poemes.alexharper.be";
+const SITE_URL = process.env.SITE_URL || "https://alexharper.fr";
 
 function buildPrintableHtml(svgMarkup) {
   return `<!DOCTYPE html>

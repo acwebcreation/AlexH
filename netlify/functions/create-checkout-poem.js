@@ -7,7 +7,7 @@ import Stripe from "stripe";
 import { getPoem } from "../../src/data/poems.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const SITE_URL = process.env.SITE_URL || "https://poemes.alexharper.be";
+const SITE_URL = process.env.SITE_URL || "https://alexharper.fr";
 const PRICE_CENTS = 700; // 7,00 €
 
 export async function handler(event) {
@@ -45,8 +45,8 @@ export async function handler(event) {
         },
       ],
       metadata: { categoryId, poemId, theme: safeTheme },
-      success_url: `${SITE_URL}/personalize.html?session={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/category.html?cat=${encodeURIComponent(categoryId)}`,
+      success_url: `${SITE_URL}/poemes/personalize.html?session={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${SITE_URL}/poemes/category.html?cat=${encodeURIComponent(categoryId)}`,
     });
 
     return { statusCode: 200, body: JSON.stringify({ url: session.url }) };

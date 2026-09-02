@@ -11,7 +11,7 @@ import { getStore } from "@netlify/blobs";
 import { getCategory } from "../../src/data/poems.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const SITE_URL = process.env.SITE_URL || "https://poemes.alexharper.be";
+const SITE_URL = process.env.SITE_URL || "https://alexharper.fr";
 const PRICE_CENTS = 2000; // 20,00 €
 const MAX_DETAILS_LENGTH = 3000;
 
