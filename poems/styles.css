@@ -1,0 +1,464 @@
+:root {
+  --bg: #161412;
+  --bg-panel: #1e1b18;
+  --gold: #c8a96e;
+  --gold-soft: #8a7550;
+  --ink: #f1efe8;
+  --ink-muted: #b8b3a6;
+  --line: #322e29;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.tagline {
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.back-link {
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  margin-left: auto;
+}
+.back-link:hover { color: var(--gold); }
+
+.hero {
+  padding: 50px 0 30px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.hero p {
+  color: var(--ink-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 17px;
+}
+
+.confirmation h1 { color: var(--gold); }
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--gold-soft);
+  background: transparent;
+  color: var(--ink);
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover { border-color: var(--gold); background: rgba(200,169,110,0.08); }
+.btn-primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1a1712;
+}
+.btn-primary:hover { background: #d8bc86; border-color: #d8bc86; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary {
+  border-color: var(--gold-soft);
+  color: var(--gold);
+}
+
+/* Page d'accueil — cartes d'options */
+.option-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 40px 0;
+}
+@media (max-width: 640px) {
+  .option-cards { grid-template-columns: 1fr; }
+}
+.option-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  background: var(--bg-panel);
+  text-align: center;
+}
+.option-eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold-soft);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.option-card h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.option-price {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 16px;
+}
+.option-desc {
+  color: var(--ink-muted);
+  font-size: 15px;
+  margin: 0 0 20px;
+}
+
+/* Exemples de style (non cliquables) */
+.examples-section {
+  margin: 40px 0 20px;
+}
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 760px) {
+  .examples-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .examples-grid { grid-template-columns: 1fr; }
+}
+.example-card {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-panel);
+  pointer-events: none;
+}
+.example-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+}
+.example-card figcaption {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 8px 0;
+}
+
+/* Cases à cocher */
+.field-checkbox {
+  flex-direction: row !important;
+  align-items: center;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+}
+
+/* Champ avancé repliable (SVG spécifique) */
+.advanced-field {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  padding: 4px 16px;
+  margin-bottom: 18px;
+}
+.advanced-field summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.advanced-field[open] summary {
+  color: var(--ink);
+}
+.advanced-field .field {
+  padding-bottom: 14px;
+}
+
+.field input[type="file"] {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+/* Sélection de catégorie */
+.section-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 50px 0 20px;
+}
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 60px;
+}
+@media (max-width: 640px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  padding: 20px;
+  transition: border-color .15s;
+}
+.category-card:hover { border-color: var(--gold-soft); }
+.category-card-empty { opacity: 0.65; }
+.category-card-name {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.category-card-desc {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+.category-card-count {
+  font-size: 12px;
+  color: var(--gold-soft);
+}
+.category-card-soon {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* Sélecteur de thème (page catégorie) */
+.theme-toggle {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px;
+  background: var(--bg-panel);
+}
+.theme-btn {
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: calc(var(--radius) - 2px);
+  cursor: pointer;
+}
+.theme-btn:hover { color: var(--ink); }
+.theme-btn.selected {
+  background: var(--gold);
+  color: #1a1712;
+  font-weight: 600;
+}
+
+/* Liste des poèmes d'une catégorie — vignettes avec aperçu visuel réel */
+.poem-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 30px 0 100px;
+}
+@media (max-width: 760px) {
+  .poem-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .poem-list { grid-template-columns: 1fr; }
+}
+.poem-card {
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  color: var(--ink);
+  padding: 0;
+  cursor: pointer;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  overflow: hidden;
+}
+.poem-card:hover { border-color: var(--gold-soft); }
+.poem-card.selected { border-color: var(--gold); border-width: 2px; }
+.poem-card-thumb {
+  aspect-ratio: 5 / 7;
+  background: #0f0d0b;
+}
+.poem-card-thumb svg { width: 100%; height: 100%; display: block; }
+.poem-card-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gold);
+  padding: 10px 14px;
+}
+.empty-state {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 40px 0;
+}
+.empty-state a { color: var(--gold); }
+
+.selection-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+#selection-label {
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* Formulaires (personnalisation + commande sur-mesure) */
+.personalize-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  padding: 30px 0 60px;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .personalize-layout { grid-template-columns: 1fr; }
+}
+
+.custom-order-form,
+.personalize-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.field input,
+.field select,
+.field textarea {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background: var(--bg-panel);
+  color: var(--ink);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--gold-soft);
+  outline-offset: 1px;
+}
+.field-hint {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin: 0;
+}
+.field-warning {
+  font-size: 12px;
+  color: #c9a34e;
+  margin: 4px 0 0;
+}
+
+.form-error {
+  color: #d98a6b;
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.form-actions {
+  margin-top: 8px;
+}
+
+.preview-pane {
+  position: sticky;
+  top: 20px;
+}
+.preview-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0f0d0b;
+  aspect-ratio: 5 / 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.preview-frame svg {
+  width: 100%;
+  height: 100%;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 40px;
+  margin-top: 30px;
+}
+.site-footer p {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
