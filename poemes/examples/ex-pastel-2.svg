@@ -1,0 +1,67 @@
+<svg viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" font-family="'Cormorant Garamond', 'Georgia', serif">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#F3F5EE"/>
+      <stop offset="100%" stop-color="#E6EADD"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#5B6B4E" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5B6B4E" stop-opacity="0.07"/>
+    </radialGradient>
+    <linearGradient id="sageLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8FA383" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#8FA383" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8FA383" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="500" height="700" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="500" height="700" fill="url(#vignette)"/>
+
+  <rect x="28" y="28" width="444" height="644" fill="none" stroke="#8FA383" stroke-width="1" stroke-opacity="0.8"/>
+
+  <g stroke="#8FA383" stroke-width="1" fill="none" stroke-opacity="0.75">
+    <path d="M 28 60 Q 45 60 45 43 Q 45 60 62 60" />
+    <path d="M 28 43 Q 45 43 45 60" stroke-opacity="0.5"/>
+    <path d="M 472 60 Q 455 60 455 43 Q 455 60 438 60" />
+    <path d="M 28 640 Q 45 640 45 657 Q 45 640 62 640" />
+    <path d="M 472 640 Q 455 640 455 657 Q 455 640 438 640" />
+  </g>
+
+  <!-- Motif catégorie : brin/feuille (remerciements) -->
+  <g transform="translate(250,92)" stroke="#8FA383" stroke-width="1.2" fill="none" stroke-opacity="0.85">
+    <path d="M 0 12 L 0 -14" stroke-linecap="round"/>
+    <path d="M 0 -6 C 8 -10 12 -4 6 2 C 4 -2 2 -4 0 -6 Z" fill="#8FA383" stroke="none"/>
+    <path d="M 0 2 C -8 -2 -12 4 -6 10 C -4 6 -2 4 0 2 Z" fill="#8FA383" stroke="none"/>
+  </g>
+
+  <text x="250" y="150" text-anchor="middle" font-size="24" letter-spacing="3" fill="#33402B" font-weight="500">
+    TITRE DU POÈME
+  </text>
+
+  <g transform="translate(250,173)">
+    <line x1="-90" y1="0" x2="-14" y2="0" stroke="url(#sageLine)" stroke-width="1"/>
+    <line x1="14" y1="0" x2="90" y2="0" stroke="url(#sageLine)" stroke-width="1"/>
+    <path d="M 0 -6 L 6 0 L 0 6 L -6 0 Z" fill="#8FA383"/>
+  </g>
+
+  <text x="55" y="258" font-size="64" fill="#8FA383" font-weight="500">L</text>
+
+  <foreignObject x="90" y="208" width="360" height="380">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; line-height: 1.75; color: #3E4A37; text-align: left;">
+      Corps du poème inséré ici dynamiquement — thème pastel, teinte vert sauge.
+    </div>
+  </foreignObject>
+
+  <text x="250" y="612" text-anchor="middle" font-size="17" letter-spacing="2" fill="#8FA383" font-style="italic">
+    Pour Prénom
+  </text>
+
+  <g transform="translate(250,632)">
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#8FA383" stroke-width="0.6" stroke-opacity="0.6"/>
+  </g>
+
+  <text x="250" y="662" text-anchor="middle" font-size="13" letter-spacing="3" fill="#8FA383" fill-opacity="0.9">
+    ALEX HARPER
+  </text>
+</svg>

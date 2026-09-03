@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Poème personnalisé — Alex Harper</title>
+<meta name="description" content="Un poème écrit pour votre occasion — mariage, naissance, deuil, remerciements — composé à la main et livré en 1 jour ouvrable." />
+<link rel="canonical" href="https://alexharper.fr/poemes/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <span class="logo">Alex Harper</span>
+    <span class="tagline">Poèmes personnalisés, pour les moments qui comptent</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1>Un poème écrit pour votre occasion</h1>
+    <p>
+      Racontez-moi le lien, l'occasion, ce que vous voulez exprimer — ou
+      laissez-moi carte blanche. Je compose votre poème à la main et vous le
+      livre en <strong>1 jour ouvrable</strong>, prêt à imprimer ou à
+      partager. Paiement avant commande.
+    </p>
+  </section>
+
+  <section class="examples-section" aria-labelledby="examples-title">
+    <h2 id="examples-title" class="section-title">Aperçu du style — le vôtre sera unique</h2>
+    <div class="examples-grid">
+      <figure class="example-card"><img src="examples/ex-fonce-1.svg" alt="Exemple de carte-poème, thème foncé, catégorie deuil" loading="lazy" /><figcaption>Foncé</figcaption></figure>
+      <figure class="example-card"><img src="examples/ex-fonce-2.svg" alt="Exemple de carte-poème, thème foncé, catégorie anniversaire de mariage" loading="lazy" /><figcaption>Foncé</figcaption></figure>
+      <figure class="example-card"><img src="examples/ex-clair-1.svg" alt="Exemple de carte-poème, thème clair, catégorie mariage" loading="lazy" /><figcaption>Clair</figcaption></figure>
+      <figure class="example-card"><img src="examples/ex-clair-2.svg" alt="Exemple de carte-poème, thème clair, catégorie baptême et naissance" loading="lazy" /><figcaption>Clair</figcaption></figure>
+      <figure class="example-card"><img src="examples/ex-pastel-1.svg" alt="Exemple de carte-poème, thème pastel rose poudré, catégorie amour" loading="lazy" /><figcaption>Pastel</figcaption></figure>
+      <figure class="example-card"><img src="examples/ex-pastel-2.svg" alt="Exemple de carte-poème, thème pastel vert sauge, catégorie remerciements" loading="lazy" /><figcaption>Pastel</figcaption></figure>
+    </div>
+  </section>
+
+  <form class="custom-order-form" id="order-form">
+
+    <div class="field">
+      <label for="category">Occasion</label>
+      <select id="category" name="category" required></select>
+    </div>
+
+    <div class="field">
+      <label>Thème visuel</label>
+      <div class="theme-toggle" id="theme-toggle" role="radiogroup" aria-label="Thème visuel">
+        <button type="button" class="theme-btn selected" data-theme="clair">Clair</button>
+        <button type="button" class="theme-btn" data-theme="fonce">Foncé</button>
+        <button type="button" class="theme-btn" data-theme="pastel">Pastel</button>
+      </div>
+      <input type="hidden" id="theme" name="theme" value="clair" />
+    </div>
+
+    <div class="field">
+      <label for="format">Format</label>
+      <select id="format" name="format" required></select>
+    </div>
+
+    <div class="field field-checkbox">
+      <label class="checkbox-label">
+        <input type="checkbox" id="phone-option" name="phoneOption" />
+        Ajouter le fichier optimisé smartphone (+5€)
+      </label>
+    </div>
+
+    <div class="field">
+      <label for="recipient">Pour qui est ce poème ?</label>
+      <input type="text" id="recipient" name="recipient" placeholder="Julie &amp; Marc, ma mère, mon ami Thomas…" maxlength="100" required />
+    </div>
+
+    <div class="field field-checkbox">
+      <label class="checkbox-label">
+        <input type="checkbox" id="carte-blanche" name="carteBlanche" />
+        Je laisse carte blanche à Alex
+      </label>
+    </div>
+
+    <div class="field" id="message-field">
+      <label for="message">Racontez-moi en quelques mots ce que vous voulez exprimer</label>
+      <textarea id="message" name="message" rows="6" placeholder="Le lien, l'histoire, une anecdote, le ton souhaité… plus vous m'en dites, plus le poème sera juste." required></textarea>
+    </div>
+
+    <div class="field">
+      <label for="photo">Ajouter une photo (optionnel)</label>
+      <input type="file" id="photo" name="photo" accept="image/*" />
+      <p class="field-hint">Pour un cadre photo intégré à la carte. La photo m'est transmise directement par email avec votre commande.</p>
+      <p class="field-hint" id="photo-status" hidden></p>
+    </div>
+
+    <details class="advanced-field">
+      <summary>Vous avez déjà un monogramme ou un motif à intégrer ?</summary>
+      <div class="field">
+        <label for="svg-file">Fichier SVG spécifique (optionnel)</label>
+        <input type="file" id="svg-file" name="svgFile" accept=".svg,image/svg+xml" />
+        <p class="field-hint" id="svg-status" hidden></p>
+      </div>
+    </details>
+
+    <div class="field">
+      <label for="email">Votre email (pour recevoir votre poème)</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+
+    <p class="form-error" id="form-error" role="alert" hidden></p>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" id="submit-btn">Payer et envoyer ma commande — 15€</button>
+      <p class="field-hint">Livraison par email sous 1 jour ouvrable après paiement.</p>
+    </div>
+  </form>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Alex Harper — Poèmes personnalisés, composés à la main et livrés sous 1 jour ouvrable.</p>
+  </div>
+</footer>
+
+<script type="module" src="personnalisation.js"></script>
+</body>
+</html>
