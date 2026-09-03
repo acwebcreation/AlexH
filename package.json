@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "stripe": "^16.0.0",
-    "puppeteer-core": "^22.0.0",
-    "@sparticuz/chromium": "^123.0.0",
     "@netlify/blobs": "^7.0.0"
   },
   "devDependencies": {

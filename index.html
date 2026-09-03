@@ -282,7 +282,8 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
 
 /* ---------- JOURNAL ---------- */
 .journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:3.5rem;}
-.post{border-top:1px solid rgba(58,58,58,0.15);padding-top:1.4rem;text-align:left;}
+.post{border-top:1px solid rgba(58,58,58,0.15);padding-top:1.4rem;text-align:left;display:block;text-decoration:none;color:inherit;transition:opacity 0.25s ease;}
+.post:hover{opacity:0.7;}
 .post-date{font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.5;}
 .post h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:1.15rem;margin:0.7rem 0 0.8rem;line-height:1.4;}
 .post p{font-size:0.88rem;line-height:1.65;opacity:0.75;}
@@ -480,21 +481,21 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
     <h2 class="section-title">Ce qui s'écrit entre deux publications</h2>
   </div>
   <div class="journal-grid">
-    <div class="post reveal">
-      <span class="post-date">Coulisses</span>
-      <h4>Comment est né « Ce que je n'ai jamais dit »</h4>
-      <p>Le récit de l'écriture du premier recueil, des carnets de nuit jusqu'à la publication.</p>
-    </div>
-    <div class="post reveal">
-      <span class="post-date">Musique</span>
-      <h4>Dans les coulisses de l'album</h4>
-      <p>Comment un poème devient une chanson — le processus, les hésitations, les choix.</p>
-    </div>
-    <div class="post reveal">
-      <span class="post-date">Inédit</span>
-      <h4>Un poème qui n'a pas trouvé sa place</h4>
-      <p>Un texte resté en dehors du recueil, publié ici pour la première fois.</p>
-    </div>
+    <a class="post reveal" href="article-ecrire-des-paroles-qui-sonnent-vrai.html">
+      <span class="post-date">Écriture</span>
+      <h4>Écrire des paroles qui sonnent vrai</h4>
+      <p>Partir d'une phrase qu'on n'ose pas dire, et laisser la rime servir le sens plutôt que l'inverse.</p>
+    </a>
+    <a class="post reveal" href="article-poesie-ia-musique.html">
+      <span class="post-date">Musique &amp; IA</span>
+      <h4>Poésie et intelligence artificielle : composer autrement</h4>
+      <p>Comment un poème devient une chanson, entre écriture manuscrite et composition assistée.</p>
+    </a>
+    <a class="post reveal" href="article-papeterie-rituel-ecriture.html">
+      <span class="post-date">Papeterie</span>
+      <h4>Le rituel du carnet : pourquoi la papeterie compte encore</h4>
+      <p>Ce que le papier fait à l'écriture, à l'heure où tout se tape sur un écran.</p>
+    </a>
   </div>
 </section>
 
