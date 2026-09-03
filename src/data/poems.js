@@ -350,6 +350,19 @@ export function getPoem(categoryId, poemId) {
 }
 
 export const PRICING = {
-  existing: { price: 7, label: "Poème existant, personnalisé" },
-  custom: { price: 20, label: "Poème 100% sur-mesure, écrit pour vous" },
+  base: { price: 15, label: "Poème personnalisé, composé à la main" },
+  phoneOption: { price: 5, label: "Fichier optimisé pour smartphone" },
 };
+
+export const THEME_OPTIONS = [
+  { id: "clair", label: "Clair" },
+  { id: "fonce", label: "Foncé" },
+  { id: "pastel", label: "Pastel" },
+];
+
+export const FORMAT_OPTIONS = [
+  { id: "5x7", label: "5×7 pouces (format carte classique)" },
+  { id: "a5", label: "A5" },
+  { id: "a4-portrait", label: "A4 portrait" },
+  { id: "a4-paysage", label: "A4 paysage" },
+];
