@@ -244,8 +244,9 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
 .player .bar::after{content:"";position:absolute;left:0;top:0;height:100%;width:38%;background:var(--or-pale);}
 
 /* ---------- BOUTIQUE ---------- */
-.produits{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8rem;margin-top:3.5rem;}
+.produits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3.5rem;}
 .produit{background:#fff;border:1px solid rgba(58,58,58,0.08);text-align:left;}
+.produit p{font-size:0.86rem;line-height:1.6;opacity:0.72;margin-bottom:0.9rem;}
 .produit-visual{aspect-ratio:3/4;background:linear-gradient(160deg,var(--beige-lumiere),#dfd6c2);}
 .produit-body{padding:1.3rem 1.2rem 1.6rem;}
 .produit-cat{font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.55;}
@@ -292,6 +293,47 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
 /* ---------- NEWSLETTER REMINDER ---------- */
 .newsletter{text-align:center;}
 
+/* ---------- CHANSONS SUR MESURE ---------- */
+.couleurs{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:4rem;}
+.couleur{
+  background:var(--beige-lumiere);border:1px solid rgba(58,58,58,0.1);
+  border-top:3px solid var(--teinte);padding:2.4rem 2rem 2.2rem;text-align:left;
+  display:flex;flex-direction:column;
+}
+.couleur--tendre{--teinte:#C9928F;}
+.couleur--lumineux{--teinte:#C8A96E;}
+.couleur--profond{--teinte:var(--gris-nuit);}
+.couleur h3{font-family:'Playfair Display',serif;font-weight:500;font-size:1.45rem;margin-bottom:0.6rem;}
+.couleur .couleur-ton{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;margin-bottom:1rem;color:var(--noir-doux);opacity:0.85;}
+.couleur p{font-size:0.94rem;line-height:1.7;opacity:0.82;margin-bottom:1.2rem;}
+.couleur .occasions{font-size:0.86rem;line-height:1.7;opacity:0.7;margin-bottom:1.6rem;}
+.couleur a{
+  margin-top:auto;font-family:'Montserrat',sans-serif;font-weight:400;font-size:0.68rem;letter-spacing:0.13em;
+  text-transform:uppercase;text-decoration:none;color:var(--rouge-silencieux);
+  border-bottom:1px solid rgba(184,106,106,0.4);padding-bottom:2px;align-self:flex-start;
+}
+.ages{
+  margin-top:4rem;padding-top:2.4rem;border-top:1px solid rgba(58,58,58,0.15);
+  display:grid;grid-template-columns:1fr 1.4fr;gap:4vw;align-items:start;
+}
+.ages-titre{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.4;}
+.ages-liste{list-style:none;display:grid;gap:1rem;}
+.ages-liste li{font-size:0.95rem;line-height:1.7;opacity:0.85;}
+.ages-liste strong{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.12rem;opacity:1;margin-right:0.3rem;}
+.etapes{list-style:none;counter-reset:etape;display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:3.6rem;}
+.etapes li{counter-increment:etape;font-size:0.94rem;line-height:1.7;opacity:0.85;}
+.etapes li::before{
+  content:counter(etape);display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:2.2rem;line-height:1;color:var(--rouge-silencieux);margin-bottom:0.7rem;
+}
+.etapes strong{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:1.05rem;margin-bottom:0.4rem;opacity:1;}
+.chansons-cta{margin-top:3.4rem;display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap;}
+.chansons-cta .prix{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;opacity:0.8;}
+@media (max-width:860px){
+  .couleurs,.etapes{grid-template-columns:1fr;}
+  .ages{grid-template-columns:1fr;}
+}
+
 /* ---------- FOOTER ---------- */
 .footer{
   background:var(--noir-doux);padding:5rem 6vw 3rem;
@@ -328,6 +370,7 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
   <ul class="nav-links" id="navLinks">
     <li><a href="#univers">Univers</a></li>
     <li><a href="#apropos">À propos</a></li>
+    <li><a href="#chansons">Chansons sur mesure</a></li>
     <li><a href="#boutique">Boutique</a></li>
     <li><a href="/poemes/">Poèmes personnalisés</a></li>
     <li><a href="#journal">Journal</a></li>
@@ -340,8 +383,8 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
   <h1 class="headline" id="headline" aria-label="Ce que je n'ai jamais dit, je te l'écris ici."></h1>
   <div class="rule"></div>
   <p class="subtitle">
-    Poèmes, chansons et récits pour celles et ceux qui ressentent trop pour se taire.
-    Un univers, trois façons de le dire.
+    Poèmes, chansons sur mesure, romans et carnets. Pour les jours tendres, les jours de fête
+    et les adieux, une même plume : chaque chanson naît d'un poème.
   </p>
   <div class="cta-wrap">
     <button class="cta-primary" id="ctaBtn">Recevoir 5 poèmes en musique</button>
@@ -353,7 +396,7 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
 <section class="bg-light" id="univers">
   <div class="reveal">
     <span class="eyebrow">L'univers</span>
-    <h2 class="section-title">Trois façons de dire une même vérité</h2>
+    <h2 class="section-title">Trois façons de dire ce qui compte</h2>
     <p class="section-lede">Choisissez celle qui vous ressemble aujourd'hui.</p>
   </div>
   <div class="piliers">
@@ -365,15 +408,15 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
     </div>
     <div class="pilier reveal">
       <span class="pilier-num">II.</span>
-      <h3>Musique</h3>
-      <p>Chaque poème peut devenir une chanson. Une voix chaude, une guitare qui hésite. La chanson française comme confidence, pas comme performance.</p>
-      <a href="#extrait">Écouter un extrait →</a>
+      <h3>Chansons sur mesure</h3>
+      <p>Votre histoire devient d'abord un poème, puis une chanson. Pour un mariage, des 6 ans ou des 80 ans, un départ ou un adieu : tendre, lumineuse ou profonde, jamais une chanson toute faite.</p>
+      <a href="#chansons">Choisir sa chanson →</a>
     </div>
     <div class="pilier reveal">
       <span class="pilier-num">III.</span>
-      <h3>Romans</h3>
-      <p>Derrière chaque secret de famille, une maison qui sait tout et ne dit rien. La même sensibilité, portée vers le roman noir.</p>
-      <a href="#boutique">Lire un extrait →</a>
+      <h3>Romans &amp; carnets</h3>
+      <p>Derrière chaque secret de famille, une maison qui sait tout et ne dit rien. Et des carnets pour que les grands-parents racontent enfin leurs propres souvenirs.</p>
+      <a href="#boutique">Voir les livres →</a>
     </div>
   </div>
 </section>
@@ -387,8 +430,63 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
       <p>Il y a des choses qu'on ne dit à personne — pas parce qu'elles sont trop lourdes, mais parce qu'on n'a jamais trouvé les mots exacts pour les poser.</p>
       <p>Tout a commencé par des phrases griffonnées la nuit, jamais montrées à personne. Puis un jour, une phrase écrite pour soi a fini par parler à quelqu'un d'autre. Le tiroir plein de carnets est devenu un premier recueil.</p>
       <p>Depuis Bruxelles, entre les mots et la musique, chaque recueil, chaque chanson, chaque chapitre part du même endroit : ce qu'on tait, jusqu'au jour où on ne peut plus le taire.</p>
+      <p>Aujourd'hui, j'écris aussi pour les autres. Pour un mariage, un anniversaire, un départ ou un adieu, je cherche les mots justes, puis la musique qui va avec.</p>
       <a href="#journal" class="cta-secondary">Lire mon histoire complète</a>
     </div>
+  </div>
+</section>
+
+<!-- CHANSONS SUR MESURE -->
+<section class="bg-light" id="chansons">
+  <div class="reveal">
+    <span class="eyebrow">Chansons sur mesure</span>
+    <h2 class="section-title">Une chanson pour chaque moment, née d'un poème</h2>
+    <p class="section-lede">Vous me racontez la personne, vos souvenirs, ce que vous n'avez jamais su lui dire. J'en fais d'abord un poème, puis une chanson, avec la voix d'Alex Harper. Le ton change selon le moment, la plume reste la même.</p>
+  </div>
+
+  <div class="couleurs">
+    <article class="couleur couleur--tendre reveal">
+      <h3>Tendre</h3>
+      <p class="couleur-ton">Pour dire je t'aime, autrement.</p>
+      <p>Une chanson douce et chaleureuse, guitare en arpèges ou piano léger. Pour celles et ceux qu'on aime et qu'on veut voir sourire, les yeux un peu brillants.</p>
+      <p class="occasions">Mariage, déclaration, anniversaire de couple, naissance, baptême</p>
+      <a href="chanson-sur-mesure.html?couleur=tendre">Commander une chanson tendre</a>
+    </article>
+    <article class="couleur couleur--lumineux reveal">
+      <h3>Lumineux</h3>
+      <p class="couleur-ton">La joie, avec du fond.</p>
+      <p>Une chanson entraînante qui raconte la vie de la personne, ses manies, ses souvenirs. On sourit parce que c'est vrai, pas parce que c'est une blague.</p>
+      <p class="occasions">Anniversaire, diplôme, départ à la retraite, remerciements, fête de famille</p>
+      <a href="chanson-sur-mesure.html?couleur=lumineux">Commander une chanson lumineuse</a>
+    </article>
+    <article class="couleur couleur--profond reveal">
+      <h3>Profond</h3>
+      <p class="couleur-ton">Pour les mots qu'on n'arrive pas à dire.</p>
+      <p>Une chanson intime et posée, presque une confidence. Pour dire au revoir, rendre hommage, ou poser enfin ce qui pèse depuis longtemps.</p>
+      <p class="occasions">Hommage, deuil, adieux, départ, rupture, lettre jamais envoyée</p>
+      <a href="chanson-sur-mesure.html?couleur=profond">Commander une chanson profonde</a>
+    </article>
+  </div>
+
+  <div class="ages reveal">
+    <p class="ages-titre">De la comptine des 6 ans aux 80 ans racontés en chanson.</p>
+    <ul class="ages-liste">
+      <li><strong>Les enfants.</strong> Une comptine lumineuse, un refrain facile à chanter, son prénom et son petit monde.</li>
+      <li><strong>Les ados et jeunes adultes.</strong> De l'élan et de la fierté, pour les premières fois et les grands départs.</li>
+      <li><strong>Les adultes.</strong> Le chemin parcouru, avec tendresse et un brin de clin d'œil.</li>
+      <li><strong>Les grands-parents.</strong> Une vie racontée en quelques images fortes, la chanson qui fait pleurer de bonheur à table.</li>
+    </ul>
+  </div>
+
+  <ol class="etapes reveal">
+    <li><strong>Vous racontez</strong>Un questionnaire d'une dizaine de minutes : la personne, vos souvenirs, ce que vous voulez lui dire.</li>
+    <li><strong>J'écris le poème</strong>Vos souvenirs deviennent des paroles. Vous les recevez et les validez avant toute musique.</li>
+    <li><strong>Vous recevez la chanson</strong>La chanson complète, avec ses paroles mises en page comme un poème, à garder.</li>
+  </ol>
+
+  <div class="chansons-cta reveal">
+    <a href="chanson-sur-mesure.html" class="btn-outline-dark">Raconter mon histoire</a>
+    <span class="prix">29,99 € la chanson personnalisée</span>
   </div>
 </section>
 
@@ -416,44 +514,71 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
   <div class="reveal">
     <span class="eyebrow">Boutique</span>
     <h2 class="section-title">Des mots qu'on peut garder</h2>
-    <p class="section-lede">Un recueil sur la table de nuit, un poster au-dessus du bureau, une playlist pour les soirs où les mots manquent.</p>
+    <p class="section-lede">Un recueil sur la table de nuit, un roman pour les longues soirées, un carnet pour que les grands-parents racontent, une chanson écrite pour quelqu'un.</p>
   </div>
   <div class="produits">
     <div class="produit reveal">
       <div class="produit-visual"></div>
       <div class="produit-body">
-        <span class="produit-cat">Recueil</span>
+        <span class="produit-cat">Recueil de poésie</span>
         <h4>Ce que je n'ai jamais dit</h4>
-        <a href="#">Découvrir →</a>
+        <p>Les mots gardés trop longtemps, enfin posés sur la page.</p>
+        <!-- TODO : lien Amazon du recueil -->
+      <a href="#">Découvrir →</a>
       </div>
     </div>
     <div class="produit reveal">
       <div class="produit-visual"></div>
       <div class="produit-body">
-        <span class="produit-cat">Recueil</span>
+        <span class="produit-cat">Recueil de poésie</span>
         <h4>Bonheur à 2</h4>
-        <a href="#">Découvrir →</a>
+        <p>Un recueil de poèmes d'Alex Harper.<!-- TODO : description courte --></p>
+        <!-- TODO : lien du recueil -->
+      <a href="#">Découvrir →</a>
       </div>
     </div>
     <div class="produit reveal">
       <div class="produit-visual"></div>
       <div class="produit-body">
-        <span class="produit-cat">Édition collector</span>
-        <h4>Tirages & posters calligraphiés</h4>
-        <a href="#">Voir sur Etsy →</a>
+        <span class="produit-cat">Roman</span>
+        <h4>L'Ombre du Domaine</h4>
+        <p>Les Frères Castellan, tome 1. Une maison qui sait tout et ne dit rien, des secrets de famille, une romance sous tension.</p>
+        <!-- TODO : lien Amazon du roman -->
+      <a href="#">Lire un extrait →</a>
       </div>
     </div>
     <div class="produit reveal">
       <div class="produit-visual"></div>
       <div class="produit-body">
-        <span class="produit-cat">Journal guidé</span>
-        <h4>30 jours pour dire ce que tu n'as jamais dit</h4>
-        <a href="#">Découvrir →</a>
+        <span class="produit-cat">Carnet à offrir</span>
+        <h4>Raconte-moi ton Noël, version Papy</h4>
+        <p>Un carnet guidé pour que Papy raconte ses Noëls d'enfance et ses souvenirs, à garder en famille.</p>
+        <!-- TODO : lien du carnet Papy -->
+      <a href="#">Découvrir →</a>
+      </div>
+    </div>
+    <div class="produit reveal">
+      <div class="produit-visual"></div>
+      <div class="produit-body">
+        <span class="produit-cat">Carnet à offrir</span>
+        <h4>Raconte-moi ton Noël, version Mamie</h4>
+        <p>Le même carnet guidé, pensé pour Mamie : ses Noëls, ses souvenirs, à transmettre.</p>
+        <!-- TODO : lien du carnet Mamie -->
+      <a href="#">Découvrir →</a>
+      </div>
+    </div>
+    <div class="produit reveal">
+      <div class="produit-visual"></div>
+      <div class="produit-body">
+        <span class="produit-cat">Chanson personnalisée</span>
+        <h4>Votre chanson sur mesure</h4>
+        <p>Écrite à partir de vos souvenirs, tendre, lumineuse ou profonde. 29,99 €.</p>
+        <a href="chanson-sur-mesure.html">Raconter mon histoire →</a>
       </div>
     </div>
   </div>
   <div class="boutique-cta reveal">
-    <a href="#" class="btn-outline-dark">Voir toute la boutique</a>
+    <a href="boutique.html" class="btn-outline-dark">Voir toute la boutique</a>
   </div>
 </section>
 
@@ -516,7 +641,7 @@ section{position:relative;padding:min(14vh,120px) 6vw;}
   <div class="footer-top">
     <div>
       <span class="footer-mark">Alex H.</span>
-      <p class="footer-cols" style="margin-top:0.8rem;">Poésie · Musique · Romans</p>
+      <p class="footer-cols" style="margin-top:0.8rem;">Poésie · Chansons sur mesure · Romans · Carnets</p>
     </div>
     <div class="footer-cols">
       alex@alexharper.fr<br>

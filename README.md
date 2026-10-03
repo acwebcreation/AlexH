@@ -94,3 +94,10 @@ modifiable jusqu'à la page de personnalisation.
 Le fichier `CNAME` pointe vers `alexharper.fr`. Certaines balises `<link
 rel="canonical">` et `og:url` dans les pages existantes référencent encore
 `activityweb.be` — à corriger si `alexharper.fr` est bien le domaine final.
+
+## Mise à jour octobre 2026 : chansons sur mesure
+
+- Accueil : nouvelle section `#chansons` (trois couleurs Tendre, Lumineux, Profond, tous les âges, 3 étapes, prix 29,99 €), boutique recentrée sur recueils, roman, carnets « Raconte-moi ton Noël » (Papy, Mamie) et chanson personnalisée.
+- `chanson-sur-mesure.html` : occasions regroupées par couleur (+ anniversaire de couple, remerciements, adieux, rupture), âge de la personne, couleur proposée automatiquement selon l'occasion ou via `?couleur=tendre|lumineux|profond`, voix fixée à celle d'Alex Harper, accompagnements Folk entraînant et Comptine.
+- `boutique.html` : 4 cartes (recueils, roman, carnets, chansons). Le Kit Émotion est en suspens et n'apparaît nulle part.
+- Liens à compléter : chercher `TODO` dans `index.html` et `boutique.html` (liens Amazon et carnets).

@@ -352,3 +352,10 @@ footer .legal{ font-family: var(--font-mono); font-size: 0.7rem; color: var(--te
   display:inline-block; width:6px; height:6px; background: var(--gold); border-radius:50%;
   margin: 0 10px;
 }
+
+/* Boutique : grille 2 colonnes et double bouton */
+.cards--duo{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px){ .cards--duo{ grid-template-columns: 1fr; } }
+.cards--duo .card:nth-child(4){ transform: rotate(0.5deg); }
+.cards--duo .card:nth-child(4):hover{ transform: rotate(0deg) translateY(-6px); }
+.card-actions{ display:flex; gap:12px; flex-wrap:wrap; }

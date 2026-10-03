@@ -77,6 +77,18 @@
     opacity: .75;
   }
 
+  .retour {
+    position: absolute; top: 1.4rem; left: 1.5rem;
+    font-family: var(--sans); font-weight: 300; font-size: .8rem;
+    color: var(--or-pale); text-decoration: none; opacity: .8;
+  }
+  .retour:hover { opacity: 1; }
+  .hero { position: relative; }
+  .note-voix {
+    border-left: 2px solid var(--or); padding: .6rem 0 .6rem 1rem;
+    color: var(--or-pale); font-style: italic; margin: 0;
+  }
+
   /* Formulaire */
   main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
   fieldset {
@@ -216,8 +228,10 @@
 <body>
 
 <header class="hero">
+  <a class="retour" href="/">alexharper.fr</a>
   <p class="signature">Alex Harper</p>
   <h1>Racontez-moi votre histoire, j'en ferai une chanson</h1>
+  <p>Chaque chanson naît d'un poème. Tendre, lumineuse ou profonde, pour un enfant comme pour un grand-parent, elle part toujours de vos souvenirs.</p>
   <p>Chaque chanson est écrite à partir de vos souvenirs. Ne cherchez pas à bien écrire : des détails simples et vrais valent mieux que de belles phrases. Si une question ne vous parle pas, passez-la.</p>
   <p class="duree">Environ 10 à 15 minutes · vos réponses sont enregistrées au fur et à mesure sur cet appareil</p>
 </header>
@@ -257,13 +271,35 @@
       <label for="occasion">L'occasion <span class="requis">*</span></label>
       <select id="occasion" name="occasion" required>
         <option value="">Choisissez l'occasion</option>
-        <option value="diplome">Diplôme ou réussite</option>
-        <option value="mariage">Mariage ou déclaration</option>
-        <option value="naissance">Naissance ou baptême</option>
-        <option value="anniversaire">Anniversaire (personne ou couple)</option>
-        <option value="retraite">Départ à la retraite</option>
-        <option value="hommage">Hommage ou deuil</option>
+        <optgroup label="Tendre">
+          <option value="mariage" data-couleur="tendre">Mariage ou déclaration</option>
+          <option value="anniversaire-couple" data-couleur="tendre">Anniversaire de couple</option>
+          <option value="naissance" data-couleur="tendre">Naissance ou baptême</option>
+        </optgroup>
+        <optgroup label="Lumineux">
+          <option value="anniversaire" data-couleur="lumineux">Anniversaire</option>
+          <option value="diplome" data-couleur="lumineux">Diplôme ou réussite</option>
+          <option value="retraite" data-couleur="lumineux">Départ à la retraite</option>
+          <option value="remerciements" data-couleur="lumineux">Remerciements</option>
+        </optgroup>
+        <optgroup label="Profond">
+          <option value="hommage" data-couleur="profond">Hommage ou deuil</option>
+          <option value="adieux" data-couleur="profond">Adieux ou départ</option>
+          <option value="rupture" data-couleur="profond">Rupture, lettre jamais envoyée</option>
+        </optgroup>
         <option value="autre">Autre occasion</option>
+      </select>
+    </div>
+    <div class="champ">
+      <label for="age_groupe">L'âge de la personne <span class="requis">*</span></label>
+      <span class="aide">Le ton et la musique s'adaptent : une comptine pour un enfant, une rétrospective de vie pour un grand-parent.</span>
+      <select id="age_groupe" name="age_groupe" required>
+        <option value="">Choisissez</option>
+        <option value="enfant">Enfant (jusqu'à 11 ans)</option>
+        <option value="ado">Ado ou jeune adulte (12 à 25 ans)</option>
+        <option value="adulte">Adulte (26 à 64 ans)</option>
+        <option value="senior">Senior (65 ans et plus)</option>
+        <option value="couple">Un couple, ou plusieurs personnes</option>
       </select>
     </div>
     <div class="champ">
@@ -326,7 +362,7 @@
     <p class="intro-partie">C'est ici que naissent les plus belles lignes. Racontez simplement, avec le lieu et le moment.</p>
 
     <div class="champ">
-      <label for="souvenir_drole">Un souvenir drôle avec elle <span class="requis">*</span></label>
+      <label for="souvenir_drole">Un souvenir heureux ou drôle avec elle <span class="requis">*</span></label>
       <span class="aide">Par exemple : le jour où elle a révisé pendant tout le trajet vers la mer, et n'a pas vu la mer</span>
       <textarea id="souvenir_drole" name="souvenir_drole" required></textarea>
     </div>
@@ -386,8 +422,9 @@
   <fieldset class="module" data-occasion="anniversaire">
     <span class="partie">Pour cette occasion</span>
     <legend>L'anniversaire</legend>
-    <div class="champ"><label for="ann_age">L'âge, ou le nombre d'années célébrées</label><input type="text" id="ann_age" name="ann_age"></div>
-    <div class="champ"><label for="ann_etapes">Les grandes étapes de sa vie, ou de votre histoire</label><textarea id="ann_etapes" name="ann_etapes"></textarea></div>
+    <div class="champ"><label for="ann_age">L'âge fêté</label><input type="text" id="ann_age" name="ann_age"></div>
+    <div class="champ"><label for="ann_passion">Ce qui l'occupe en ce moment, ce qui la fait vibrer</label><span class="aide">Pour un enfant : son jeu préféré, son héros, ce qu'il veut faire plus tard</span><textarea id="ann_passion" name="ann_passion"></textarea></div>
+    <div class="champ"><label for="ann_etapes">Les grandes étapes de sa vie</label><textarea id="ann_etapes" name="ann_etapes"></textarea></div>
     <div class="champ"><label for="ann_inchange">Ce qui n'a pas changé depuis le début</label><textarea id="ann_inchange" name="ann_inchange"></textarea></div>
     <div class="champ"><label for="ann_souhait">Un souhait pour les années à venir</label><textarea id="ann_souhait" name="ann_souhait"></textarea></div>
   </fieldset>
@@ -411,6 +448,42 @@
     <div class="champ"><label for="hom_dire">Ce que vous auriez aimé lui dire encore</label><textarea id="hom_dire" name="hom_dire"></textarea></div>
     <div class="champ"><label for="hom_diffusion">La chanson sera-t-elle diffusée lors d'une cérémonie, ou gardée pour la famille ?</label><input type="text" id="hom_diffusion" name="hom_diffusion"></div>
     <div class="champ"><label for="hom_spirituel">Des éléments religieux ou spirituels à intégrer ou à éviter ?</label><input type="text" id="hom_spirituel" name="hom_spirituel"></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="anniversaire-couple">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Votre anniversaire de couple</legend>
+    <div class="champ"><label for="cou_annees">Le nombre d'années célébrées</label><input type="text" id="cou_annees" name="cou_annees"></div>
+    <div class="champ"><label for="cou_rencontre">Comment vous vous êtes rencontrés</label><textarea id="cou_rencontre" name="cou_rencontre"></textarea></div>
+    <div class="champ"><label for="cou_etapes">Les grandes étapes de votre histoire</label><span class="aide">Une maison, des enfants, un voyage, une épreuve traversée ensemble</span><textarea id="cou_etapes" name="cou_etapes"></textarea></div>
+    <div class="champ"><label for="cou_inchange">Ce qui n'a pas changé depuis le début</label><textarea id="cou_inchange" name="cou_inchange"></textarea></div>
+    <div class="champ"><label for="cou_suite">Ce que vous vous souhaitez pour la suite</label><textarea id="cou_suite" name="cou_suite"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="remerciements">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Les remerciements</legend>
+    <div class="champ"><label for="rem_qui">Qui remerciez-vous, et dans quel cadre ?</label><span class="aide">Par exemple : la maîtresse de CP de notre fils, l'équipe de la crèche, un ami fidèle</span><input type="text" id="rem_qui" name="rem_qui"></div>
+    <div class="champ"><label for="rem_pourquoi">Ce qu'elle a fait pour vous, concrètement</label><textarea id="rem_pourquoi" name="rem_pourquoi"></textarea></div>
+    <div class="champ"><label for="rem_moment">Un moment précis où vous avez senti la différence</label><textarea id="rem_moment" name="rem_moment"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="adieux">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Les adieux</legend>
+    <div class="champ"><label for="adi_depart">Qui part, où, et pourquoi ?</label><span class="aide">Un déménagement à l'étranger, une fin de contrat, un ami qui change de vie</span><textarea id="adi_depart" name="adi_depart"></textarea></div>
+    <div class="champ"><label for="adi_garder">Ce que vous voulez garder de ces années ensemble</label><textarea id="adi_garder" name="adi_garder"></textarea></div>
+    <div class="champ"><label for="adi_souhait">Ce que vous lui souhaitez là où elle va</label><textarea id="adi_souhait" name="adi_souhait"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="rupture">
+    <span class="partie">Pour cette occasion</span>
+    <legend>La lettre jamais envoyée</legend>
+    <p class="intro-partie">Cette chanson peut rester pour vous seul(e). Elle n'a pas besoin d'être envoyée pour compter.</p>
+    <div class="champ"><label for="rup_qui">À qui s'adresse-t-elle ?</label><span class="aide">Un ancien amour, un ami perdu de vue, un parent. Un prénom suffit, ou rien du tout.</span><input type="text" id="rup_qui" name="rup_qui"></div>
+    <div class="champ"><label for="rup_garde">Ce que vous gardez de cette histoire</label><textarea id="rup_garde" name="rup_garde"></textarea></div>
+    <div class="champ"><label for="rup_pese">Ce qui pèse encore aujourd'hui</label><textarea id="rup_pese" name="rup_pese"></textarea></div>
+    <div class="champ"><label for="rup_fin">Comment aimeriez-vous que la chanson se termine ?</label><span class="aide">Apaisée, pleine d'espoir, sur un merci, sur un adieu</span><input type="text" id="rup_fin" name="rup_fin"></div>
   </fieldset>
 
   <fieldset class="module" data-occasion="autre">
@@ -453,22 +526,18 @@
     <legend>Le ton et la musique</legend>
 
     <div class="champ">
-      <span class="question">Le ton souhaité <span class="requis">*</span></span>
+      <span class="question">La couleur de la chanson <span class="requis">*</span></span>
+      <span class="aide">Proposée selon l'occasion choisie, vous pouvez la changer.</span>
       <div class="choix">
-        <label><input type="radio" name="ton" value="Très émouvant" required> <span>Très émouvant<small>Pour toucher en plein cœur</small></span></label>
-        <label><input type="radio" name="ton" value="Émouvant avec un sourire" checked> <span>Émouvant, avec un sourire<small>Le style Alex Harper</small></span></label>
-        <label><input type="radio" name="ton" value="Tendre et léger"> <span>Tendre et léger</span></label>
+        <label><input type="radio" name="ton" value="Tendre" required> <span>Tendre<small>Douce et chaleureuse, pour dire je t'aime autrement</small></span></label>
+        <label><input type="radio" name="ton" value="Lumineux"> <span>Lumineux<small>Joyeuse et entraînante, on sourit parce que c'est vrai</small></span></label>
+        <label><input type="radio" name="ton" value="Profond"> <span>Profond<small>Intime et posée, presque une confidence</small></span></label>
       </div>
     </div>
 
     <div class="champ">
       <span class="question">La voix</span>
-      <div class="choix">
-        <label><input type="radio" name="voix" value="Masculine"> <span>Voix masculine</span></label>
-        <label><input type="radio" name="voix" value="Féminine"> <span>Voix féminine</span></label>
-        <label><input type="radio" name="voix" value="Duo"> <span>Duo, voix masculine et féminine</span></label>
-        <label><input type="radio" name="voix" value="Au choix de l'auteur" checked> <span>Je vous laisse choisir</span></label>
-      </div>
+      <p class="note-voix">Chaque chanson est chantée avec la voix d'Alex Harper : masculine, chaleureuse et proche, comme une confidence.</p>
     </div>
 
     <div class="champ">
@@ -476,7 +545,8 @@
       <div class="choix">
         <label><input type="radio" name="style" value="Guitare acoustique intimiste"> <span>Guitare acoustique intimiste</span></label>
         <label><input type="radio" name="style" value="Piano doux"> <span>Piano doux</span></label>
-        <label><input type="radio" name="style" value="Pop douce"> <span>Pop douce</span></label>
+        <label><input type="radio" name="style" value="Folk entraînant"> <span>Folk entraînant<small>Guitare rythmée, claquements de mains</small></span></label>
+        <label><input type="radio" name="style" value="Comptine"> <span>Comptine<small>Ukulélé, glockenspiel, petits chœurs, idéal pour les enfants</small></span></label>
         <label><input type="radio" name="style" value="Au choix de l'auteur" checked> <span>Je vous laisse choisir</span></label>
       </div>
     </div>
@@ -533,7 +603,7 @@
 <section class="merci" id="merci" aria-live="polite">
   <p class="signature">Merci</p>
   <h2>Votre histoire est entre de bonnes mains</h2>
-  <p>Je lis chaque réponse moi-même avant d'écrire. Vous recevrez d'abord les paroles pour validation, puis la chanson complète. Si un détail vous revient après coup, répondez simplement à mon e-mail.</p>
+  <p>Je lis chaque réponse moi-même avant d'écrire. Vous recevrez d'abord les paroles pour validation, puis la chanson complète avec son texte mis en page comme un poème. Si un détail vous revient après coup, répondez simplement à mon e-mail.</p>
   <p><a href="/">Retour à l'accueil</a></p>
 </section>
 
@@ -554,6 +624,24 @@
     });
   }
   occasion.addEventListener('change', afficherModule);
+
+  // Couleur de la chanson : proposée selon l'occasion, tant que le client ne l'a pas choisie lui-même
+  var couleurManuelle = false;
+  var radiosTon = form.querySelectorAll('input[name="ton"]');
+  var NOMS = { tendre: 'Tendre', lumineux: 'Lumineux', profond: 'Profond' };
+  function choisirCouleur(cle) {
+    var valeur = NOMS[cle];
+    if (!valeur) return;
+    radiosTon.forEach(function (r) { r.checked = (r.value === valeur); });
+  }
+  radiosTon.forEach(function (r) {
+    r.addEventListener('change', function () { couleurManuelle = true; });
+  });
+  occasion.addEventListener('change', function () {
+    if (couleurManuelle) return;
+    var opt = occasion.options[occasion.selectedIndex];
+    if (opt && opt.dataset.couleur) choisirCouleur(opt.dataset.couleur);
+  });
 
   // Brouillon enregistré sur l'appareil du client
   function sauver() {
@@ -587,6 +675,13 @@
   }
   restaurer();
   afficherModule();
+  // Lien depuis l'accueil : chanson-sur-mesure.html?couleur=lumineux
+  try {
+    var param = new URLSearchParams(window.location.search).get('couleur');
+    var dejaChoisi = Array.prototype.some.call(radiosTon, function (r) { return r.checked; });
+    if (param && !dejaChoisi) { choisirCouleur(param); couleurManuelle = true; }
+    else if (dejaChoisi) { couleurManuelle = true; }
+  } catch (e) {}
 
   var minuteur;
   form.addEventListener('input', function () {
