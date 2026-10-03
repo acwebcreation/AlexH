@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre chanson sur mesure — Alex Harper</title>
+<meta name="description" content="Racontez votre histoire : Alex Harper écrit une chanson personnalisée à partir de vos souvenirs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nuit: #0D0D0F;
+    --noir-doux: #1A1A1A;
+    --gris-nuit: #3A3A3A;
+    --beige: #EDE6D8;
+    --creme: #F5F1E8;
+    --or: #c8a96e;
+    --or-pale: #D9CBA3;
+    --rouge: #B86A6A;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --titre: "Playfair Display", Georgia, serif;
+    --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--beige);
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.65;
+  }
+  a { color: var(--or); }
+
+  /* En-tête */
+  .hero {
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid var(--gris-nuit);
+  }
+  .signature {
+    font-family: "Mrs Saint Delafield", cursive;
+    font-size: clamp(3.2rem, 9vw, 5.5rem);
+    color: var(--or);
+    line-height: 1;
+    margin: 0 0 1.5rem;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    line-height: 1.25;
+    margin: 0 0 1.5rem;
+    max-width: 20ch;
+  }
+  .hero p {
+    max-width: 34rem;
+    margin: 0 auto 1rem;
+    color: var(--or-pale);
+    font-style: italic;
+  }
+  .hero .duree {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--beige);
+    font-style: normal;
+    opacity: .75;
+  }
+
+  /* Formulaire */
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+  fieldset {
+    border: 0;
+    margin: 0 0 4.5rem;
+    padding: 0;
+  }
+  legend {
+    font-family: var(--titre);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--creme);
+    padding: 0;
+    margin-bottom: .4rem;
+  }
+  .partie {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: .85rem;
+    color: var(--or);
+    margin-bottom: .25rem;
+  }
+  .intro-partie {
+    color: var(--or-pale);
+    font-style: italic;
+    margin: 0 0 2rem;
+  }
+  .champ { margin-bottom: 2rem; }
+  label, .question {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--creme);
+    margin-bottom: .3rem;
+  }
+  .requis { color: var(--rouge); font-weight: 400; }
+  .aide {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: .85rem;
+    color: var(--beige);
+    opacity: .7;
+    margin-bottom: .6rem;
+    line-height: 1.5;
+  }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+    width: 100%;
+    background: var(--noir-doux);
+    border: 1px solid var(--gris-nuit);
+    border-radius: 2px;
+    color: var(--beige);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    padding: .7rem .85rem;
+    transition: border-color .2s;
+  }
+  textarea { min-height: 7rem; resize: vertical; line-height: 1.55; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--or);
+    box-shadow: 0 0 0 1px var(--or);
+  }
+  input[type="date"] { color-scheme: dark; }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--or) 50%), linear-gradient(135deg, var(--or) 50%, transparent 50%); background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 2.5rem; }
+
+  .choix { display: grid; gap: .5rem; }
+  .choix label {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--beige);
+    padding: .55rem .8rem;
+    border: 1px solid var(--gris-nuit);
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0;
+  }
+  .choix label:has(input:checked) { border-color: var(--or); background: rgba(200,169,110,.07); }
+  .choix input { accent-color: var(--or); margin-top: .45rem; flex-shrink: 0; }
+  .choix small { display: block; font-family: var(--sans); font-weight: 300; font-size: .8rem; opacity: .7; }
+
+  /* La question importante */
+  .question-coeur {
+    border-left: 2px solid var(--or);
+    padding: 1.25rem 0 1.25rem 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .question-coeur label { font-family: var(--titre); font-weight: 400; font-size: 1.45rem; }
+
+  /* Modules par occasion */
+  .module { display: none; }
+  .module.actif { display: block; }
+
+  .consent { font-size: 1.05rem; }
+  .consent label { display: flex; gap: .75rem; font-weight: 400; font-size: 1.05rem; color: var(--beige); }
+  .consent input { accent-color: var(--or); margin-top: .4rem; flex-shrink: 0; }
+
+  button {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: .02em;
+    background: var(--or);
+    color: var(--nuit);
+    border: 0;
+    border-radius: 2px;
+    padding: 1rem 2.2rem;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  button:hover { background: var(--or-pale); }
+  button:focus-visible { outline: 2px solid var(--creme); outline-offset: 3px; }
+  button[disabled] { opacity: .6; cursor: wait; }
+
+  .brouillon {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: .8rem;
+    opacity: .6;
+    margin-top: 1rem;
+  }
+  .erreur { color: var(--rouge); font-family: var(--sans); font-size: .9rem; margin-top: 1rem; }
+  .cache { position: absolute; left: -9999px; }
+
+  .merci { display: none; text-align: center; padding: 5rem 1.5rem; max-width: 36rem; margin: 0 auto; }
+  .merci.visible { display: block; }
+  .merci h2 { font-family: var(--titre); font-weight: 400; font-size: 2rem; margin: 0 0 1.5rem; }
+  .merci p { color: var(--or-pale); font-style: italic; }
+
+  footer { text-align: center; padding: 2rem 1rem 3rem; border-top: 1px solid var(--gris-nuit); font-family: var(--sans); font-weight: 300; font-size: .8rem; opacity: .6; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="signature">Alex Harper</p>
+  <h1>Racontez-moi votre histoire, j'en ferai une chanson</h1>
+  <p>Chaque chanson est écrite à partir de vos souvenirs. Ne cherchez pas à bien écrire : des détails simples et vrais valent mieux que de belles phrases. Si une question ne vous parle pas, passez-la.</p>
+  <p class="duree">Environ 10 à 15 minutes · vos réponses sont enregistrées au fur et à mesure sur cet appareil</p>
+</header>
+
+<main>
+<form id="form-chanson" name="chanson-personnalisee" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="chanson-personnalisee">
+  <p class="cache"><label>Ne pas remplir <input name="bot-field"></label></p>
+
+  <!-- PARTIE 1 -->
+  <fieldset>
+    <span class="partie">Partie 1 sur 6</span>
+    <legend>Les informations pratiques</legend>
+    <p class="intro-partie">Pour savoir à qui, pour quoi, et pour quand.</p>
+
+    <div class="champ">
+      <label for="client_nom">Votre prénom et votre lien avec la personne <span class="requis">*</span></label>
+      <span class="aide">Par exemple : Sophie, sa mère</span>
+      <input type="text" id="client_nom" name="client_nom" required>
+    </div>
+    <div class="champ">
+      <label for="client_email">Votre adresse e-mail <span class="requis">*</span></label>
+      <span class="aide">Pour recevoir les paroles à valider, puis la chanson</span>
+      <input type="email" id="client_email" name="client_email" required autocomplete="email">
+    </div>
+    <div class="champ">
+      <label for="dest_prenom">Le prénom de la personne, et comment il se prononce <span class="requis">*</span></label>
+      <span class="aide">Par exemple : Maïa, prononcé « Ma-ya »</span>
+      <input type="text" id="dest_prenom" name="dest_prenom" required>
+    </div>
+    <div class="champ">
+      <label for="dest_surnom">Son surnom, s'il y en a un, et qui l'utilise</label>
+      <span class="aide">Par exemple : Mimi, seulement son père</span>
+      <input type="text" id="dest_surnom" name="dest_surnom">
+    </div>
+    <div class="champ">
+      <label for="occasion">L'occasion <span class="requis">*</span></label>
+      <select id="occasion" name="occasion" required>
+        <option value="">Choisissez l'occasion</option>
+        <option value="diplome">Diplôme ou réussite</option>
+        <option value="mariage">Mariage ou déclaration</option>
+        <option value="naissance">Naissance ou baptême</option>
+        <option value="anniversaire">Anniversaire (personne ou couple)</option>
+        <option value="retraite">Départ à la retraite</option>
+        <option value="hommage">Hommage ou deuil</option>
+        <option value="autre">Autre occasion</option>
+      </select>
+    </div>
+    <div class="champ">
+      <label for="ecoute">Quand et où la chanson sera-t-elle écoutée ?</label>
+      <span class="aide">Par exemple : le soir de la remise des diplômes, au restaurant, devant 12 personnes. Ou : seule, dans un message privé.</span>
+      <input type="text" id="ecoute" name="ecoute">
+    </div>
+    <div class="champ">
+      <label for="date_limite">Date limite de livraison souhaitée</label>
+      <input type="date" id="date_limite" name="date_limite">
+    </div>
+    <div class="champ">
+      <label for="de_la_part">La chanson vient-elle de vous seul(e), ou de plusieurs personnes ?</label>
+      <span class="aide">Par exemple : de toute la famille, de ses deux sœurs</span>
+      <input type="text" id="de_la_part" name="de_la_part">
+    </div>
+  </fieldset>
+
+  <!-- PARTIE 2 -->
+  <fieldset>
+    <span class="partie">Partie 2 sur 6</span>
+    <legend>La personne</legend>
+    <p class="intro-partie">Qui est-elle, vraiment, pour ceux qui l'aiment ?</p>
+
+    <div class="champ">
+      <label for="trois_mots">Trois mots pour la décrire <span class="requis">*</span></label>
+      <span class="aide">Par exemple : têtue, drôle, généreuse</span>
+      <input type="text" id="trois_mots" name="trois_mots" required>
+    </div>
+    <div class="champ">
+      <label for="qualite">Sa plus grande qualité, avec un exemple concret</label>
+      <span class="aide">Pas seulement « elle est gentille », mais ce qu'elle fait. Par exemple : elle appelle sa grand-mère tous les dimanches depuis dix ans, même en période d'examens.</span>
+      <textarea id="qualite" name="qualite"></textarea>
+    </div>
+    <div class="champ">
+      <label for="manie">Un petit défaut attachant, ou une manie qui fait sourire</label>
+      <span class="aide">Par exemple : elle surligne tout en quatre couleurs, elle arrive toujours vingt minutes en avance</span>
+      <textarea id="manie" name="manie"></textarea>
+    </div>
+    <div class="champ">
+      <label for="phrase_fetiche">Une phrase ou une expression qu'elle répète souvent</label>
+      <span class="aide">Par exemple : « on verra bien », « c'est pas grave, j'ai un plan B »</span>
+      <input type="text" id="phrase_fetiche" name="phrase_fetiche">
+    </div>
+    <div class="champ">
+      <label for="aime">Ce qu'elle aime profondément</label>
+      <span class="aide">Un lieu, un plat, une musique, une activité, un animal…</span>
+      <textarea id="aime" name="aime"></textarea>
+    </div>
+    <div class="champ">
+      <label for="unique">Ce qui la rend unique aux yeux de ses proches</label>
+      <textarea id="unique" name="unique"></textarea>
+    </div>
+  </fieldset>
+
+  <!-- PARTIE 3 -->
+  <fieldset>
+    <span class="partie">Partie 3 sur 6</span>
+    <legend>Les souvenirs</legend>
+    <p class="intro-partie">C'est ici que naissent les plus belles lignes. Racontez simplement, avec le lieu et le moment.</p>
+
+    <div class="champ">
+      <label for="souvenir_drole">Un souvenir drôle avec elle <span class="requis">*</span></label>
+      <span class="aide">Par exemple : le jour où elle a révisé pendant tout le trajet vers la mer, et n'a pas vu la mer</span>
+      <textarea id="souvenir_drole" name="souvenir_drole" required></textarea>
+    </div>
+    <div class="champ">
+      <label for="souvenir_touchant">Un souvenir touchant <span class="requis">*</span></label>
+      <span class="aide">Un moment où vous avez été fier(e), ému(e), ou où vous l'avez vue autrement</span>
+      <textarea id="souvenir_touchant" name="souvenir_touchant" required></textarea>
+    </div>
+    <div class="champ">
+      <label for="moment_difficile">Un moment difficile qu'elle a traversé, et comment elle s'en est sortie</label>
+      <span class="aide">Seulement si vous souhaitez qu'il soit évoqué, même avec pudeur</span>
+      <textarea id="moment_difficile" name="moment_difficile"></textarea>
+    </div>
+    <div class="champ">
+      <label for="lien_objet">Un lieu, un objet ou une chanson qui vous relie à elle</label>
+      <span class="aide">Par exemple : le vieux bureau en bois de son grand-père, où elle a fait tous ses devoirs</span>
+      <textarea id="lien_objet" name="lien_objet"></textarea>
+    </div>
+    <div class="champ">
+      <label for="image">Une image que vous gardez d'elle</label>
+      <span class="aide">Une scène que vous revoyez quand vous pensez à elle. Par exemple : elle, à six ans, qui lisait avec une lampe de poche sous la couette.</span>
+      <textarea id="image" name="image"></textarea>
+    </div>
+  </fieldset>
+
+  <!-- MODULES PAR OCCASION -->
+  <fieldset class="module" data-occasion="diplome">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Le diplôme</legend>
+    <div class="champ"><label for="dip_diplome">Quel diplôme, dans quel domaine, après combien d'années ?</label><input type="text" id="dip_diplome" name="dip_diplome"></div>
+    <div class="champ"><label for="dip_doute">Un moment de doute ou de fatigue pendant les études, et comment elle l'a surmonté</label><textarea id="dip_doute" name="dip_doute"></textarea></div>
+    <div class="champ"><label for="dip_habitude">Une habitude de révision qui la résume</label><span class="aide">Par exemple : le thé froid oublié à côté de ses fiches</span><input type="text" id="dip_habitude" name="dip_habitude"></div>
+    <div class="champ"><label for="dip_apres">Ce qu'elle veut faire après, ou ce qu'elle répond quand on lui pose la question</label><textarea id="dip_apres" name="dip_apres"></textarea></div>
+    <div class="champ"><label for="dip_famille">Ce que cette réussite représente pour vous</label><textarea id="dip_famille" name="dip_famille"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="mariage">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Votre histoire d'amour</legend>
+    <div class="champ"><label for="mar_rencontre">Comment vous vous êtes rencontrés</label><span class="aide">Le lieu, la date, le premier échange</span><textarea id="mar_rencontre" name="mar_rencontre"></textarea></div>
+    <div class="champ"><label for="mar_su">Le moment où vous avez su que c'était elle, ou lui</label><textarea id="mar_su" name="mar_su"></textarea></div>
+    <div class="champ"><label for="mar_rituel">Un rituel de couple, ou une blague que vous êtes seuls à comprendre</label><textarea id="mar_rituel" name="mar_rituel"></textarea></div>
+    <div class="champ"><label for="mar_notre">Votre chanson, votre lieu, votre premier voyage</label><textarea id="mar_notre" name="mar_notre"></textarea></div>
+    <div class="champ"><label for="mar_promesse">Ce que vous lui promettez pour la suite</label><textarea id="mar_promesse" name="mar_promesse"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="naissance">
+    <span class="partie">Pour cette occasion</span>
+    <legend>La naissance</legend>
+    <div class="champ"><label for="nai_prenom">Le prénom de l'enfant, et pourquoi il a été choisi</label><textarea id="nai_prenom" name="nai_prenom"></textarea></div>
+    <div class="champ"><label for="nai_bras">Le premier moment où vous l'avez tenu(e) dans vos bras</label><textarea id="nai_bras" name="nai_bras"></textarea></div>
+    <div class="champ"><label for="nai_detail">Un détail de ses premiers jours</label><span class="aide">Un geste, une expression, un petit bruit</span><textarea id="nai_detail" name="nai_detail"></textarea></div>
+    <div class="champ"><label for="nai_souhait">Ce que vous lui souhaitez pour sa vie</label><textarea id="nai_souhait" name="nai_souhait"></textarea></div>
+    <div class="champ"><label for="nai_entourage">Les personnes importantes qui l'entourent</label><span class="aide">Parrain, marraine, frères et sœurs…</span><input type="text" id="nai_entourage" name="nai_entourage"></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="anniversaire">
+    <span class="partie">Pour cette occasion</span>
+    <legend>L'anniversaire</legend>
+    <div class="champ"><label for="ann_age">L'âge, ou le nombre d'années célébrées</label><input type="text" id="ann_age" name="ann_age"></div>
+    <div class="champ"><label for="ann_etapes">Les grandes étapes de sa vie, ou de votre histoire</label><textarea id="ann_etapes" name="ann_etapes"></textarea></div>
+    <div class="champ"><label for="ann_inchange">Ce qui n'a pas changé depuis le début</label><textarea id="ann_inchange" name="ann_inchange"></textarea></div>
+    <div class="champ"><label for="ann_souhait">Un souhait pour les années à venir</label><textarea id="ann_souhait" name="ann_souhait"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="retraite">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Le départ à la retraite</legend>
+    <div class="champ"><label for="ret_metier">Son métier, combien d'années, dans quelle entreprise ou quel lieu</label><input type="text" id="ret_metier" name="ret_metier"></div>
+    <div class="champ"><label for="ret_collegues">Ce que ses collègues retiendront d'elle</label><textarea id="ret_collegues" name="ret_collegues"></textarea></div>
+    <div class="champ"><label for="ret_anecdote">Une anecdote de travail devenue légendaire</label><textarea id="ret_anecdote" name="ret_anecdote"></textarea></div>
+    <div class="champ"><label for="ret_projets">Ce qu'elle va enfin pouvoir faire maintenant</label><textarea id="ret_projets" name="ret_projets"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="hommage">
+    <span class="partie">Pour cette occasion</span>
+    <legend>L'hommage</legend>
+    <p class="intro-partie">Prenez le temps qu'il faut. Chaque mot sera traité avec soin.</p>
+    <div class="champ"><label for="hom_nom">Comment on l'appelait, et votre lien avec elle</label><input type="text" id="hom_nom" name="hom_nom"></div>
+    <div class="champ"><label for="hom_aimait">Ce qu'elle aimait faire, ses mots, ses gestes</label><textarea id="hom_aimait" name="hom_aimait"></textarea></div>
+    <div class="champ"><label for="hom_souvenir">Un souvenir heureux que vous voulez garder vivant</label><textarea id="hom_souvenir" name="hom_souvenir"></textarea></div>
+    <div class="champ"><label for="hom_dire">Ce que vous auriez aimé lui dire encore</label><textarea id="hom_dire" name="hom_dire"></textarea></div>
+    <div class="champ"><label for="hom_diffusion">La chanson sera-t-elle diffusée lors d'une cérémonie, ou gardée pour la famille ?</label><input type="text" id="hom_diffusion" name="hom_diffusion"></div>
+    <div class="champ"><label for="hom_spirituel">Des éléments religieux ou spirituels à intégrer ou à éviter ?</label><input type="text" id="hom_spirituel" name="hom_spirituel"></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="autre">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Votre occasion</legend>
+    <div class="champ"><label for="aut_occasion">Décrivez l'occasion en quelques phrases</label><textarea id="aut_occasion" name="aut_occasion"></textarea></div>
+  </fieldset>
+
+  <!-- PARTIE 4 -->
+  <fieldset>
+    <span class="partie">Partie 4 sur 6</span>
+    <legend>Le message</legend>
+
+    <div class="champ">
+      <label for="ressenti">Qu'aimeriez-vous qu'elle ressente en écoutant la chanson ?</label>
+      <span class="aide">De la fierté, rire, se sentir comprise, aimée, reprendre courage…</span>
+      <input type="text" id="ressenti" name="ressenti">
+    </div>
+
+    <div class="champ question-coeur">
+      <label for="jamais_dit">Qu'est-ce que vous ne lui avez jamais vraiment dit ? <span class="requis">*</span></label>
+      <span class="aide">C'est souvent la question la plus importante. Une phrase suffit. Par exemple : que j'ai toujours admiré son courage, même quand je la poussais à travailler.</span>
+      <textarea id="jamais_dit" name="jamais_dit" required></textarea>
+    </div>
+
+    <div class="champ">
+      <label for="phrase_imposee">Une phrase que vous voudriez absolument entendre dans la chanson</label>
+      <input type="text" id="phrase_imposee" name="phrase_imposee">
+    </div>
+    <div class="champ">
+      <label for="a_eviter">Des sujets à éviter absolument</label>
+      <span class="aide">Une personne, une période, un sujet sensible</span>
+      <textarea id="a_eviter" name="a_eviter"></textarea>
+    </div>
+  </fieldset>
+
+  <!-- PARTIE 5 -->
+  <fieldset>
+    <span class="partie">Partie 5 sur 6</span>
+    <legend>Le ton et la musique</legend>
+
+    <div class="champ">
+      <span class="question">Le ton souhaité <span class="requis">*</span></span>
+      <div class="choix">
+        <label><input type="radio" name="ton" value="Très émouvant" required> <span>Très émouvant<small>Pour toucher en plein cœur</small></span></label>
+        <label><input type="radio" name="ton" value="Émouvant avec un sourire" checked> <span>Émouvant, avec un sourire<small>Le style Alex Harper</small></span></label>
+        <label><input type="radio" name="ton" value="Tendre et léger"> <span>Tendre et léger</span></label>
+      </div>
+    </div>
+
+    <div class="champ">
+      <span class="question">La voix</span>
+      <div class="choix">
+        <label><input type="radio" name="voix" value="Masculine"> <span>Voix masculine</span></label>
+        <label><input type="radio" name="voix" value="Féminine"> <span>Voix féminine</span></label>
+        <label><input type="radio" name="voix" value="Duo"> <span>Duo, voix masculine et féminine</span></label>
+        <label><input type="radio" name="voix" value="Au choix de l'auteur" checked> <span>Je vous laisse choisir</span></label>
+      </div>
+    </div>
+
+    <div class="champ">
+      <span class="question">L'accompagnement</span>
+      <div class="choix">
+        <label><input type="radio" name="style" value="Guitare acoustique intimiste"> <span>Guitare acoustique intimiste</span></label>
+        <label><input type="radio" name="style" value="Piano doux"> <span>Piano doux</span></label>
+        <label><input type="radio" name="style" value="Pop douce"> <span>Pop douce</span></label>
+        <label><input type="radio" name="style" value="Au choix de l'auteur" checked> <span>Je vous laisse choisir</span></label>
+      </div>
+    </div>
+
+    <div class="champ">
+      <span class="question">Le tempo</span>
+      <div class="choix">
+        <label><input type="radio" name="tempo" value="Lent et posé"> <span>Lent et posé</span></label>
+        <label><input type="radio" name="tempo" value="Moyen"> <span>Moyen</span></label>
+        <label><input type="radio" name="tempo" value="Plutôt entraînant"> <span>Plutôt entraînant</span></label>
+        <label><input type="radio" name="tempo" value="Au choix de l'auteur" checked> <span>Je vous laisse choisir</span></label>
+      </div>
+    </div>
+
+    <div class="champ">
+      <label for="artistes">Deux ou trois artistes ou chansons qu'elle aime</label>
+      <span class="aide">Pour s'inspirer de l'ambiance, pas pour les copier</span>
+      <input type="text" id="artistes" name="artistes">
+    </div>
+  </fieldset>
+
+  <!-- PARTIE 6 -->
+  <fieldset>
+    <span class="partie">Partie 6 sur 6</span>
+    <legend>Votre dédicace</legend>
+    <p class="intro-partie">Chaque chanson s'ouvre et se referme sur quelques mots dits par Alex Harper lui-même.</p>
+
+    <div class="champ">
+      <label for="dedicace_debut">Une dédicace pour ouvrir la chanson</label>
+      <span class="aide">Par exemple : de la part de toute la famille, pour Camille</span>
+      <input type="text" id="dedicace_debut" name="dedicace_debut">
+    </div>
+    <div class="champ">
+      <label for="dedicace_fin">Un dernier mot pour la refermer</label>
+      <span class="aide">Par exemple : on t'aime, et on sera toujours là</span>
+      <input type="text" id="dedicace_fin" name="dedicace_fin">
+    </div>
+    <div class="champ">
+      <label for="remarques">Autre chose à me dire ?</label>
+      <textarea id="remarques" name="remarques"></textarea>
+    </div>
+
+    <div class="champ consent">
+      <label><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte que mes réponses soient utilisées uniquement pour écrire cette chanson. Elles ne seront ni partagées ni publiées. <span class="requis">*</span></span></label>
+    </div>
+  </fieldset>
+
+  <button type="submit" id="envoyer">Envoyer mon histoire</button>
+  <p class="brouillon" id="etat-brouillon" aria-live="polite"></p>
+  <p class="erreur" id="erreur" role="alert" hidden></p>
+</form>
+</main>
+
+<section class="merci" id="merci" aria-live="polite">
+  <p class="signature">Merci</p>
+  <h2>Votre histoire est entre de bonnes mains</h2>
+  <p>Je lis chaque réponse moi-même avant d'écrire. Vous recevrez d'abord les paroles pour validation, puis la chanson complète. Si un détail vous revient après coup, répondez simplement à mon e-mail.</p>
+  <p><a href="/">Retour à l'accueil</a></p>
+</section>
+
+<footer>© Alex Harper · alexharper.fr</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('form-chanson');
+  var occasion = document.getElementById('occasion');
+  var modules = document.querySelectorAll('.module');
+  var etat = document.getElementById('etat-brouillon');
+  var erreur = document.getElementById('erreur');
+  var CLE = 'alexharper-chanson-brouillon';
+
+  function afficherModule() {
+    modules.forEach(function (m) {
+      m.classList.toggle('actif', m.dataset.occasion === occasion.value);
+    });
+  }
+  occasion.addEventListener('change', afficherModule);
+
+  // Brouillon enregistré sur l'appareil du client
+  function sauver() {
+    try {
+      var data = {};
+      new FormData(form).forEach(function (v, k) {
+        if (k !== 'bot-field' && k !== 'form-name') data[k] = v;
+      });
+      localStorage.setItem(CLE, JSON.stringify(data));
+      etat.textContent = 'Brouillon enregistré sur cet appareil.';
+    } catch (e) { /* stockage indisponible : on continue sans brouillon */ }
+  }
+  function restaurer() {
+    try {
+      var brut = localStorage.getItem(CLE);
+      if (!brut) return;
+      var data = JSON.parse(brut);
+      Object.keys(data).forEach(function (k) {
+        var champs = form.elements[k];
+        if (!champs) return;
+        if (champs instanceof RadioNodeList && champs.length && champs[0].type === 'radio') {
+          champs.forEach(function (r) { r.checked = (r.value === data[k]); });
+        } else if (champs.type === 'checkbox') {
+          champs.checked = !!data[k];
+        } else {
+          champs.value = data[k];
+        }
+      });
+      etat.textContent = 'Vos réponses précédentes ont été retrouvées.';
+    } catch (e) { /* rien à restaurer */ }
+  }
+  restaurer();
+  afficherModule();
+
+  var minuteur;
+  form.addEventListener('input', function () {
+    clearTimeout(minuteur);
+    minuteur = setTimeout(sauver, 600);
+  });
+
+  // Envoi à Netlify Forms sans quitter la page
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    erreur.hidden = true;
+    var bouton = document.getElementById('envoyer');
+    bouton.disabled = true;
+    bouton.textContent = 'Envoi en cours…';
+
+    // Vider les modules d'occasion non choisis
+    var fd = new FormData(form);
+    modules.forEach(function (m) {
+      if (m.dataset.occasion !== occasion.value) {
+        m.querySelectorAll('[name]').forEach(function (c) { fd.delete(c.name); });
+      }
+    });
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(fd).toString()
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      try { localStorage.removeItem(CLE); } catch (e) {}
+      form.hidden = true;
+      document.querySelector('.hero').hidden = true;
+      var merci = document.getElementById('merci');
+      merci.classList.add('visible');
+      window.scrollTo(0, 0);
+    }).catch(function () {
+      bouton.disabled = false;
+      bouton.textContent = 'Envoyer mon histoire';
+      erreur.textContent = "L'envoi n'a pas abouti. Vos réponses sont conservées : vérifiez votre connexion et réessayez.";
+      erreur.hidden = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

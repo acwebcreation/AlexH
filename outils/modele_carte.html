@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>{{TITRE}}</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{TITRE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="{{URL}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="{{FOND}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fond: {{FOND}};
+    --accent: {{ACCENT}};
+    --texte: #EDE6D8;
+    --doux: #D9CBA3;
+    --papier: #EFE9DD;
+    --papier-clair: #F5F1E8;
+    --papier-ombre: #E3D9C6;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --titre: "Playfair Display", Georgia, serif;
+    --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    --signature: "Mrs Saint Delafield", "Brush Script MT", cursive;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--fond) 80%, #ffffff 6%), var(--fond) 70%);
+    background-color: var(--fond);
+    color: var(--texte);
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ---------- Scène 1 : l'enveloppe ---------- */
+  .accueil {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem 1rem;
+    transition: opacity .7s ease;
+  }
+  .deplie .accueil { opacity: 0; pointer-events: none; position: absolute; inset: 0; }
+  .fini .accueil { display: none; }
+
+  .enveloppe {
+    position: relative;
+    width: min(84vw, 380px);
+    aspect-ratio: 3 / 2;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    perspective: 1200px;
+    font: inherit;
+    color: inherit;
+  }
+  .enveloppe:focus-visible { outline: 2px solid var(--accent); outline-offset: 8px; }
+  .env-dos, .env-devant, .env-rabat, .env-carte { position: absolute; }
+  .env-dos {
+    inset: 0;
+    background: var(--papier-ombre);
+    border-radius: 4px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
+    z-index: 1;
+  }
+  .env-carte {
+    left: 7%; right: 7%; top: 8%; bottom: 10%;
+    background: var(--fond);
+    border: 1px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: transform .9s cubic-bezier(.2,.7,.2,1) .45s;
+  }
+  .env-carte span { font-family: var(--signature); color: var(--accent); font-size: 2.4rem; }
+  .env-devant {
+    inset: 0;
+    background: var(--papier);
+    clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 4px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 7%;
+  }
+  .env-devant .pour {
+    font-family: var(--signature);
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    color: #3A3A3A;
+    line-height: 1;
+  }
+  .env-rabat {
+    left: 0; right: 0; top: 0;
+    height: 60%;
+    background: var(--papier-clair);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    z-index: 4;
+    transition: transform .6s ease, z-index 0s linear .3s;
+  }
+  .sceau {
+    position: absolute;
+    left: 50%; top: 55%;
+    width: 54px; height: 54px;
+    margin: -27px 0 0 -27px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--accent) 80%, #fff 20%), var(--accent) 60%, color-mix(in srgb, var(--accent) 70%, #000 30%));
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--titre);
+    font-size: 1rem;
+    color: rgba(13,13,15,.65);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .ouvre .sceau { opacity: 0; transform: scale(.6); }
+  .accueil:has(.ouvre) .invitation { opacity: 0; animation: none; transition: opacity .3s; }
+  .ouvre .env-rabat { transform: rotateX(180deg); z-index: 1; }
+  .ouvre .env-carte { transform: translateY(-58%); }
+
+  .invitation {
+    text-align: center;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: .9rem;
+    color: var(--doux);
+    margin: 0;
+    animation: respire 2.8s ease-in-out infinite;
+  }
+  .invitation small { display: block; opacity: .7; margin-top: .3rem; }
+  @keyframes respire { 50% { opacity: .55; } }
+
+  /* ---------- Scène 2 : la carte ---------- */
+  .carte {
+    display: none;
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    outline: none;
+  }
+  .deplie .carte { display: block; }
+  .fini .carte { opacity: 1; }
+
+  .ornement { width: 64px; height: 64px; stroke: var(--accent); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1rem; }
+  .libelle { font-family: var(--sans); font-weight: 300; font-size: .9rem; color: var(--accent); margin: 0 0 .75rem; }
+  h1 { font-family: var(--titre); font-weight: 400; font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.2; margin: 0 0 1.25rem; }
+  .dedicace { font-style: italic; color: var(--doux); font-size: 1.3rem; margin: 0 auto 2.5rem; max-width: 28rem; }
+
+  /* Lecteur */
+  .lecteur {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 999px;
+    margin: 0 auto 3rem;
+    max-width: 26rem;
+  }
+  .lecture {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--accent);
+    color: var(--fond);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lecture:focus-visible { outline: 2px solid var(--texte); outline-offset: 3px; }
+  .lecture svg { width: 20px; height: 20px; fill: currentColor; }
+  .lecture .ico-pause { display: none; }
+  .en-lecture .lecture .ico-play { display: none; }
+  .en-lecture .lecture .ico-pause { display: block; }
+  .piste { flex: 1; display: flex; flex-direction: column; gap: .2rem; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); margin: 0; }
+  .temps { font-family: var(--sans); font-weight: 300; font-size: .75rem; opacity: .7; display: flex; justify-content: space-between; }
+
+  /* Paroles */
+  .paroles { margin: 0 auto 3rem; max-width: 30rem; }
+  .paroles h2, .garder h2 { font-family: var(--titre); font-weight: 400; font-size: 1.3rem; color: var(--doux); margin: 0 0 1.5rem; }
+  .paroles p { margin: 0 0 1.5rem; }
+  .filet { width: 60px; height: 1px; background: var(--accent); border: 0; margin: 3rem auto; opacity: .6; }
+  .message { font-style: italic; font-size: 1.35rem; color: var(--texte); margin: 0 auto 3rem; max-width: 28rem; }
+  .de-la-part { font-family: var(--sans); font-weight: 300; font-size: .9rem; color: var(--doux); margin: -2rem 0 3rem; }
+
+  .garder p { font-size: 1.05rem; color: var(--doux); margin: 0 0 1.25rem; }
+  .boutons { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 3.5rem; }
+  .boutons a {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: .85rem;
+    color: var(--texte);
+    text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+    border-radius: 999px;
+    padding: .7rem 1.3rem;
+  }
+  .boutons a:hover, .boutons a:focus-visible { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); outline: none; }
+
+  .signature { margin-top: 1rem; }
+  .signature .nom { font-family: var(--signature); font-size: 2.6rem; color: var(--accent); line-height: 1; display: block; }
+  .signature small { font-family: var(--sans); font-weight: 300; font-size: .75rem; opacity: .6; }
+  .signature a { color: inherit; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .env-carte, .env-rabat, .sceau, .accueil, .carte { transition: none; }
+    .invitation { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="accueil" aria-label="Un cadeau pour {{PRENOM}}">
+  <button class="enveloppe" id="enveloppe" type="button" aria-label="Ouvrir l'enveloppe et écouter la chanson">
+    <span class="env-dos"></span>
+    <span class="env-carte" aria-hidden="true"><span>{{PRENOM}}</span></span>
+    <span class="env-devant"><span class="pour">Pour {{PRENOM}}</span></span>
+    <span class="env-rabat"></span>
+    <span class="sceau" aria-hidden="true">AH</span>
+  </button>
+  <p class="invitation">Touchez l'enveloppe pour l'ouvrir<small>Montez le son</small></p>
+</section>
+
+<main class="carte" id="carte" tabindex="-1">
+  <svg class="ornement" viewBox="0 0 64 64" aria-hidden="true">{{ORNEMENT}}</svg>
+  <p class="libelle">{{LIBELLE}}</p>
+  <h1>{{TITRE}}</h1>
+  {{DEDICACE}}
+
+  <div class="lecteur" id="lecteur">
+    <button class="lecture" id="lecture" type="button" aria-label="Lire ou mettre en pause">
+      <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="ico-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    </button>
+    <div class="piste">
+      <input type="range" id="progression" min="0" max="100" value="0" step="0.1" aria-label="Position dans la chanson">
+      <div class="temps"><span id="actuel">0:00</span><span id="total">0:00</span></div>
+    </div>
+  </div>
+  <audio id="audio" src="{{FICHIER_AUDIO}}" preload="auto"></audio>
+
+  <section class="paroles">
+    <h2>Les paroles</h2>
+    {{PAROLES}}
+  </section>
+
+  <hr class="filet">
+  {{MESSAGE}}
+  {{DE_LA_PART}}
+
+  <section class="garder">
+    <h2>À garder</h2>
+    <p>Cette page reste en ligne. Vous pouvez aussi conserver la chanson sur votre téléphone.</p>
+    <div class="boutons">
+      <a href="{{FICHIER_AUDIO}}" download="{{NOM_TELECHARGEMENT}}.mp3">Télécharger la chanson</a>
+      {{BOUTON_PDF}}
+    </div>
+  </section>
+
+  <p class="signature">
+    <span class="nom">Alex Harper</span>
+    <small>Écrit pour toi · <a href="https://alexharper.fr">alexharper.fr</a></small>
+  </p>
+</main>
+
+<script>
+(function () {
+  var body = document.body;
+  var enveloppe = document.getElementById('enveloppe');
+  var audio = document.getElementById('audio');
+  var bouton = document.getElementById('lecture');
+  var lecteur = document.getElementById('lecteur');
+  var barre = document.getElementById('progression');
+  var actuel = document.getElementById('actuel');
+  var total = document.getElementById('total');
+  var carte = document.getElementById('carte');
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ouvert = false;
+
+  function format(s) {
+    if (!isFinite(s)) return '0:00';
+    var m = Math.floor(s / 60), r = Math.floor(s % 60);
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  function jouer() {
+    var p = audio.play();
+    if (p && p.catch) p.catch(function () { /* le bouton lecture reste disponible */ });
+  }
+
+  enveloppe.addEventListener('click', function () {
+    if (ouvert) return;
+    ouvert = true;
+    jouer(); // doit être lancé dans le geste de l'utilisateur
+    enveloppe.classList.add('ouvre');
+    setTimeout(function () {
+      body.classList.add('deplie');
+      setTimeout(function () {
+        body.classList.add('fini');
+        window.scrollTo(0, 0);
+        carte.focus({ preventScroll: true });
+      }, reduit ? 0 : 700);
+    }, reduit ? 0 : 1600);
+  });
+
+  bouton.addEventListener('click', function () {
+    if (audio.paused) jouer(); else audio.pause();
+  });
+  audio.addEventListener('play', function () { lecteur.classList.add('en-lecture'); });
+  audio.addEventListener('pause', function () { lecteur.classList.remove('en-lecture'); });
+  audio.addEventListener('ended', function () { lecteur.classList.remove('en-lecture'); });
+  audio.addEventListener('loadedmetadata', function () { total.textContent = format(audio.duration); });
+  audio.addEventListener('timeupdate', function () {
+    if (audio.duration) barre.value = (audio.currentTime / audio.duration) * 100;
+    actuel.textContent = format(audio.currentTime);
+  });
+  barre.addEventListener('input', function () {
+    if (audio.duration) audio.currentTime = (barre.value / 100) * audio.duration;
+  });
+})();
+</script>
+</body>
+</html>
