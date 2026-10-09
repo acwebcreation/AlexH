@@ -176,6 +176,13 @@
   .choix input { accent-color: var(--or); margin-top: .45rem; flex-shrink: 0; }
   .choix small { display: block; font-family: var(--sans); font-weight: 300; font-size: .8rem; opacity: .7; }
 
+  .grille-modeles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; margin-top: .4rem; }
+  @media (max-width: 560px) { .grille-modeles { grid-template-columns: repeat(2, 1fr); } }
+  .carte-modele { position: relative; display: flex; flex-direction: column; align-items: center; gap: .4rem; margin: 0; padding: .5rem; border: 1px solid var(--gris-nuit); border-radius: 10px; background: var(--noir-doux); cursor: pointer; font-weight: 400; font-size: 1.05rem; }
+  .carte-modele img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(74,53,48,.12); }
+  .carte-modele input { position: absolute; top: .7rem; left: .7rem; accent-color: var(--rouge); width: 1.1rem; height: 1.1rem; }
+  .carte-modele:has(input:checked) { border-color: var(--rouge); box-shadow: 0 0 0 2px rgba(184,106,106,.35); }
+  .carte-libre { justify-content: center; text-align: center; min-height: 6rem; font-style: italic; }
   /* La question importante */
   .question-coeur {
     border-left: 2px solid var(--or);
@@ -250,9 +257,11 @@
 </header>
 
 <main>
-<form id="form-chanson" name="chanson-personnalisee" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="chanson-personnalisee">
-  <p class="cache"><label>Ne pas remplir <input name="bot-field"></label></p>
+<form id="form-chanson" name="chanson-personnalisee" method="POST" action="https://api.web3forms.com/submit">
+  <input type="hidden" name="access_key" value="17ea29d2-00fe-413d-b1a6-cc8c3af9ca66">
+  <input type="hidden" name="subject" value="Nouvelle commande — chanson personnalisée">
+  <input type="hidden" name="from_name" value="alexharper.fr">
+  <input type="checkbox" name="botcheck" class="cache" tabindex="-1" autocomplete="off">
 
   <!-- PARTIE 1 -->
   <fieldset>
@@ -630,6 +639,25 @@
       <input type="text" id="dedicace_fin" name="dedicace_fin">
     </div>
     <div class="champ">
+      <span class="question">Le style de vos paroles à imprimer <span class="requis">*</span></span>
+      <span class="aide">Les paroles de votre chanson vous sont offertes, mises en page sur une feuille A4 prête à imprimer et à encadrer.</span>
+      <div class="grille-modeles">
+        <label class="carte-modele"><input type="radio" name="modele_paroles" value="Classique" required><img src="images/modeles/paroles-classique.jpg" alt="Modèle Classique" loading="lazy" width="360" height="509"><span>Classique</span></label>
+        <label class="carte-modele"><input type="radio" name="modele_paroles" value="Fleurs"><img src="images/modeles/paroles-fleurs.jpg" alt="Modèle Fleurs" loading="lazy" width="360" height="509"><span>Fleurs</span></label>
+        <label class="carte-modele"><input type="radio" name="modele_paroles" value="Cœur"><img src="images/modeles/paroles-coeur.jpg" alt="Modèle Cœur" loading="lazy" width="360" height="509"><span>Cœur</span></label>
+        <label class="carte-modele"><input type="radio" name="modele_paroles" value="Vinyle"><img src="images/modeles/paroles-vinyle.jpg" alt="Modèle Vinyle" loading="lazy" width="360" height="509"><span>Vinyle</span></label>
+        <label class="carte-modele"><input type="radio" name="modele_paroles" value="Enfantin"><img src="images/modeles/paroles-enfant.jpg" alt="Modèle Enfantin" loading="lazy" width="360" height="509"><span>Enfantin</span></label>
+        <label class="carte-modele carte-libre"><input type="radio" name="modele_paroles" value="Au choix de l'auteur"><span>Je vous laisse choisir</span></label>
+      </div>
+    </div>
+    <div class="champ">
+      <label for="fond_paroles">La couleur du fond</label>
+      <select id="fond_paroles" name="fond_paroles">
+        <option value="Au choix de l'auteur">Je vous laisse choisir</option>
+        <option>Crème</option><option>Vieux papier</option><option>Rose poudré</option><option>Sauge</option><option>Ciel</option><option>Nuit (sauf vinyle)</option>
+      </select>
+    </div>
+    <div class="champ">
       <label for="remarques">Autre chose à me dire ?</label>
       <textarea id="remarques" name="remarques"></textarea>
     </div>
@@ -718,7 +746,7 @@
     try {
       var data = {};
       new FormData(form).forEach(function (v, k) {
-        if (k !== 'bot-field' && k !== 'form-name') data[k] = v;
+        if (['botcheck','access_key','subject','from_name'].indexOf(k) === -1) data[k] = v;
       });
       localStorage.setItem(CLE, JSON.stringify(data));
       etat.textContent = 'Brouillon enregistré sur cet appareil.';
@@ -785,12 +813,16 @@
       }
     });
 
-    fetch('/', {
+    // Sujet de l'e-mail : occasion + prénom, pour retrouver la commande facilement
+    var prenomCible = (fd.get('dest_prenom') || '').toString().trim();
+    fd.set('subject', 'Commande chanson — ' + (occasion.options[occasion.selectedIndex] ? occasion.options[occasion.selectedIndex].text : '') + (prenomCible ? ' — ' + prenomCible : ''));
+    if (fd.get('client_email')) { fd.set('email', fd.get('client_email')); fd.set('name', fd.get('client_nom') || ''); }
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(fd).toString()
-    }).then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+      headers: { 'Accept': 'application/json' },
+      body: fd
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); }).then(function (res) {
+      if (!res.ok || !res.j.success) throw new Error('envoi');
       try { localStorage.removeItem(CLE); } catch (e) {}
       form.hidden = true;
       document.querySelector('.hero').hidden = true;

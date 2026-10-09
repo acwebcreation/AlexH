@@ -1,0 +1,60 @@
+PROCÉDURE — COMMANDE DE CHANSON PERSONNALISÉE (alexharper.fr)
+==============================================================
+
+Prix : 29,99 € — chanson en MP3 + paroles à imprimer (PDF A4)
+
+
+1. RÉCEPTION DE LA COMMANDE
+   [ ] E-mail « Commande chanson — [occasion] — [prénom] » reçu (via Web3Forms)
+       → « Répondre » écrit directement au client
+   [ ] Lire tout le questionnaire : occasion, prénom (+ prononciation), âge,
+       souvenirs, « ce que vous ne lui avez jamais dit », sujets à éviter,
+       ton, style, tempo, date limite, dédicace, modèle et fond des paroles
+   [ ] Vérifier que la date limite est tenable
+
+2. PAIEMENT
+   [ ] Envoyer le lien de paiement Stripe (29,99 €) au client par e-mail
+       (si la redirection automatique vers Stripe n'est pas encore en place)
+   [ ] Attendre la confirmation de paiement Stripe avant d'écrire
+
+3. PAROLES
+   [ ] Écrire les paroles (prénom, détails vrais, phrase imposée si demandée)
+   [ ] Relire : orthographe, retours à la ligne, sujets à éviter respectés
+   [ ] Envoyer les paroles au client pour validation
+   [ ] 1 révision incluse → corriger si besoin
+   [ ] Paroles validées
+
+4. CHANSON
+   [ ] Créer la musique dans Suno (prompt Alex Harper + ton/style/tempo choisis)
+   [ ] Écouter en entier : prénom bien prononcé, paroles exactes
+   [ ] Exporter le MP3
+       Nom : prenom-occasion-alexharper.mp3  (ex. papa-juste-fier-alexharper.mp3)
+
+5. PAROLES À IMPRIMER
+   [ ] Ouvrir alexharper.fr/outils/paroles.html
+   [ ] Titre, sous-titre (« Pour Papa »), dédicace
+   [ ] Coller les paroles : ligne vide entre les couplets,
+       [Refrain] au-dessus du refrain la 1re fois, puis [Refrain] seul ensuite
+   [ ] Prendre le modèle et le fond choisis par le client dans le questionnaire
+       (Classique / Fleurs / Cœur / Vinyle / Enfantin — Crème / Vieux papier /
+       Rose / Sauge / Ciel / Nuit). Si « Je vous laisse choisir » : à toi de voir.
+   [ ] Vérifier l'aperçu (texte lisible, rien de coupé)
+   [ ] Télécharger le PDF
+
+6. LIVRAISON
+   [ ] E-mail au client avec :
+       - le MP3
+       - le PDF des paroles (à imprimer en A4, idéal dans un cadre)
+       - un petit mot personnel
+   [ ] Demander un avis / une photo du moment (avec son accord)
+
+7. APRÈS
+   [ ] Noter la commande (date, client, occasion, montant)
+   [ ] Garder MP3 + paroles + PDF dans un dossier « Commandes / AAAA-MM / prénom »
+
+
+Rappels
+- Délai à annoncer au client dès la réception.
+- Réponses du client = confidentielles, jamais publiées sans accord.
+- Chanson longue qui ne tient pas sur A4 : raccourcir la mise en page
+  (refrain une seule fois) ou faire 2 pages.

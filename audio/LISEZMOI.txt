@@ -1,0 +1,13 @@
+Dépose ici tes extraits MP3, avec exactement ces noms :
+
+amoureux.mp3
+maman.mp3
+papa.mp3
+saint-nicolas-fratrie.mp3   (onglet Enfants)
+anniversaire.mp3
+mariage.mp3
+rupture.mp3
+deuil.mp3
+
+Tant qu'un fichier n'est pas là, son lecteur reste caché sur le site.
+Conseil : extrait de 30 à 60 secondes, MP3 128 kbps (léger).
