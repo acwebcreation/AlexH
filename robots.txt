@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /pour/
+
+Sitemap: https://alexharper.fr/sitemap.xml

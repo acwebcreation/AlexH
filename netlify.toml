@@ -1,11 +1,18 @@
 [build]
   publish = "."
-  functions = "netlify/functions"
 
-[functions]
-  node_bundler = "esbuild"
+# Anciennes pages supprimées : on renvoie les visiteurs vers les bonnes pages
+[[redirects]]
+  from = "/poemes/*"
+  to = "/chansons.html"
+  status = 301
 
 [[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
+  from = "/blog.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/article-*"
+  to = "/"
+  status = 301

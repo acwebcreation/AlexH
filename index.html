@@ -2,719 +2,220 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex H. — Ce que je n'ai jamais dit, je te l'écris ici.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Harper — Chansons personnalisées, albums et livres</title>
+<meta name="description" content="Une chanson écrite pour quelqu'un, à partir de vos souvenirs : pour un amour, une maman, un enfant, une rupture ou un adieu. Albums et livres d'Alex Harper.">
+<link rel="canonical" href="https://alexharper.fr/">
+<meta property="og:title" content="Alex Harper — Une chanson écrite pour quelqu'un">
+<meta property="og:description" content="Vous me racontez vos souvenirs, j'en fais une chanson. Amour, maman, enfants, rupture, deuil…">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexharper.fr/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Montserrat:wght@300;400;500&family=Inter:wght@300;400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<style>
-:root{
-  --noir-nuit:#0D0D0F;
-  --noir-doux:#1A1A1A;
-  --creme-papier:#EFE9DD;
-  --beige-lumiere:#EDE6D8;
-  --beige-poetique:#F5F1E8;
-  --or-pale:#D9CBA3;
-  --rouge-silencieux:#B86A6A;
-  --gris-nuit:#3A3A3A;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-html,body{background:var(--noir-nuit);color:var(--beige-poetique);font-family:'Inter',sans-serif;overflow-x:hidden;}
-img{max-width:100%;display:block;}
-a{color:inherit;}
-section{position:relative;padding:min(14vh,120px) 6vw;}
-.bg-dark{background:var(--noir-nuit);color:var(--beige-poetique);}
-.bg-light{background:var(--creme-papier);color:var(--noir-doux);}
-.eyebrow{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:0.72rem;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  opacity:0.6;
-  margin-bottom:1.1rem;
-  display:block;
-}
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(1.8rem,4vw,2.8rem);
-  line-height:1.3;
-  max-width:22ch;
-  margin-bottom:1.6rem;
-}
-.section-lede{
-  font-family:'Inter',sans-serif;
-  font-weight:300;
-  font-size:1.02rem;
-  line-height:1.75;
-  max-width:56ch;
-  opacity:0.85;
-}
-.rule-sm{
-  width:36px;height:1px;background:var(--or-pale);margin:1.6rem 0 2rem 0;
-}
-.bg-dark .rule-sm{background:var(--or-pale);}
-.bg-light .rule-sm{background:var(--rouge-silencieux);}
-
-/* ---------- NAV ---------- */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.5rem 6vw;
-  background:rgba(13,13,15,0);
-  backdrop-filter:blur(0px);
-  transition:background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
-}
-.nav.scrolled{
-  background:rgba(13,13,15,0.82);
-  backdrop-filter:blur(10px);
-  padding:1rem 6vw;
-  border-bottom:1px solid rgba(217,203,163,0.12);
-}
-.nav-mark{
-  font-family:'Mrs Saint Delafield',cursive;
-  font-size:1.6rem;
-  color:var(--or-pale);
-  text-decoration:none;
-}
-.nav-links{
-  display:flex;align-items:center;gap:2.1rem;
-  list-style:none;
-}
-.nav-links a{
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;
-  font-size:0.72rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:var(--beige-poetique);
-  opacity:0.75;
-  transition:opacity 0.25s ease;
-}
-.nav-links a:hover{opacity:1;}
-.nav-cta{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:0.68rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--beige-poetique);
-  background:var(--rouge-silencieux);
-  padding:0.65rem 1.3rem;
-  text-decoration:none;
-  white-space:nowrap;
-  transition:transform 0.3s ease;
-}
-.nav-cta:hover{transform:translateY(-1px);}
-.nav-toggle{display:none;}
-@media (max-width:860px){
-  .nav-links{
-    position:fixed;top:0;right:0;height:100vh;width:78vw;max-width:320px;
-    background:var(--noir-doux);
-    flex-direction:column;justify-content:center;align-items:flex-start;
-    gap:1.8rem;padding:0 2.4rem;
-    transform:translateX(100%);
-    transition:transform 0.4s ease;
-  }
-  .nav-links.open{transform:translateX(0);}
-  .nav-toggle{
-    display:block;background:none;border:none;color:var(--beige-poetique);
-    font-size:1.4rem;cursor:pointer;z-index:110;
-  }
-  .nav-cta{order:5;}
-}
-
-/* ---------- HERO ---------- */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding-top:14vh;
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 40%, rgba(217,203,163,0.05), transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(184,106,106,0.04), transparent 55%);
-  animation:respire 9s ease-in-out infinite;pointer-events:none;
-}
-@keyframes respire{0%,100%{opacity:0.7;}50%{opacity:1;}}
-.headline{
-  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
-  font-size:clamp(2.1rem,6vw,4.4rem);line-height:1.28;max-width:16ch;
-}
-.headline .word{display:inline-block;opacity:0;filter:blur(4px);transform:translateY(6px);animation:writeIn 0.7s cubic-bezier(.2,.7,.3,1) forwards;}
-@keyframes writeIn{to{opacity:1;filter:blur(0);transform:translateY(0);}}
-.quill-cursor{display:inline-block;width:2px;height:0.85em;background:var(--or-pale);margin-left:4px;vertical-align:-0.1em;animation:blink 0.9s steps(1) infinite, cursorOut 0.4s ease forwards 3.4s;}
-@keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
-@keyframes cursorOut{to{opacity:0;width:0;margin-left:0;}}
-.hero .rule{width:40px;height:1px;background:var(--or-pale);margin:2.6rem 0 1.6rem 0;transform:scaleX(0);opacity:0;animation:drawRule 0.9s ease forwards 3.7s;}
-@keyframes drawRule{0%{opacity:0;}1%{opacity:1;}100%{transform:scaleX(1);opacity:1;}}
-.hero .subtitle{
-  font-weight:300;font-size:clamp(0.95rem,1.6vw,1.15rem);max-width:38ch;line-height:1.7;
-  opacity:0;animation:fadeIn 1s ease forwards 4.1s;
-}
-@keyframes fadeIn{to{opacity:1;}}
-.cta-wrap{margin-top:2.8rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem;opacity:0;animation:fadeIn 1s ease forwards 4.5s;}
-.cta-primary{
-  position:relative;font-family:'Montserrat',sans-serif;font-weight:400;font-size:0.78rem;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--beige-poetique);
-  background:var(--rouge-silencieux);border:none;padding:1.05rem 2.6rem;cursor:pointer;overflow:hidden;
-  transition:transform 0.35s ease, box-shadow 0.35s ease;
-}
-.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(184,106,106,0.55);}
-.cta-primary:focus-visible{outline:2px solid var(--or-pale);outline-offset:4px;}
-.cta-secondary{
-  font-family:'Montserrat',sans-serif;font-weight:300;font-size:0.72rem;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--or-pale);text-decoration:none;
-  border-bottom:1px solid rgba(217,203,163,0.35);padding-bottom:2px;
-  transition:border-color 0.3s ease, opacity 0.3s ease;
-}
-.cta-secondary:hover{border-color:var(--or-pale);opacity:0.85;}
-
-/* ---------- REVEAL ---------- */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.8s ease, transform 0.8s ease;}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-
-/* ---------- UNIVERS ---------- */
-.piliers{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:4rem;
-}
-.pilier{
-  background:var(--beige-lumiere);border:1px solid rgba(58,58,58,0.1);
-  padding:2.6rem 2rem;text-align:left;
-}
-.pilier-num{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--rouge-silencieux);
-  display:block;margin-bottom:0.9rem;
-}
-.pilier h3{
-  font-family:'Playfair Display',serif;font-weight:500;font-size:1.35rem;margin-bottom:0.9rem;
-}
-.pilier p{font-size:0.94rem;line-height:1.7;opacity:0.82;margin-bottom:1.4rem;}
-.pilier a{
-  font-family:'Montserrat',sans-serif;font-weight:400;font-size:0.68rem;letter-spacing:0.13em;
-  text-transform:uppercase;text-decoration:none;color:var(--rouge-silencieux);
-  border-bottom:1px solid rgba(184,106,106,0.4);padding-bottom:2px;
-}
-@media (max-width:860px){.piliers{grid-template-columns:1fr;}}
-
-/* ---------- A PROPOS ---------- */
-.apropos-grid{
-  display:grid;grid-template-columns:0.9fr 1.1fr;gap:5vw;align-items:center;margin-top:3rem;
-}
-.apropos-visual{
-  aspect-ratio:4/5;background:linear-gradient(150deg,#1c1c1f,#0d0d0f 60%);
-  position:relative;overflow:hidden;
-}
-.apropos-visual::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,rgba(217,203,163,0.04) 0px,transparent 1px,transparent 3px);
-}
-.apropos-visual::before{
-  content:"Alex H.";
-  position:absolute;bottom:1.6rem;left:1.6rem;
-  font-family:'Mrs Saint Delafield',cursive;font-size:1.8rem;color:var(--or-pale);opacity:0.7;
-}
-.apropos-text p{font-size:0.98rem;line-height:1.85;opacity:0.85;margin-bottom:1.2rem;max-width:52ch;}
-.apropos-text p:first-of-type{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;opacity:1;}
-@media (max-width:860px){.apropos-grid{grid-template-columns:1fr;}.apropos-visual{max-width:260px;}}
-
-/* ---------- EXTRAIT IMMERSIF ---------- */
-.extrait{text-align:center;}
-.extrait-poeme{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.9;max-width:34ch;margin:2.5rem auto;
-  color:var(--beige-poetique);opacity:0.92;
-}
-.player{
-  display:inline-flex;align-items:center;gap:1rem;
-  background:rgba(245,241,232,0.05);border:1px solid rgba(217,203,163,0.2);
-  padding:0.9rem 1.6rem;margin-top:1rem;
-}
-.player button{
-  width:36px;height:36px;border-radius:50%;border:1px solid var(--or-pale);background:transparent;
-  color:var(--or-pale);cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;
-  transition:background 0.3s ease;
-}
-.player button:hover{background:rgba(217,203,163,0.12);}
-.player .track-name{font-family:'Montserrat',sans-serif;font-weight:300;font-size:0.75rem;letter-spacing:0.08em;opacity:0.8;}
-.player .bar{width:120px;height:2px;background:rgba(217,203,163,0.25);position:relative;}
-.player .bar::after{content:"";position:absolute;left:0;top:0;height:100%;width:38%;background:var(--or-pale);}
-
-/* ---------- BOUTIQUE ---------- */
-.produits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3.5rem;}
-.produit{background:#fff;border:1px solid rgba(58,58,58,0.08);text-align:left;}
-.produit p{font-size:0.86rem;line-height:1.6;opacity:0.72;margin-bottom:0.9rem;}
-.produit-visual{aspect-ratio:3/4;background:linear-gradient(160deg,var(--beige-lumiere),#dfd6c2);}
-.produit-body{padding:1.3rem 1.2rem 1.6rem;}
-.produit-cat{font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.55;}
-.produit h4{font-family:'Playfair Display',serif;font-weight:500;font-size:1.02rem;margin:0.5rem 0 0.7rem;line-height:1.35;}
-.produit a{
-  font-family:'Montserrat',sans-serif;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;
-  text-decoration:none;color:var(--rouge-silencieux);
-}
-@media (max-width:960px){.produits{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:560px){.produits{grid-template-columns:1fr;}}
-.boutique-cta{margin-top:3.2rem;}
-.btn-outline-dark{
-  font-family:'Montserrat',sans-serif;font-weight:400;font-size:0.72rem;letter-spacing:0.16em;
-  text-transform:uppercase;color:var(--noir-doux);border:1px solid var(--noir-doux);
-  padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.3s ease,color 0.3s ease;
-}
-.btn-outline-dark:hover{background:var(--noir-doux);color:var(--creme-papier);}
-
-/* ---------- CADEAU ---------- */
-.cadeau{text-align:center;}
-.cadeau-form{
-  display:flex;gap:0.8rem;justify-content:center;margin-top:2.6rem;flex-wrap:wrap;
-}
-.cadeau-form input{
-  background:transparent;border:none;border-bottom:1px solid rgba(217,203,163,0.4);
-  color:var(--beige-poetique);font-family:'Inter',sans-serif;font-weight:300;font-size:0.95rem;
-  padding:0.8rem 0.4rem;min-width:220px;outline:none;
-}
-.cadeau-form input::placeholder{color:rgba(245,241,232,0.4);}
-.cadeau-form input:focus{border-bottom-color:var(--or-pale);}
-.cadeau-reassurance{
-  margin-top:1.4rem;font-size:0.78rem;opacity:0.5;font-family:'Inter',sans-serif;font-weight:300;
-}
-
-/* ---------- JOURNAL ---------- */
-.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:3.5rem;}
-.post{border-top:1px solid rgba(58,58,58,0.15);padding-top:1.4rem;text-align:left;display:block;text-decoration:none;color:inherit;transition:opacity 0.25s ease;}
-.post:hover{opacity:0.7;}
-.post-date{font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.5;}
-.post h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:1.15rem;margin:0.7rem 0 0.8rem;line-height:1.4;}
-.post p{font-size:0.88rem;line-height:1.65;opacity:0.75;}
-@media (max-width:860px){.journal-grid{grid-template-columns:1fr;}}
-
-/* ---------- NEWSLETTER REMINDER ---------- */
-.newsletter{text-align:center;}
-
-/* ---------- CHANSONS SUR MESURE ---------- */
-.couleurs{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:4rem;}
-.couleur{
-  background:var(--beige-lumiere);border:1px solid rgba(58,58,58,0.1);
-  border-top:3px solid var(--teinte);padding:2.4rem 2rem 2.2rem;text-align:left;
-  display:flex;flex-direction:column;
-}
-.couleur--tendre{--teinte:#C9928F;}
-.couleur--lumineux{--teinte:#C8A96E;}
-.couleur--profond{--teinte:var(--gris-nuit);}
-.couleur h3{font-family:'Playfair Display',serif;font-weight:500;font-size:1.45rem;margin-bottom:0.6rem;}
-.couleur .couleur-ton{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;margin-bottom:1rem;color:var(--noir-doux);opacity:0.85;}
-.couleur p{font-size:0.94rem;line-height:1.7;opacity:0.82;margin-bottom:1.2rem;}
-.couleur .occasions{font-size:0.86rem;line-height:1.7;opacity:0.7;margin-bottom:1.6rem;}
-.couleur a{
-  margin-top:auto;font-family:'Montserrat',sans-serif;font-weight:400;font-size:0.68rem;letter-spacing:0.13em;
-  text-transform:uppercase;text-decoration:none;color:var(--rouge-silencieux);
-  border-bottom:1px solid rgba(184,106,106,0.4);padding-bottom:2px;align-self:flex-start;
-}
-.ages{
-  margin-top:4rem;padding-top:2.4rem;border-top:1px solid rgba(58,58,58,0.15);
-  display:grid;grid-template-columns:1fr 1.4fr;gap:4vw;align-items:start;
-}
-.ages-titre{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.4;}
-.ages-liste{list-style:none;display:grid;gap:1rem;}
-.ages-liste li{font-size:0.95rem;line-height:1.7;opacity:0.85;}
-.ages-liste strong{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.12rem;opacity:1;margin-right:0.3rem;}
-.etapes{list-style:none;counter-reset:etape;display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:3.6rem;}
-.etapes li{counter-increment:etape;font-size:0.94rem;line-height:1.7;opacity:0.85;}
-.etapes li::before{
-  content:counter(etape);display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:2.2rem;line-height:1;color:var(--rouge-silencieux);margin-bottom:0.7rem;
-}
-.etapes strong{display:block;font-family:'Playfair Display',serif;font-weight:500;font-size:1.05rem;margin-bottom:0.4rem;opacity:1;}
-.chansons-cta{margin-top:3.4rem;display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap;}
-.chansons-cta .prix{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;opacity:0.8;}
-@media (max-width:860px){
-  .couleurs,.etapes{grid-template-columns:1fr;}
-  .ages{grid-template-columns:1fr;}
-}
-
-/* ---------- FOOTER ---------- */
-.footer{
-  background:var(--noir-doux);padding:5rem 6vw 3rem;
-}
-.footer-top{
-  display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2.5rem;
-  padding-bottom:2.6rem;border-bottom:1px solid rgba(217,203,163,0.12);
-}
-.footer-mark{font-family:'Mrs Saint Delafield',cursive;font-size:2.1rem;color:var(--or-pale);}
-.footer-cols{font-family:'Montserrat',sans-serif;font-weight:300;font-size:0.8rem;opacity:0.75;line-height:2.1;}
-.footer-social{display:flex;gap:1.4rem;}
-.footer-social a{
-  font-family:'Montserrat',sans-serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
-  text-decoration:none;opacity:0.7;transition:opacity 0.25s ease;
-}
-.footer-social a:hover{opacity:1;}
-.footer-bottom{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-  padding-top:2rem;font-size:0.72rem;opacity:0.4;font-family:'Inter',sans-serif;font-weight:300;
-}
-@media (prefers-reduced-motion: reduce){
-  .headline .word,.hero .rule,.hero .subtitle,.cta-wrap,.quill-cursor,.reveal{
-    animation:none !important;opacity:1 !important;filter:none !important;transform:none !important;
-  }
-  .quill-cursor{display:none;}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="nav" id="mainNav">
-  <a href="#accueil" class="nav-mark">Alex H.</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">☰</button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#univers">Univers</a></li>
-    <li><a href="#apropos">À propos</a></li>
-    <li><a href="#chansons">Chansons sur mesure</a></li>
-    <li><a href="#boutique">Boutique</a></li>
-    <li><a href="/poemes/">Poèmes personnalisés</a></li>
-    <li><a href="#journal">Journal</a></li>
-    <li><a href="#cadeau" class="nav-cta">Recevoir 5 poèmes</a></li>
-  </ul>
+<header class="nav">
+  <div class="conteneur">
+    <a class="marque" href="index.html">Alex Harper</a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav-liens" aria-label="Menu principal">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="chansons.html">Chansons personnalisées</a>
+      <a href="boutique.html">Ma boutique</a>
+      <a href="contact.html">Contact</a>
+      <a href="chanson-sur-mesure.html" class="nav-cta">Commander</a>
+    </nav>
+  </div>
 </header>
 
+<main>
+
 <!-- HERO -->
-<section class="hero bg-dark" id="accueil">
-  <h1 class="headline" id="headline" aria-label="Ce que je n'ai jamais dit, je te l'écris ici."></h1>
-  <div class="rule"></div>
-  <p class="subtitle">
-    Poèmes, chansons sur mesure, romans et carnets. Pour les jours tendres, les jours de fête
-    et les adieux, une même plume : chaque chanson naît d'un poème.
-  </p>
-  <div class="cta-wrap">
-    <button class="cta-primary" id="ctaBtn">Recevoir 5 poèmes en musique</button>
-    <a href="#univers" class="cta-secondary">Découvrir l'univers</a>
-  </div>
-</section>
-
-<!-- UNIVERS -->
-<section class="bg-light" id="univers">
-  <div class="reveal">
-    <span class="eyebrow">L'univers</span>
-    <h2 class="section-title">Trois façons de dire ce qui compte</h2>
-    <p class="section-lede">Choisissez celle qui vous ressemble aujourd'hui.</p>
-  </div>
-  <div class="piliers">
-    <div class="pilier reveal">
-      <span class="pilier-num">I.</span>
-      <h3>Poésie</h3>
-      <p>Des mots qu'on garde dans un tiroir, jusqu'à ce qu'ils deviennent un livre. Ce qu'on n'ose confier à personne — sauf à une page blanche.</p>
-      <a href="#boutique">Découvrir les recueils →</a>
+<section class="hero">
+  <div class="conteneur">
+    <p class="signature">Alex Harper</p>
+    <h1>Une chanson écrite pour quelqu'un, à partir de vos souvenirs</h1>
+    <p class="chapeau">Vous me racontez la personne, ce que vous avez vécu ensemble et ce que vous n'avez jamais su lui dire. J'en fais une chanson, avec ma voix, rien que pour elle.</p>
+    <div class="groupe-btn">
+      <a class="btn btn-plein" href="chansons.html">Choisir une occasion</a>
+      <a class="btn btn-contour" href="boutique.html">Écouter mes chansons</a>
     </div>
-    <div class="pilier reveal">
-      <span class="pilier-num">II.</span>
-      <h3>Chansons sur mesure</h3>
-      <p>Votre histoire devient d'abord un poème, puis une chanson. Pour un mariage, des 6 ans ou des 80 ans, un départ ou un adieu : tendre, lumineuse ou profonde, jamais une chanson toute faite.</p>
-      <a href="#chansons">Choisir sa chanson →</a>
+    <p class="prix-note">29,99 € la chanson · paroles validées par vous avant la musique</p>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section>
+  <div class="conteneur">
+    <div class="entete-section centre">
+      <span class="surtitre">Chansons personnalisées</span>
+      <h2>Pour quelle occasion ?</h2>
+      <p class="chapeau">Chaque chanson part de votre histoire. Le ton s'adapte au moment : doux, joyeux ou intime.</p>
     </div>
-    <div class="pilier reveal">
-      <span class="pilier-num">III.</span>
-      <h3>Romans &amp; carnets</h3>
-      <p>Derrière chaque secret de famille, une maison qui sait tout et ne dit rien. Et des carnets pour que les grands-parents racontent enfin leurs propres souvenirs.</p>
-      <a href="#boutique">Voir les livres →</a>
+
+    <div class="grille-occasions">
+      <a class="occasion apparait" href="chansons.html#amoureux" style="--teinte:var(--t-amoureux)">
+        <span><span class="icone" aria-hidden="true">♡</span><h3>Pour les amoureux</h3><p>Dire je t'aime autrement</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#maman" style="--teinte:var(--t-maman)">
+        <span><span class="icone" aria-hidden="true">✿</span><h3>Pour maman</h3><p>Tout ce qu'on ne lui dit pas assez</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#papa" style="--teinte:var(--t-papa)">
+        <span><span class="icone" aria-hidden="true">☼</span><h3>Pour papa</h3><p>Les mots qu'il garde pour lui</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#enfants" style="--teinte:var(--t-enfants)">
+        <span><span class="icone" aria-hidden="true">★</span><h3>Pour les enfants</h3><p>Son prénom, son petit monde</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#anniversaire" style="--teinte:var(--t-anniversaire)">
+        <span><span class="icone" aria-hidden="true">✦</span><h3>Anniversaire</h3><p>Une vie racontée en chanson</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#mariage" style="--teinte:var(--t-mariage)">
+        <span><span class="icone" aria-hidden="true">∞</span><h3>Mariage</h3><p>Votre histoire, le jour du oui</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#rupture" style="--teinte:var(--t-rupture)">
+        <span><span class="icone" aria-hidden="true">✉</span><h3>Rupture</h3><p>La lettre qu'on n'enverra pas</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
+      <a class="occasion apparait" href="chansons.html#deuil" style="--teinte:var(--t-deuil)">
+        <span><span class="icone" aria-hidden="true">❧</span><h3>Deuil</h3><p>Garder vivant un souvenir</p></span>
+        <span class="fleche">Découvrir →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- A PROPOS -->
-<section class="bg-dark" id="apropos">
-  <div class="apropos-grid">
-    <div class="apropos-visual reveal"></div>
-    <div class="apropos-text reveal">
-      <span class="eyebrow">La voix derrière les mots</span>
-      <p>Il y a des choses qu'on ne dit à personne — pas parce qu'elles sont trop lourdes, mais parce qu'on n'a jamais trouvé les mots exacts pour les poser.</p>
-      <p>Tout a commencé par des phrases griffonnées la nuit, jamais montrées à personne. Puis un jour, une phrase écrite pour soi a fini par parler à quelqu'un d'autre. Le tiroir plein de carnets est devenu un premier recueil.</p>
-      <p>Depuis Bruxelles, entre les mots et la musique, chaque recueil, chaque chanson, chaque chapitre part du même endroit : ce qu'on tait, jusqu'au jour où on ne peut plus le taire.</p>
-      <p>Aujourd'hui, j'écris aussi pour les autres. Pour un mariage, un anniversaire, un départ ou un adieu, je cherche les mots justes, puis la musique qui va avec.</p>
-      <a href="#journal" class="cta-secondary">Lire mon histoire complète</a>
+<!-- COMMENT ÇA MARCHE -->
+<section class="section-claire">
+  <div class="conteneur">
+    <div class="entete-section">
+      <span class="surtitre">Comment ça se passe</span>
+      <h2>Trois étapes, et une chanson qui reste</h2>
     </div>
-  </div>
-</section>
-
-<!-- CHANSONS SUR MESURE -->
-<section class="bg-light" id="chansons">
-  <div class="reveal">
-    <span class="eyebrow">Chansons sur mesure</span>
-    <h2 class="section-title">Une chanson pour chaque moment, née d'un poème</h2>
-    <p class="section-lede">Vous me racontez la personne, vos souvenirs, ce que vous n'avez jamais su lui dire. J'en fais d'abord un poème, puis une chanson, avec la voix d'Alex Harper. Le ton change selon le moment, la plume reste la même.</p>
-  </div>
-
-  <div class="couleurs">
-    <article class="couleur couleur--tendre reveal">
-      <h3>Tendre</h3>
-      <p class="couleur-ton">Pour dire je t'aime, autrement.</p>
-      <p>Une chanson douce et chaleureuse, guitare en arpèges ou piano léger. Pour celles et ceux qu'on aime et qu'on veut voir sourire, les yeux un peu brillants.</p>
-      <p class="occasions">Mariage, déclaration, anniversaire de couple, naissance, baptême</p>
-      <a href="chanson-sur-mesure.html?couleur=tendre">Commander une chanson tendre</a>
-    </article>
-    <article class="couleur couleur--lumineux reveal">
-      <h3>Lumineux</h3>
-      <p class="couleur-ton">La joie, avec du fond.</p>
-      <p>Une chanson entraînante qui raconte la vie de la personne, ses manies, ses souvenirs. On sourit parce que c'est vrai, pas parce que c'est une blague.</p>
-      <p class="occasions">Anniversaire, diplôme, départ à la retraite, remerciements, fête de famille</p>
-      <a href="chanson-sur-mesure.html?couleur=lumineux">Commander une chanson lumineuse</a>
-    </article>
-    <article class="couleur couleur--profond reveal">
-      <h3>Profond</h3>
-      <p class="couleur-ton">Pour les mots qu'on n'arrive pas à dire.</p>
-      <p>Une chanson intime et posée, presque une confidence. Pour dire au revoir, rendre hommage, ou poser enfin ce qui pèse depuis longtemps.</p>
-      <p class="occasions">Hommage, deuil, adieux, départ, rupture, lettre jamais envoyée</p>
-      <a href="chanson-sur-mesure.html?couleur=profond">Commander une chanson profonde</a>
-    </article>
-  </div>
-
-  <div class="ages reveal">
-    <p class="ages-titre">De la comptine des 6 ans aux 80 ans racontés en chanson.</p>
-    <ul class="ages-liste">
-      <li><strong>Les enfants.</strong> Une comptine lumineuse, un refrain facile à chanter, son prénom et son petit monde.</li>
-      <li><strong>Les ados et jeunes adultes.</strong> De l'élan et de la fierté, pour les premières fois et les grands départs.</li>
-      <li><strong>Les adultes.</strong> Le chemin parcouru, avec tendresse et un brin de clin d'œil.</li>
-      <li><strong>Les grands-parents.</strong> Une vie racontée en quelques images fortes, la chanson qui fait pleurer de bonheur à table.</li>
-    </ul>
-  </div>
-
-  <ol class="etapes reveal">
-    <li><strong>Vous racontez</strong>Un questionnaire d'une dizaine de minutes : la personne, vos souvenirs, ce que vous voulez lui dire.</li>
-    <li><strong>J'écris le poème</strong>Vos souvenirs deviennent des paroles. Vous les recevez et les validez avant toute musique.</li>
-    <li><strong>Vous recevez la chanson</strong>La chanson complète, avec ses paroles mises en page comme un poème, à garder.</li>
-  </ol>
-
-  <div class="chansons-cta reveal">
-    <a href="chanson-sur-mesure.html" class="btn-outline-dark">Raconter mon histoire</a>
-    <span class="prix">29,99 € la chanson personnalisée</span>
-  </div>
-</section>
-
-<!-- EXTRAIT IMMERSIF -->
-<section class="bg-dark extrait" id="extrait">
-  <div class="reveal">
-    <span class="eyebrow">Un poème. Une chanson.</span>
-    <h2 class="section-title" style="margin:0 auto 0;">Le même silence, deux fois brisé</h2>
-  </div>
-  <p class="extrait-poeme reveal">
-    « Tu m'as laissé la lumière allumée<br>
-    dans une pièce que je n'habite plus —<br>
-    et j'y retourne, certains soirs,<br>
-    seulement pour l'éteindre. »
-  </p>
-  <div class="player reveal">
-    <button aria-label="Écouter l'extrait">▶</button>
-    <span class="track-name">CE QUE JE N'AI JAMAIS DIT — EXTRAIT</span>
-    <div class="bar"></div>
-  </div>
-</section>
-
-<!-- BOUTIQUE -->
-<section class="bg-light" id="boutique">
-  <div class="reveal">
-    <span class="eyebrow">Boutique</span>
-    <h2 class="section-title">Des mots qu'on peut garder</h2>
-    <p class="section-lede">Un recueil sur la table de nuit, un roman pour les longues soirées, un carnet pour que les grands-parents racontent, une chanson écrite pour quelqu'un.</p>
-  </div>
-  <div class="produits">
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Recueil de poésie</span>
-        <h4>Ce que je n'ai jamais dit</h4>
-        <p>Les mots gardés trop longtemps, enfin posés sur la page.</p>
-        <!-- TODO : lien Amazon du recueil -->
-      <a href="#">Découvrir →</a>
+    <div class="etapes">
+      <div class="etape apparait">
+        <h3>Vous racontez</h3>
+        <p>Un questionnaire d'une dizaine de minutes : la personne, vos souvenirs, ce que vous voulez lui dire.</p>
+      </div>
+      <div class="etape apparait">
+        <h3>J'écris les paroles</h3>
+        <p>Vos souvenirs deviennent des paroles. Vous les lisez et les validez avant que la musique commence.</p>
+      </div>
+      <div class="etape apparait">
+        <h3>Vous offrez la chanson</h3>
+        <p>Vous recevez la chanson complète et ses paroles, sur une jolie page à partager par message.</p>
       </div>
     </div>
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Recueil de poésie</span>
-        <h4>Bonheur à 2</h4>
-        <p>Un recueil de poèmes d'Alex Harper.<!-- TODO : description courte --></p>
-        <!-- TODO : lien du recueil -->
-      <a href="#">Découvrir →</a>
+    <div class="encart-prix apparait">
+      <div>
+        <div class="montant">29,99 €</div>
+        <p>La chanson personnalisée, paroles et musique</p>
       </div>
+      <a class="btn btn-plein" href="chanson-sur-mesure.html">Raconter mon histoire</a>
     </div>
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Roman</span>
-        <h4>L'Ombre du Domaine</h4>
-        <p>Les Frères Castellan, tome 1. Une maison qui sait tout et ne dit rien, des secrets de famille, une romance sous tension.</p>
-        <!-- TODO : lien Amazon du roman -->
-      <a href="#">Lire un extrait →</a>
-      </div>
-    </div>
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Carnet à offrir</span>
-        <h4>Raconte-moi ton Noël, version Papy</h4>
-        <p>Un carnet guidé pour que Papy raconte ses Noëls d'enfance et ses souvenirs, à garder en famille.</p>
-        <!-- TODO : lien du carnet Papy -->
-      <a href="#">Découvrir →</a>
-      </div>
-    </div>
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Carnet à offrir</span>
-        <h4>Raconte-moi ton Noël, version Mamie</h4>
-        <p>Le même carnet guidé, pensé pour Mamie : ses Noëls, ses souvenirs, à transmettre.</p>
-        <!-- TODO : lien du carnet Mamie -->
-      <a href="#">Découvrir →</a>
-      </div>
-    </div>
-    <div class="produit reveal">
-      <div class="produit-visual"></div>
-      <div class="produit-body">
-        <span class="produit-cat">Chanson personnalisée</span>
-        <h4>Votre chanson sur mesure</h4>
-        <p>Écrite à partir de vos souvenirs, tendre, lumineuse ou profonde. 29,99 €.</p>
-        <a href="chanson-sur-mesure.html">Raconter mon histoire →</a>
-      </div>
-    </div>
-  </div>
-  <div class="boutique-cta reveal">
-    <a href="boutique.html" class="btn-outline-dark">Voir toute la boutique</a>
   </div>
 </section>
 
-<!-- CADEAU / LEAD MAGNET -->
-<section class="bg-dark cadeau" id="cadeau">
-  <div class="reveal">
-    <span class="eyebrow">Le cadeau</span>
-    <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Avant d'acheter quoi que ce soit, recevez ceci</h2>
-    <p class="section-lede" style="margin-left:auto;margin-right:auto;">
-      5 morceaux inédits, en français, jamais publiés ailleurs — et un poème en PDF, à garder. Rien à payer, juste une adresse email.
-    </p>
-  </div>
-  <form class="cadeau-form reveal" onsubmit="event.preventDefault();">
-    <input type="text" placeholder="Votre prénom" required>
-    <input type="email" placeholder="Votre email" required>
-    <button type="submit" class="cta-primary">Recevoir mes 5 poèmes</button>
-  </form>
-  <p class="cadeau-reassurance reveal">Pas de spam. Juste un email de temps en temps, quand j'ai vraiment quelque chose à dire.</p>
-</section>
-
-<!-- JOURNAL -->
-<section class="bg-light" id="journal">
-  <div class="reveal">
-    <span class="eyebrow">Journal</span>
-    <h2 class="section-title">Ce qui s'écrit entre deux publications</h2>
-  </div>
-  <div class="journal-grid">
-    <a class="post reveal" href="article-ecrire-des-paroles-qui-sonnent-vrai.html">
-      <span class="post-date">Écriture</span>
-      <h4>Écrire des paroles qui sonnent vrai</h4>
-      <p>Partir d'une phrase qu'on n'ose pas dire, et laisser la rime servir le sens plutôt que l'inverse.</p>
-    </a>
-    <a class="post reveal" href="article-poesie-ia-musique.html">
-      <span class="post-date">Musique &amp; IA</span>
-      <h4>Poésie et intelligence artificielle : composer autrement</h4>
-      <p>Comment un poème devient une chanson, entre écriture manuscrite et composition assistée.</p>
-    </a>
-    <a class="post reveal" href="article-papeterie-rituel-ecriture.html">
-      <span class="post-date">Papeterie</span>
-      <h4>Le rituel du carnet : pourquoi la papeterie compte encore</h4>
-      <p>Ce que le papier fait à l'écriture, à l'heure où tout se tape sur un écran.</p>
-    </a>
+<!-- CITATION -->
+<section class="section-brune centre">
+  <div class="conteneur">
+    <p class="citation">« Il y a des choses qu'on ne dit à personne, pas parce qu'elles sont trop lourdes, mais parce qu'on n'a jamais trouvé les mots exacts. »</p>
+    <p class="citation-auteur">Alex Harper</p>
   </div>
 </section>
 
-<!-- NEWSLETTER REMINDER -->
-<section class="bg-dark newsletter">
-  <div class="reveal">
-    <span class="eyebrow">Restons en contact</span>
-    <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Autrement que sur les réseaux</h2>
-    <p class="section-lede" style="margin-left:auto;margin-right:auto;margin-bottom:2.2rem;">
-      Les nouveaux poèmes, les sorties en avant-première, les morceaux réservés aux abonnés — tout arrive d'abord ici.
-    </p>
-    <a href="#cadeau" class="cta-primary" style="text-decoration:none;display:inline-block;">S'inscrire</a>
+<!-- BOUTIQUE (aperçu) -->
+<section>
+  <div class="conteneur">
+    <div class="entete-section">
+      <span class="surtitre">Ma boutique</span>
+      <h2>Mes chansons et mes livres</h2>
+      <p class="chapeau">Des chansons à écouter, des recueils à garder sur la table de nuit, des carnets à offrir.</p>
+    </div>
+    <div class="grille-produits">
+      <article class="produit apparait">
+        <div class="couverture"><img src="images/single-ce-que-je-range.jpg" alt="Pochette du single Ce que je range" loading="lazy" width="800" height="800"></div>
+        <div class="produit-corps">
+          <span class="type">Single</span>
+          <h3>Ce que je range</h3>
+          <p>Extrait de l'album « Ce que je n'ai jamais dit ». Des chansons intimes sur les mots qu'on garde pour soi.</p>
+          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter</a><a class="btn btn-contour btn-petit" href="boutique.html#albums">Toutes mes chansons</a></div>
+        </div>
+      </article>
+      <article class="produit apparait">
+        <div class="couverture c-noel"><span class="c-titre">Joyeux Noël quand même</span><span class="c-auteur">Alex Harper</span></div>
+        <div class="produit-corps">
+          <span class="type">Livre · album bientôt</span>
+          <h3>Joyeux Noël quand même</h3>
+          <p>Pour celles et ceux à qui Noël fait un peu mal.</p>
+          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://link.amazon/B0iGDJKsG" target="_blank" rel="noopener">Voir sur Amazon</a></div>
+        </div>
+      </article>
+      <article class="produit apparait">
+        <div class="couverture c-or"><span class="c-titre">Raconte-moi ton Noël</span><span class="c-auteur">Alex Harper</span></div>
+        <div class="produit-corps">
+          <span class="type">Livres à offrir</span>
+          <h3>Papy &amp; Mamie, raconte-moi ton Noël</h3>
+          <p>Des carnets pour que les grands-parents racontent leurs souvenirs.</p>
+          <div class="groupe-btn"><a class="btn btn-contour btn-petit" href="boutique.html#livres">Voir les livres</a></div>
+        </div>
+      </article>
+    </div>
+    <p class="centre" style="margin-top:2.2rem;"><a class="btn btn-plein" href="boutique.html">Toute la boutique</a></p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer" id="contact">
-  <div class="footer-top">
+<!-- À PROPOS -->
+<section class="section-claire">
+  <div class="conteneur apropos">
+    <div class="centre"><p class="signature">Alex</p></div>
     <div>
-      <span class="footer-mark">Alex H.</span>
-      <p class="footer-cols" style="margin-top:0.8rem;">Poésie · Chansons sur mesure · Romans · Carnets</p>
-    </div>
-    <div class="footer-cols">
-      alex@alexharper.fr<br>
-      Bruxelles, Belgique
-    </div>
-    <div class="footer-social">
-      <a href="#">YouTube</a>
-      <a href="#">TikTok</a>
-      <a href="#">Etsy</a>
-      <a href="#">Spotify</a>
+      <span class="surtitre">Qui écrit vos chansons</span>
+      <h2>La voix derrière les mots</h2>
+      <p>Tout a commencé par des phrases griffonnées la nuit, jamais montrées à personne. Puis un jour, une phrase écrite pour soi a fini par parler à quelqu'un d'autre.</p>
+      <p>Depuis Bruxelles, j'écris des chansons et des livres qui partent tous du même endroit : ce qu'on tait, jusqu'au jour où on ne peut plus le taire. Aujourd'hui, j'écris aussi pour vous, pour la personne que vous aimez.</p>
+      <a class="btn btn-contour" href="chansons.html">Découvrir les chansons personnalisées</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Alex H. Tous droits réservés.</span>
-    <span>Mentions légales</span>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div>
+      <a class="marque" href="index.html">Alex Harper</a>
+      <p class="legal">Chansons personnalisées, albums et livres.<br>Un site ActivityWeb Studio — BCE 0558.805.548<br>© <span id="annee">2026</span> Alex Harper</p>
+    </div>
+    <div>
+      <h4>Le site</h4>
+      <ul>
+        <li><a href="chansons.html">Chansons personnalisées</a></li>
+        <li><a href="boutique.html">Ma boutique</a></li>
+        <li><a href="chanson-sur-mesure.html">Commander une chanson</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Me suivre</h4>
+      <ul>
+        <li><a href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a></li>
+        <li><a href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter « Ce que je range »</a></li>
+        <li><a href="https://www.youtube.com/@AlexH.Universe" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@alexharper.studio" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
 
-<script>
-// Écriture mot par mot du titre du hero
-const headline = document.getElementById('headline');
-const text = "Ce que je n'ai jamais dit, je te l'écris ici.";
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if(reduced){
-  headline.textContent = text;
-} else {
-  const words = text.split(' ');
-  let delay = 0.15;
-  words.forEach((w, i) => {
-    const span = document.createElement('span');
-    span.className = 'word';
-    span.style.animationDelay = delay + 's';
-    span.textContent = w + (i < words.length - 1 ? '\u00A0' : '');
-    headline.appendChild(span);
-    delay += 0.13;
-  });
-  const cursor = document.createElement('span');
-  cursor.className = 'quill-cursor';
-  headline.appendChild(cursor);
-}
-
-// Bouton CTA hero
-document.getElementById('ctaBtn').addEventListener('click', () => {
-  document.getElementById('cadeau').scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
-});
-
-// Nav : fond au scroll
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-});
-
-// Nav mobile
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-// Reveal au scroll
-if(!reduced){
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-} else {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>

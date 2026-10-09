@@ -8,15 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
   :root {
-    --nuit: #0D0D0F;
-    --noir-doux: #1A1A1A;
-    --gris-nuit: #3A3A3A;
-    --beige: #EDE6D8;
-    --creme: #F5F1E8;
-    --or: #c8a96e;
-    --or-pale: #D9CBA3;
+    --nuit: #F7F2E9;
+    --noir-doux: #FFFDF8;
+    --gris-nuit: #E3D7C3;
+    --beige: #2E2420;
+    --creme: #2E2420;
+    --or: #A97E4A;
+    --or-pale: #6E5E52;
     --rouge: #B86A6A;
     --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     --titre: "Playfair Display", Georgia, serif;
@@ -37,7 +38,7 @@
 
   /* En-tête */
   .hero {
-    min-height: 78vh;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +50,7 @@
   .signature {
     font-family: "Mrs Saint Delafield", cursive;
     font-size: clamp(3.2rem, 9vw, 5.5rem);
-    color: var(--or);
+    color: var(--rouge);
     line-height: 1;
     margin: 0 0 1.5rem;
     font-weight: 400;
@@ -84,6 +85,7 @@
   }
   .retour:hover { opacity: 1; }
   .hero { position: relative; }
+  input, select, textarea { border-radius: 8px !important; }
   .note-voix {
     border-left: 2px solid var(--or); padding: .6rem 0 .6rem 1rem;
     color: var(--or-pale); font-style: italic; margin: 0;
@@ -153,7 +155,7 @@
     border-color: var(--or);
     box-shadow: 0 0 0 1px var(--or);
   }
-  input[type="date"] { color-scheme: dark; }
+  input[type="date"] { color-scheme: light; }
   select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--or) 50%), linear-gradient(135deg, var(--or) 50%, transparent 50%); background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 2.5rem; }
 
   .choix { display: grid; gap: .5rem; }
@@ -170,7 +172,7 @@
     cursor: pointer;
     margin: 0;
   }
-  .choix label:has(input:checked) { border-color: var(--or); background: rgba(200,169,110,.07); }
+  .choix label:has(input:checked) { border-color: var(--rouge); background: rgba(184,106,106,.08); }
   .choix input { accent-color: var(--or); margin-top: .45rem; flex-shrink: 0; }
   .choix small { display: block; font-family: var(--sans); font-weight: 300; font-size: .8rem; opacity: .7; }
 
@@ -190,22 +192,22 @@
   .consent label { display: flex; gap: .75rem; font-weight: 400; font-size: 1.05rem; color: var(--beige); }
   .consent input { accent-color: var(--or); margin-top: .4rem; flex-shrink: 0; }
 
-  button {
+  form button {
     font-family: var(--sans);
     font-weight: 400;
     font-size: 1rem;
     letter-spacing: .02em;
-    background: var(--or);
-    color: var(--nuit);
+    background: var(--rouge);
+    color: #fff;
     border: 0;
-    border-radius: 2px;
+    border-radius: 999px;
     padding: 1rem 2.2rem;
     cursor: pointer;
     transition: background .2s;
   }
-  button:hover { background: var(--or-pale); }
-  button:focus-visible { outline: 2px solid var(--creme); outline-offset: 3px; }
-  button[disabled] { opacity: .6; cursor: wait; }
+  form button:hover { background: #9A5252; }
+  form button:focus-visible { outline: 2px solid var(--or); outline-offset: 3px; }
+  form button[disabled] { opacity: .6; cursor: wait; }
 
   .brouillon {
     font-family: var(--sans);
@@ -222,13 +224,24 @@
   .merci h2 { font-family: var(--titre); font-weight: 400; font-size: 2rem; margin: 0 0 1.5rem; }
   .merci p { color: var(--or-pale); font-style: italic; }
 
-  footer { text-align: center; padding: 2rem 1rem 3rem; border-top: 1px solid var(--gris-nuit); font-family: var(--sans); font-weight: 300; font-size: .8rem; opacity: .6; }
 </style>
 </head>
 <body>
+<header class="nav">
+  <div class="conteneur">
+    <a class="marque" href="index.html">Alex Harper</a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav-liens" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="chansons.html">Chansons personnalisées</a>
+      <a href="boutique.html">Ma boutique</a>
+      <a href="contact.html">Contact</a>
+      <a href="chanson-sur-mesure.html" class="nav-cta" aria-current="page">Commander</a>
+    </nav>
+  </div>
+</header>
 
 <header class="hero">
-  <a class="retour" href="/">alexharper.fr</a>
   <p class="signature">Alex Harper</p>
   <h1>Racontez-moi votre histoire, j'en ferai une chanson</h1>
   <p>Chaque chanson naît d'un poème. Tendre, lumineuse ou profonde, pour un enfant comme pour un grand-parent, elle part toujours de vos souvenirs.</p>
@@ -271,8 +284,14 @@
       <label for="occasion">L'occasion <span class="requis">*</span></label>
       <select id="occasion" name="occasion" required>
         <option value="">Choisissez l'occasion</option>
+        <optgroup label="Les plus demandées">
+          <option value="amoureux" data-couleur="tendre">Pour mon amoureux ou mon amoureuse</option>
+          <option value="maman" data-couleur="tendre">Pour maman</option>
+          <option value="papa" data-couleur="tendre">Pour papa</option>
+          <option value="enfant" data-couleur="lumineux">Pour un enfant (chanson à son prénom)</option>
+        </optgroup>
         <optgroup label="Tendre">
-          <option value="mariage" data-couleur="tendre">Mariage ou déclaration</option>
+          <option value="mariage" data-couleur="tendre">Mariage</option>
           <option value="anniversaire-couple" data-couleur="tendre">Anniversaire de couple</option>
           <option value="naissance" data-couleur="tendre">Naissance ou baptême</option>
         </optgroup>
@@ -283,7 +302,7 @@
           <option value="remerciements" data-couleur="lumineux">Remerciements</option>
         </optgroup>
         <optgroup label="Profond">
-          <option value="hommage" data-couleur="profond">Hommage ou deuil</option>
+          <option value="hommage" data-couleur="profond">Deuil ou hommage</option>
           <option value="adieux" data-couleur="profond">Adieux ou départ</option>
           <option value="rupture" data-couleur="profond">Rupture, lettre jamais envoyée</option>
         </optgroup>
@@ -399,7 +418,7 @@
     <div class="champ"><label for="dip_famille">Ce que cette réussite représente pour vous</label><textarea id="dip_famille" name="dip_famille"></textarea></div>
   </fieldset>
 
-  <fieldset class="module" data-occasion="mariage">
+  <fieldset class="module" data-occasion="mariage amoureux">
     <span class="partie">Pour cette occasion</span>
     <legend>Votre histoire d'amour</legend>
     <div class="champ"><label for="mar_rencontre">Comment vous vous êtes rencontrés</label><span class="aide">Le lieu, la date, le premier échange</span><textarea id="mar_rencontre" name="mar_rencontre"></textarea></div>
@@ -484,6 +503,37 @@
     <div class="champ"><label for="rup_garde">Ce que vous gardez de cette histoire</label><textarea id="rup_garde" name="rup_garde"></textarea></div>
     <div class="champ"><label for="rup_pese">Ce qui pèse encore aujourd'hui</label><textarea id="rup_pese" name="rup_pese"></textarea></div>
     <div class="champ"><label for="rup_fin">Comment aimeriez-vous que la chanson se termine ?</label><span class="aide">Apaisée, pleine d'espoir, sur un merci, sur un adieu</span><input type="text" id="rup_fin" name="rup_fin"></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="maman">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Votre maman</legend>
+    <div class="champ"><label for="mam_appel">Comment l'appelez-vous ?</label><span class="aide">Maman, Mamounette, M'man, son prénom…</span><input type="text" id="mam_appel" name="mam_appel"></div>
+    <div class="champ"><label for="mam_phrase">Une phrase qu'elle répète tout le temps</label><span class="aide">Par exemple : « Tu as pris une veste ? »</span><input type="text" id="mam_phrase" name="mam_phrase"></div>
+    <div class="champ"><label for="mam_enfance">Un souvenir d'enfance avec elle</label><span class="aide">Une odeur de cuisine, une chanson dans la voiture, un câlin un soir difficile</span><textarea id="mam_enfance" name="mam_enfance"></textarea></div>
+    <div class="champ"><label for="mam_merci">Ce que vous voulez lui dire merci, concrètement</label><textarea id="mam_merci" name="mam_merci"></textarea></div>
+    <div class="champ"><label for="mam_famille">Qui offre la chanson ?</label><span class="aide">Ses enfants, ses petits-enfants, son mari… Les prénoms peuvent apparaître dans la chanson.</span><input type="text" id="mam_famille" name="mam_famille"></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="papa">
+    <span class="partie">Pour cette occasion</span>
+    <legend>Votre papa</legend>
+    <div class="champ"><label for="pap_appel">Comment l'appelez-vous ?</label><input type="text" id="pap_appel" name="pap_appel"></div>
+    <div class="champ"><label for="pap_phrase">Une phrase fétiche, une manie, une expression</label><input type="text" id="pap_phrase" name="pap_phrase"></div>
+    <div class="champ"><label for="pap_passion">Ce qui le passionne</label><span class="aide">Le jardin, le bricolage, le foot, la pêche, sa vieille voiture…</span><input type="text" id="pap_passion" name="pap_passion"></div>
+    <div class="champ"><label for="pap_appris">Ce qu'il vous a appris sans faire de discours</label><textarea id="pap_appris" name="pap_appris"></textarea></div>
+    <div class="champ"><label for="pap_souvenir">Un souvenir à deux qui vous fait encore sourire</label><textarea id="pap_souvenir" name="pap_souvenir"></textarea></div>
+  </fieldset>
+
+  <fieldset class="module" data-occasion="enfant">
+    <span class="partie">Pour cette occasion</span>
+    <legend>L'enfant</legend>
+    <div class="champ"><label for="enf_prenom">Son prénom, et comment le prononcer</label><span class="aide">Ajoutez son surnom s'il en a un</span><input type="text" id="enf_prenom" name="enf_prenom"></div>
+    <div class="champ"><label for="enf_age">Son âge</label><input type="text" id="enf_age" name="enf_age"></div>
+    <div class="champ"><label for="enf_univers">Son petit monde</label><span class="aide">Doudou, animal préféré, héros, couleur, jeu, plat préféré</span><textarea id="enf_univers" name="enf_univers"></textarea></div>
+    <div class="champ"><label for="enf_mots">Ses mots rigolos ou ses petites habitudes</label><textarea id="enf_mots" name="enf_mots"></textarea></div>
+    <div class="champ"><label for="enf_proches">Les prénoms à citer</label><span class="aide">Frères et sœurs, copains, animal de compagnie, parrain, marraine</span><input type="text" id="enf_proches" name="enf_proches"></div>
+    <div class="champ"><label for="enf_moment">Pour quel moment ?</label><span class="aide">Anniversaire, Saint-Nicolas, Noël, chanson du coucher…</span><input type="text" id="enf_moment" name="enf_moment"></div>
   </fieldset>
 
   <fieldset class="module" data-occasion="autre">
@@ -603,11 +653,36 @@
 <section class="merci" id="merci" aria-live="polite">
   <p class="signature">Merci</p>
   <h2>Votre histoire est entre de bonnes mains</h2>
-  <p>Je lis chaque réponse moi-même avant d'écrire. Vous recevrez d'abord les paroles pour validation, puis la chanson complète avec son texte mis en page comme un poème. Si un détail vous revient après coup, répondez simplement à mon e-mail.</p>
+  <p>Je lis chaque réponse moi-même avant d'écrire. Vous recevrez d'abord les paroles pour validation, puis la chanson complète avec ses paroles joliment mises en page. Si un détail vous revient après coup, répondez simplement à mon e-mail.</p>
   <p><a href="/">Retour à l'accueil</a></p>
 </section>
 
-<footer>© Alex Harper · alexharper.fr</footer>
+<footer class="pied">
+  <div class="conteneur">
+    <div>
+      <a class="marque" href="index.html">Alex Harper</a>
+      <p class="legal">Chansons personnalisées, albums et livres.<br>Un site ActivityWeb Studio — BCE 0558.805.548<br>© <span id="annee">2026</span> Alex Harper</p>
+    </div>
+    <div>
+      <h4>Le site</h4>
+      <ul>
+        <li><a href="chansons.html">Chansons personnalisées</a></li>
+        <li><a href="boutique.html">Ma boutique</a></li>
+        <li><a href="chanson-sur-mesure.html">Commander une chanson</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Me suivre</h4>
+      <ul>
+        <li><a href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a></li>
+        <li><a href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter « Ce que je range »</a></li>
+        <li><a href="https://www.youtube.com/@AlexH.Universe" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@alexharper.studio" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function () {
@@ -620,7 +695,7 @@
 
   function afficherModule() {
     modules.forEach(function (m) {
-      m.classList.toggle('actif', m.dataset.occasion === occasion.value);
+      m.classList.toggle('actif', m.dataset.occasion.split(' ').indexOf(occasion.value) !== -1);
     });
   }
   occasion.addEventListener('change', afficherModule);
@@ -675,7 +750,17 @@
   }
   restaurer();
   afficherModule();
-  // Lien depuis l'accueil : chanson-sur-mesure.html?couleur=lumineux
+  // Lien depuis la page des chansons : chanson-sur-mesure.html?occasion=maman
+  try {
+    var occParam = new URLSearchParams(window.location.search).get('occasion');
+    if (occParam && occasion.querySelector('option[value="' + occParam + '"]')) {
+      occasion.value = occParam;
+      occasion.dispatchEvent(new Event('change'));
+      var age = document.getElementById('age_groupe');
+      if (occParam === 'enfant' && age && !age.value) age.value = 'enfant';
+    }
+  } catch (e) {}
+  // Lien direct par couleur : chanson-sur-mesure.html?couleur=lumineux
   try {
     var param = new URLSearchParams(window.location.search).get('couleur');
     var dejaChoisi = Array.prototype.some.call(radiosTon, function (r) { return r.checked; });
@@ -700,7 +785,7 @@
     // Vider les modules d'occasion non choisis
     var fd = new FormData(form);
     modules.forEach(function (m) {
-      if (m.dataset.occasion !== occasion.value) {
+      if (m.dataset.occasion.split(' ').indexOf(occasion.value) === -1) {
         m.querySelectorAll('[name]').forEach(function (c) { fd.delete(c.name); });
       }
     });
@@ -726,5 +811,6 @@
   });
 })();
 </script>
+<script src="script.js"></script>
 </body>
 </html>

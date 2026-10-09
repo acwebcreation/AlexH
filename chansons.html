@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chansons personnalisées — Alex Harper</title>
+<meta name="description" content="Chanson personnalisée pour les amoureux, maman, papa, les enfants, un anniversaire, un mariage, une rupture ou un deuil. Écrite à partir de vos souvenirs, 29,99 €.">
+<link rel="canonical" href="https://alexharper.fr/chansons.html">
+<meta property="og:title" content="Alex Harper — Une chanson écrite pour quelqu'un">
+<meta property="og:description" content="Vous me racontez vos souvenirs, j'en fais une chanson. Amour, maman, enfants, rupture, deuil…">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexharper.fr/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="conteneur">
+    <a class="marque" href="index.html">Alex Harper</a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav-liens" aria-label="Menu principal">
+      <a href="index.html">Accueil</a>
+      <a href="chansons.html" aria-current="page">Chansons personnalisées</a>
+      <a href="boutique.html">Ma boutique</a>
+      <a href="contact.html">Contact</a>
+      <a href="chanson-sur-mesure.html" class="nav-cta">Commander</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero hero-page">
+  <div class="conteneur">
+    <span class="surtitre">Chansons personnalisées</span>
+    <h1>Une chanson pour chaque histoire</h1>
+    <p class="chapeau">Choisissez l'occasion. Je vous pose les bonnes questions, j'écris les paroles à partir de vos souvenirs, vous les validez, puis je compose et je chante.</p>
+  </div>
+</section>
+
+<section style="padding-top:2.5rem;">
+  <div class="conteneur">
+    <div class="onglets" role="tablist" aria-label="Occasions">
+        <button class="onglet" role="tab" id="tab-amoureux" aria-controls="amoureux" aria-selected="true" tabindex="0" style="--teinte:var(--t-amoureux)">Amoureux</button>
+        <button class="onglet" role="tab" id="tab-maman" aria-controls="maman" aria-selected="false" tabindex="-1" style="--teinte:var(--t-maman)">Maman</button>
+        <button class="onglet" role="tab" id="tab-papa" aria-controls="papa" aria-selected="false" tabindex="-1" style="--teinte:var(--t-papa)">Papa</button>
+        <button class="onglet" role="tab" id="tab-enfants" aria-controls="enfants" aria-selected="false" tabindex="-1" style="--teinte:var(--t-enfants)">Enfants</button>
+        <button class="onglet" role="tab" id="tab-anniversaire" aria-controls="anniversaire" aria-selected="false" tabindex="-1" style="--teinte:var(--t-anniversaire)">Anniversaire</button>
+        <button class="onglet" role="tab" id="tab-mariage" aria-controls="mariage" aria-selected="false" tabindex="-1" style="--teinte:var(--t-mariage)">Mariage</button>
+        <button class="onglet" role="tab" id="tab-rupture" aria-controls="rupture" aria-selected="false" tabindex="-1" style="--teinte:var(--t-rupture)">Rupture</button>
+        <button class="onglet" role="tab" id="tab-deuil" aria-controls="deuil" aria-selected="false" tabindex="-1" style="--teinte:var(--t-deuil)">Deuil</button>
+    </div>
+
+      <article class="panneau" role="tabpanel" id="amoureux" aria-labelledby="tab-amoureux" tabindex="0" style="--teinte:var(--t-amoureux)">
+        <div>
+          <span class="surtitre">Chanson personnalisée · Amoureux</span>
+          <h2>Une chanson pour la personne que vous aimez</h2>
+          <p class="chapeau">Pour une déclaration, une Saint-Valentin, un anniversaire de rencontre, ou simplement parce qu&#x27;il est temps de le dire.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Le jour de votre rencontre, le lieu, le premier regard</li>
+            <li>Le moment où vous avez su</li>
+            <li>Vos rituels, vos mots à vous, vos blagues que personne ne comprend</li>
+            <li>Ce que vous lui promettez pour la suite</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Saint-Valentin</span><span class="etiquette">Anniversaire de rencontre</span><span class="etiquette">Déclaration</span><span class="etiquette">Demande en mariage</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Tendre</span><span class="etiquette">Guitare ou piano</span><span class="etiquette">Intime</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Je n&#x27;ai pas de grands mots,<br>juste ce matin de mars<br>où tu riais trop fort<br>et où j&#x27;ai compris que c&#x27;était toi.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/amoureux.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=amoureux">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="maman" aria-labelledby="tab-maman" tabindex="0" style="--teinte:var(--t-maman)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Maman</span>
+          <h2>Une chanson pour maman</h2>
+          <p class="chapeau">Pour la fête des mères, son anniversaire, ou pour lui dire enfin merci. De la part d&#x27;un enfant, d&#x27;un ado ou de toute la fratrie.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Ses gestes, ses expressions, sa façon d&#x27;appeler à table</li>
+            <li>Les souvenirs d&#x27;enfance qui sentent encore sa cuisine</li>
+            <li>Ce qu&#x27;elle a sacrifié sans jamais le dire</li>
+            <li>Le merci que vous n&#x27;avez jamais su formuler</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Fête des mères</span><span class="etiquette">Anniversaire</span><span class="etiquette">Naissance d&#x27;un petit-enfant</span><span class="etiquette">Merci, tout simplement</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Tendre</span><span class="etiquette">Émouvante avec un sourire</span><span class="etiquette">Piano doux</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Tu disais « mets ton écharpe »<br>et moi je levais les yeux.<br>Aujourd&#x27;hui je la mets<br>et c&#x27;est ta voix qui me tient chaud.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/maman.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=maman">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="papa" aria-labelledby="tab-papa" tabindex="0" style="--teinte:var(--t-papa)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Papa</span>
+          <h2>Une chanson pour papa</h2>
+          <p class="chapeau">Pour la fête des pères, ses 60 ans, sa retraite, ou pour lui dire ce qu&#x27;il ne vous demande jamais d&#x27;entendre.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Ses phrases fétiches et ses manies du dimanche</li>
+            <li>Ce qu&#x27;il vous a appris sans faire de discours</li>
+            <li>Le bricolage, le jardin, la voiture, ses passions</li>
+            <li>Ce que vous admirez chez lui, en secret</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Fête des pères</span><span class="etiquette">Anniversaire</span><span class="etiquette">Départ à la retraite</span><span class="etiquette">Devenir grand-père</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Tendre ou lumineux</span><span class="etiquette">Guitare folk</span><span class="etiquette">Pudique</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Tu parlais peu,<br>tu réparais tout.<br>Je comprends maintenant<br>que c&#x27;était ta façon de dire je t&#x27;aime.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/papa.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=papa">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="enfants" aria-labelledby="tab-enfants" tabindex="0" style="--teinte:var(--t-enfants)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Enfants</span>
+          <h2>Une chanson à son prénom</h2>
+          <p class="chapeau">Une comptine joyeuse avec son prénom, son doudou, ses copains et ses petites manies. Un refrain facile à chanter avec lui.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Son prénom, son surnom, son âge</li>
+            <li>Son doudou, son animal préféré, son héros</li>
+            <li>Ses mots rigolos et ses petites habitudes</li>
+            <li>Ce que vous lui souhaitez en grandissant</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Anniversaire</span><span class="etiquette">Saint-Nicolas</span><span class="etiquette">Noël</span><span class="etiquette">Naissance ou baptême</span><span class="etiquette">Chanson pour frères et sœurs</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Lumineux</span><span class="etiquette">Comptine</span><span class="etiquette">Ukulélé et petits chœurs</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Qui a mis du soleil<br>dans ses chaussettes à pois ?<br>C&#x27;est Léa qui s&#x27;éveille<br>et qui chante avec moi !</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/enfants.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=enfant">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="anniversaire" aria-labelledby="tab-anniversaire" tabindex="0" style="--teinte:var(--t-anniversaire)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Anniversaire</span>
+          <h2>Une chanson d&#x27;anniversaire qui lui ressemble</h2>
+          <p class="chapeau">Pas un « joyeux anniversaire » de plus : sa vie racontée en quelques images fortes, celles qui font sourire toute la table.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>L&#x27;âge fêté et les grandes étapes de sa vie</li>
+            <li>Ce qui la passionne en ce moment</li>
+            <li>Ce qui n&#x27;a pas changé depuis le début</li>
+            <li>Un souhait pour les années à venir</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">18 ans</span><span class="etiquette">30, 40, 50 ans</span><span class="etiquette">60 ans et plus</span><span class="etiquette">Anniversaire surprise</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Lumineux</span><span class="etiquette">Folk entraînant</span><span class="etiquette">Avec du fond</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Trente ans de fous rires,<br>deux valises et un chat,<br>tu changes de ville<br>mais jamais de toi.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/anniversaire.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=anniversaire">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="mariage" aria-labelledby="tab-mariage" tabindex="0" style="--teinte:var(--t-mariage)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Mariage</span>
+          <h2>La chanson de votre histoire, le jour du oui</h2>
+          <p class="chapeau">Pour l&#x27;entrée des mariés, la première danse, un cadeau de témoin ou un anniversaire de mariage.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Votre rencontre et le chemin parcouru</li>
+            <li>Les petites choses qui font votre couple</li>
+            <li>Les personnes qui comptent à vos côtés</li>
+            <li>Ce que vous vous promettez</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Première danse</span><span class="etiquette">Cadeau des témoins</span><span class="etiquette">Noces d&#x27;argent, d&#x27;or</span><span class="etiquette">Renouvellement des vœux</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Tendre</span><span class="etiquette">Piano ou guitare</span><span class="etiquette">Solennelle et douce</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>On n&#x27;a rien juré d&#x27;éternel,<br>juste de rester là<br>les matins de pluie<br>et tous les autres.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/mariage.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=mariage">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="rupture" aria-labelledby="tab-rupture" tabindex="0" style="--teinte:var(--t-rupture)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Rupture</span>
+          <h2>La lettre que vous n&#x27;enverrez pas</h2>
+          <p class="chapeau">Pour poser enfin ce qui pèse. Cette chanson peut rester pour vous seul(e) : elle n&#x27;a pas besoin d&#x27;être envoyée pour compter.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Ce que vous gardez de cette histoire</li>
+            <li>Ce qui fait encore mal aujourd&#x27;hui</li>
+            <li>Ce que vous auriez voulu dire</li>
+            <li>La façon dont vous voulez tourner la page</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Rupture amoureuse</span><span class="etiquette">Ami perdu de vue</span><span class="etiquette">Relation familiale difficile</span><span class="etiquette">Tourner la page</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Profond</span><span class="etiquette">Intime</span><span class="etiquette">Apaisée</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Tu m&#x27;as laissé la lumière allumée<br>dans une pièce que je n&#x27;habite plus,<br>et j&#x27;y retourne, certains soirs,<br>seulement pour l&#x27;éteindre.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/rupture.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=rupture">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panneau" role="tabpanel" id="deuil" aria-labelledby="tab-deuil" tabindex="0" style="--teinte:var(--t-deuil)" hidden>
+        <div>
+          <span class="surtitre">Chanson personnalisée · Deuil</span>
+          <h2>Une chanson pour garder vivant un souvenir</h2>
+          <p class="chapeau">Pour une cérémonie, un hommage en famille, ou pour vous seul(e). Chaque mot est écrit avec soin, à votre rythme.</p>
+          <h3>Ce que la chanson peut raconter</h3>
+          <ul class="liste-douce">
+            <li>Comment on l&#x27;appelait, et ce qui la rendait unique</li>
+            <li>Ses mots, ses gestes, ce qu&#x27;elle aimait</li>
+            <li>Un souvenir heureux à garder</li>
+            <li>Ce que vous auriez aimé lui dire encore</li>
+          </ul>
+          <h3>Pour quelles occasions</h3>
+          <div class="etiquettes"><span class="etiquette">Cérémonie d&#x27;adieu</span><span class="etiquette">Hommage en famille</span><span class="etiquette">Un an après</span><span class="etiquette">Perte d&#x27;un animal</span></div>
+          <h3>Le ton</h3>
+          <div class="etiquettes"><span class="etiquette">Profond</span><span class="etiquette">Douce et lumineuse</span><span class="etiquette">Piano</span></div>
+        </div>
+        <div class="cote">
+          <div class="extrait">
+            <span class="surtitre">Exemple de couplet</span>
+            <p>Tu n&#x27;es plus à ta place à table,<br>mais ton rire est resté<br>accroché quelque part<br>entre la cuisine et l&#x27;été.</p>
+          </div>
+          <div class="ecoute">
+            Extrait audio bientôt disponible.
+            <!-- EXTRAIT AUDIO : décommente et indique ton fichier mp3
+            <audio controls preload="none" src="audio/deuil.mp3"></audio>
+            -->
+          </div>
+          <div class="cta-panneau">
+            <div class="montant">29,99 €</div>
+            <p>Paroles et musique, écrites à partir de vos souvenirs. Paroles validées par vous avant la musique.</p>
+            <a class="btn btn-plein" href="chanson-sur-mesure.html?occasion=hommage">Commander cette chanson</a>
+          </div>
+        </div>
+      </article>
+
+    <p class="centre" style="margin-top:2rem;color:var(--encre-douce);font-size:1.1rem;">Une autre occasion ? Départ à la retraite, remerciements, diplôme, adieux… <a href="chanson-sur-mesure.html">Racontez-la moi</a>, j'écris pour tous les moments.</p>
+  </div>
+</section>
+
+<section class="section-claire">
+  <div class="conteneur">
+    <div class="entete-section centre">
+      <span class="surtitre">Questions fréquentes</span>
+      <h2>Avant de commander</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Combien coûte une chanson ?</summary><p>29,99 € pour une chanson complète, paroles et musique, chantée par moi.</p></details>
+      <details><summary>Est-ce que je vois les paroles avant ?</summary><p>Oui. Je vous envoie d'abord les paroles. Vous pouvez demander une révision, et la musique ne commence qu'une fois le texte validé.</p></details>
+      <details><summary>Comment je reçois la chanson ?</summary><p>Vous recevez un lien vers une page à votre nom, avec la chanson et ses paroles. Vous pouvez l'envoyer par message ou la faire écouter le jour J.</p></details>
+      <details><summary>Dans quel délai ?</summary><p>Indiquez votre date souhaitée dans le formulaire. Je vous confirme le délai en répondant à votre demande.</p></details>
+      <details><summary>Je ne sais pas bien écrire, est-ce un problème ?</summary><p>Pas du tout. Des détails simples et vrais valent mieux que de belles phrases. C'est mon travail de les transformer en chanson.</p></details>
+      <details><summary>Mes souvenirs restent-ils privés ?</summary><p>Oui. Vos réponses servent uniquement à écrire votre chanson. Elles ne sont jamais publiées ni partagées.</p></details>
+    </div>
+    <p class="centre" style="margin-top:2.4rem;"><a class="btn btn-plein" href="chanson-sur-mesure.html">Raconter mon histoire</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div>
+      <a class="marque" href="index.html">Alex Harper</a>
+      <p class="legal">Chansons personnalisées, albums et livres.<br>Un site ActivityWeb Studio — BCE 0558.805.548<br>© <span id="annee">2026</span> Alex Harper</p>
+    </div>
+    <div>
+      <h4>Le site</h4>
+      <ul>
+        <li><a href="chansons.html">Chansons personnalisées</a></li>
+        <li><a href="boutique.html">Ma boutique</a></li>
+        <li><a href="chanson-sur-mesure.html">Commander une chanson</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Me suivre</h4>
+      <ul>
+        <li><a href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a></li>
+        <li><a href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter « Ce que je range »</a></li>
+        <li><a href="https://www.youtube.com/@AlexH.Universe" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@alexharper.studio" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  var onglets = Array.prototype.slice.call(document.querySelectorAll('.onglet'));
+  function activer(id, focus) {
+    onglets.forEach(function (t) {
+      var actif = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', actif ? 'true' : 'false');
+      t.tabIndex = actif ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !actif;
+      if (actif) {
+        if (focus) t.focus();
+        t.scrollIntoView({ block: 'nearest', inline: 'center' });
+      }
+    });
+  }
+  onglets.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      var id = t.getAttribute('aria-controls');
+      activer(id);
+      history.replaceState(null, '', '#' + id);
+    });
+    t.addEventListener('keydown', function (e) {
+      var j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % onglets.length;
+      if (e.key === 'ArrowLeft') j = (i - 1 + onglets.length) % onglets.length;
+      if (j !== null) { e.preventDefault(); onglets[j].click(); onglets[j].focus(); }
+    });
+  });
+  function depuisAncre() {
+    var id = location.hash.replace('#', '');
+    if (id && document.getElementById(id) && document.getElementById(id).classList.contains('panneau')) {
+      activer(id);
+      document.querySelector('.onglets').scrollIntoView({ block: 'start' });
+    }
+  }
+  depuisAncre();
+  window.addEventListener('hashchange', depuisAncre);
+})();
+</script>
+
+</body>
+</html>
