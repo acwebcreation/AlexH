@@ -13,7 +13,8 @@ Tout ce qui concernait les poèmes personnalisés, le blog et « Recevoir 5 poè
 - contact.html / merci.html — Contact (web3forms, même clé qu'avant)
 
 ## Déploiement sur GitHub
-1. Dans le dépôt acwebcreation/AlexH, SUPPRIME : le dossier poemes/, outils/, commandes/, src/, netlify/,
+1. Dans le dépôt acwebcreation/AlexH, SUPPRIME : le dossier poemes/, commandes/, src/, netlify/,
+   les anciens fichiers outils/generer_carte.py et outils/modele_carte.html (garde le dossier outils/ : le zip en contient un nouveau),
    ainsi que blog.html, article-*.html, package.json et README.md.
 2. Dépose tous les fichiers de ce zip à la racine (ils remplacent les anciens).
 3. Netlify redéploie tout seul. Les anciennes adresses (/poemes/, /blog.html, /article-...) redirigent vers le nouveau site.
@@ -23,3 +24,9 @@ Tout ce qui concernait les poèmes personnalisés, le blog et « Recevoir 5 poè
   remplace les href="#" par tes vraies adresses. Tant qu'ils sont en "#", les boutons apparaissent grisés.
 - Pochettes : dossier images/ (3 singles déjà intégrés). Pour les autres, décommente la ligne <!-- IMAGE : ... --> dans boutique.html.
 - Extraits audio : dans chansons.html, décommente <audio ... src="audio/maman.mp3"> et ajoute tes mp3 dans un dossier audio/.
+
+## Atelier paroles (outil privé)
+- Adresse : https://alexharper.fr/outils/paroles.html (non indexé, pas de lien dans le menu)
+- Colle les paroles, choisis Classique / Cœur / Vinyle / Fleurs / Enfantin et le fond, puis « Télécharger le PDF » (A4, 300 dpi).
+- Refrain : commence le bloc par [Refrain] la première fois, puis [Refrain] seul quand il revient.
+- Le dernier travail est gardé sur l'appareil.

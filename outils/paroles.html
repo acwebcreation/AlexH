@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Atelier paroles — Alex Harper</title>
+<style>
+@font-face{font-family:"AH Corm";src:url(fonts/CormorantGaramond.ttf);font-weight:300 700}
+@font-face{font-family:"AH Corm";src:url(fonts/CormorantGaramond-Italic-It.ttf);font-style:italic;font-weight:300 700}
+@font-face{font-family:"AH Play";src:url(fonts/PlayfairDisplay-Regular.ttf)}
+@font-face{font-family:"AH Sig";src:url(fonts/MrsSaintDelafield-Regular.ttf)}
+@font-face{font-family:"AH Mont";src:url(fonts/Montserrat-Light.ttf)}
+@font-face{font-family:"AH Kid";src:url(fonts/Fredoka.ttf);font-weight:300 700}
+:root{--fond:#F7F2E9;--carte:#FFFDF8;--encre:#2E2420;--doux:#6E5E52;--ligne:#E3D7C3;--rose:#B86A6A;--rose-f:#9A5252}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--encre);font-family:"AH Corm",Georgia,serif;font-size:18px}
+header{padding:18px 20px;border-bottom:1px solid var(--ligne);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+header b{font-family:"AH Sig";font-weight:400;font-size:34px;color:var(--rose)}
+header span{font-family:"AH Mont";font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--doux)}
+main{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:24px;padding:20px;max-width:1300px;margin:0 auto}
+@media (max-width:860px){main{grid-template-columns:1fr}}
+.panneau{background:var(--carte);border:1px solid var(--ligne);border-radius:14px;padding:18px}
+label{display:block;font-family:"AH Mont";font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--doux);margin:14px 0 6px}
+label:first-child{margin-top:0}
+input[type=text],textarea{width:100%;font:inherit;font-size:17px;color:var(--encre);background:#fff;border:1px solid var(--ligne);border-radius:8px;padding:9px 11px}
+textarea{min-height:300px;resize:vertical;line-height:1.4}
+input:focus,textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 2px #F3DFD8}
+.aide{font-size:14px;color:var(--doux);line-height:1.4;margin:6px 0 0}
+.aide code{font-family:"AH Mont";font-size:12px;background:#F3DFD8;padding:1px 5px;border-radius:4px}
+.choix{display:flex;flex-wrap:wrap;gap:6px}
+.choix button{font-family:"AH Mont";font-size:13px;border:1px solid var(--ligne);background:#fff;color:var(--encre);border-radius:999px;padding:8px 13px;cursor:pointer}
+.choix button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#fff}
+.case{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:16px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.btn{font-family:"AH Mont";font-size:14px;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;background:var(--rose);color:#fff}
+.btn:hover{background:var(--rose-f)}
+.btn.contour{background:transparent;border:1px solid var(--rose);color:var(--rose-f)}
+.apercu{display:flex;flex-direction:column;align-items:center;gap:10px}
+.apercu canvas{width:100%;max-width:620px;height:auto;box-shadow:0 10px 30px rgba(74,53,48,.18);border-radius:2px;background:#fff}
+.info{font-family:"AH Mont";font-size:12px;color:var(--doux);text-align:center}
+.alerte{color:var(--rose-f)}
+</style>
+</head>
+<body>
+<header><b>Alex Harper</b><span>Atelier paroles · A4 prêt à imprimer</span></header>
+<main>
+  <section class="panneau" aria-label="Réglages">
+    <label for="titre">Titre de la chanson</label>
+    <input type="text" id="titre" value="Juste fier">
+    <label for="pour">Sous-titre (facultatif)</label>
+    <input type="text" id="pour" value="Pour Papa">
+    <label for="paroles">Paroles</label>
+    <textarea id="paroles" spellcheck="true"></textarea>
+    <p class="aide">Une ligne vide entre chaque couplet. Pour le refrain : commence le bloc par <code>[Refrain]</code> la première fois, puis écris juste <code>[Refrain]</code> seul aux endroits où il revient.</p>
+    <label for="dedicace">Dédicace</label>
+    <input type="text" id="dedicace" value="Pour Papa, de la part de Léa et Tom · Noël 2026">
+
+    <label>Modèle</label>
+    <div class="choix" id="modeles">
+      <button type="button" data-v="classique" aria-pressed="true">Classique</button>
+      <button type="button" data-v="coeur" aria-pressed="false">Cœur</button>
+      <button type="button" data-v="vinyle" aria-pressed="false">Vinyle</button>
+      <button type="button" data-v="fleurs" aria-pressed="false">Fleurs</button>
+      <button type="button" data-v="enfant" aria-pressed="false">Enfantin</button>
+    </div>
+    <label>Fond</label>
+    <div class="choix" id="fonds">
+      <button type="button" data-v="creme" aria-pressed="true">Crème</button>
+      <button type="button" data-v="papier" aria-pressed="false">Vieux papier</button>
+      <button type="button" data-v="rose" aria-pressed="false">Rose poudré</button>
+      <button type="button" data-v="sauge" aria-pressed="false">Sauge</button>
+      <button type="button" data-v="ciel" aria-pressed="false">Ciel</button>
+      <button type="button" data-v="nuit" aria-pressed="false">Nuit</button>
+    </div>
+    <label class="case"><input type="checkbox" id="signature" checked> Signature « Paroles &amp; musique · Alex Harper »</label>
+
+    <div class="actions">
+      <button class="btn" id="pdf">Télécharger le PDF</button>
+      <button class="btn contour" id="png">Télécharger en image</button>
+    </div>
+  </section>
+
+  <section class="apercu" aria-label="Aperçu">
+    <canvas id="page" width="2480" height="3508"></canvas>
+    <p class="info" id="info">A4 · 300 dpi</p>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+const EXEMPLE=`Je ne t'ai jamais dit ces mots
+qui restaient là
+quelque part dans ma poitrine
+Depuis que j'étais tout petit
+J'attendais un regard
+Pas grand-chose, juste ça
+Un signe que quelque part
+Tu voyais qui j'étais
+
+[Refrain]
+Juste fier
+Sans que je le mérite vraiment
+Juste fier
+Une fois, simplement
+Pas pour ce que je fais
+Pas pour ce que je vaux
+Juste fier de moi
+Comme ça
+
+J'ai cherché dans tes silences
+Une approbation cachée
+J'ai lu dans chaque absence
+Ce que tu n'as pas su dire
+J'ai grandi avec ce manque
+Discret, bien rangé
+Une faim qu'on ne remarque
+Que quand on est épuisé
+
+[Refrain]
+
+Je ne t'en veux pas, je crois
+Ou peut-être un peu, parfois
+Je sais pas ce que t'as vécu
+Ce que toi, t'as attendu
+
+[Refrain]
+
+J'attends encore
+Je crois`;
+
+const W=2480,H=3508,K=W/794; // on dessine en "px CSS" multipliés par K
+const cv=document.getElementById('page'),ctx=cv.getContext('2d');
+const $=id=>document.getElementById(id);
+const champs=['titre','pour','paroles','dedicace'];
+let etat={modele:'classique',fond:'creme'};
+
+const FONDS={
+  creme:{bg:'#F7F1E6',txt:'#3A2A20',acc:'#B86A6A',doux:'#8A6A48',ligne:'rgba(110,80,50,.35)',boite:'rgba(255,255,255,.5)',sil:'rgba(233,195,192,.5)'},
+  papier:{bg:'#EFE3C8',txt:'#3A2A20',acc:'#8A6A48',doux:'#7A5F45',ligne:'rgba(110,80,50,.45)',boite:'rgba(255,250,238,.45)',sil:'rgba(255,250,238,.6)',papier:true},
+  rose:{bg:'#F4E4DF',txt:'#3A2A20',acc:'#9A5252',doux:'#8C6A60',ligne:'rgba(154,82,82,.35)',boite:'rgba(255,255,255,.5)',sil:'rgba(255,255,255,.7)'},
+  sauge:{bg:'#E9EDE3',txt:'#2F3A2C',acc:'#6E8A64',doux:'#6B7A62',ligne:'rgba(90,110,80,.35)',boite:'rgba(255,255,255,.5)',sil:'rgba(255,255,255,.7)'},
+  ciel:{bg:'#EAF1F7',txt:'#2E3A48',acc:'#5E86B8',doux:'#6A7E95',ligne:'rgba(94,134,184,.35)',boite:'rgba(255,255,255,.6)',sil:'rgba(255,255,255,.75)'},
+  nuit:{bg:'#2F2622',txt:'#F4EADB',acc:'#E6D6B4',doux:'#CDBBA2',ligne:'rgba(230,214,180,.35)',boite:'rgba(255,255,255,.06)',sil:'rgba(230,214,180,.10)'}
+};
+
+/* ---------- lecture des paroles ---------- */
+function lire(){
+  const blocs=$('paroles').value.replace(/\r/g,'').split(/\n\s*\n/).map(b=>b.split('\n').map(l=>l.trim()).filter(Boolean)).filter(b=>b.length);
+  let refrain=null;const items=[];
+  for(const b of blocs){
+    if(/^\[refrain\]$/i.test(b[0])){
+      if(b.length>1){ if(!refrain){refrain=b.slice(1);items.push({type:'refrainDef',lignes:refrain});} else items.push({type:'couplet',lignes:b.slice(1)}); }
+      else items.push({type:'rappel'});
+    } else items.push({type:'couplet',lignes:b});
+  }
+  return {refrain,items};
+}
+const COURANTS=new Set("je tu il elle on nous vous ils elles et mais ou donc or ni car que qui quand si comme pas plus sans pour par avec dans sur sous un une le la les de des du au aux ce ça cet cette ces mon ma mes ton ta tes son sa ses notre nos votre vos leur leurs juste tout toute tous toujours jamais encore depuis même puis alors oui non là ici".split(" "));
+function minuscule(x,tout){
+  const m=x.match(/^([A-ZÀ-ÖØ-Þ])([a-zà-öø-ÿ]*)(['’]?)/);if(!m)return x;
+  const mot=(m[1]+m[2]).toLowerCase();
+  const elision=m[3]&&m[2].length<=1;
+  if(COURANTS.has(mot)||elision||new RegExp('(^|[^\\p{L}])'+mot+'([^\\p{L}]|$)','u').test(tout))return m[1].toLowerCase()+x.slice(1);
+  return x;
+}
+function texteContinu(p){
+  const parts=[];
+  const tout=$('paroles').value.split('\n').map(l=>l.trim().slice(1)).join(' ');
+  for(const it of p.items){
+    const l=it.type==='rappel'?(p.refrain||[]):it.lignes;
+    if(!l.length)continue;
+    parts.push(l.map((x,i)=>{
+      if(i>0&&!/[.!?…]$/.test(l[i-1]))x=minuscule(x,tout);
+      return i<l.length-1&&!/[.,;:!?…]$/.test(x)?x+',':x;
+    }).join(' '));
+  }
+  return parts.join(' ♥ ');
+}
+
+/* ---------- fond ---------- */
+let bruit=null;
+function grain(){
+  if(bruit)return bruit;
+  const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');const d=x.createImageData(256,256);
+  for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}
+  x.putImageData(d,0,0);bruit=c;return c;
+}
+function fond(F){
+  ctx.fillStyle=F.bg;ctx.fillRect(0,0,W,H);
+  if(F.papier){
+    for(const [x,y,r,a] of [[0,0,.55,.28],[W,H,.6,.3],[W,0,.45,.14],[0,H,.45,.16]]){
+      const g=ctx.createRadialGradient(x,y,0,x,y,W*r);g.addColorStop(0,`rgba(120,90,50,${a})`);g.addColorStop(1,'rgba(120,90,50,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    }
+  }
+  ctx.save();ctx.globalAlpha=F.papier?.09:.035;ctx.globalCompositeOperation=F.bg==='#2F2622'?'screen':'multiply';
+  ctx.fillStyle=ctx.createPattern(grain(),'repeat');ctx.fillRect(0,0,W,H);ctx.restore();
+}
+function police(style,taille,fam){ctx.font=`${style} ${taille*K}px "${fam}"`;}
+function espacement(px){try{ctx.letterSpacing=(px*K)+'px'}catch(e){}}
+function largeur(t){return ctx.measureText(t).width/K}
+
+/* ---------- pied de page commun ---------- */
+function pied(F,centre,T){
+  const kid=T&&T.multicolore;
+  const ded=$('dedicace').value.trim(),sig=$('signature').checked;
+  ctx.textBaseline='alphabetic';
+  if(centre){
+    let y=1123-118;
+    ctx.textAlign='center';
+    if(ded){police('italic',18,'AH Corm');ctx.fillStyle=F.doux;ctx.fillText(ded,W/2,y*K);y+=22}
+    if(sig){police('',8.5,'AH Mont');espacement(2.2);ctx.fillStyle=F.doux;ctx.fillText('PAROLES & MUSIQUE',W/2,y*K);espacement(0);
+      police('',30,'AH Sig');ctx.fillStyle=F.acc;ctx.fillText('Alex Harper',W/2,(y+34)*K);}
+    ctx.textAlign='left';return;
+  }
+  const y=1123-74;
+  ctx.strokeStyle=F.ligne;ctx.lineWidth=K*.8;ctx.beginPath();ctx.moveTo(64*K,(y-34)*K);ctx.lineTo((794-64)*K,(y-34)*K);ctx.stroke();
+  if(ded){if(kid)ctx.font=`400 ${15*K}px "AH Kid"`;else police('italic',17,'AH Corm');ctx.fillStyle=F.txt;ctx.textAlign='left';ctx.fillText(ded,64*K,(y+2)*K)}
+  if(sig){ctx.textAlign='right';police('',8.5,'AH Mont');espacement(2);ctx.fillStyle=F.doux;ctx.fillText('PAROLES & MUSIQUE',(794-64)*K,(y-14)*K);espacement(0);
+    police('',28,'AH Sig');ctx.fillStyle=F.acc;ctx.fillText('Alex Harper',(794-62)*K,(y+12)*K);ctx.textAlign='left'}
+}
+
+/* ---------- décors ---------- */
+function rnd(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return (s-1)/2147483646}}
+function fleur(x,y,r,col,coeurCol,n,rot){
+  ctx.save();ctx.translate(x*K,y*K);ctx.rotate(rot);
+  for(let i=0;i<n;i++){ctx.save();ctx.rotate(i*2*Math.PI/n);
+    const g=ctx.createRadialGradient(0,-r*.55*K,0,0,-r*.55*K,r*.62*K);g.addColorStop(0,col+'ee');g.addColorStop(1,col+'55');
+    ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,-r*.55*K,r*.32*K,r*.58*K,0,0,7);ctx.fill();ctx.restore()}
+  ctx.fillStyle=coeurCol;ctx.beginPath();ctx.arc(0,0,r*.2*K,0,7);ctx.fill();
+  ctx.restore();
+}
+function feuille(x,y,l,ang,col){ctx.save();ctx.translate(x*K,y*K);ctx.rotate(ang);ctx.fillStyle=col;ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(l*.45*K,-l*.28*K,l*K,0);ctx.quadraticCurveTo(l*.45*K,l*.28*K,0,0);ctx.fill();
+  ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=K*.6;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(l*.9*K,0);ctx.stroke();ctx.restore()}
+function bouquet(x,y,base,echelle){
+  const R=rnd(Math.round(x*7+y*13+3)),s=echelle,cols=['#E8A6A1','#F2C9B5','#D98C8C','#F4DDB2','#C9A7C9'];
+  ctx.save();ctx.globalAlpha=.92;
+  for(let i=0;i<8;i++){const a=base-0.95+i*0.27;feuille(x,y,(44+R()*34)*s,a,i%2?'#A9BFA0':'#8FAE8A')}
+  for(let i=0;i<6;i++){const a=base-0.75+i*0.3+(R()-.5)*.2,d=(24+R()*38)*s;
+    fleur(x+Math.cos(a)*d,y+Math.sin(a)*d,(18+R()*12)*s,cols[i%cols.length],'#C79A5B',5+(i%2),R()*3)}
+  fleur(x+Math.cos(base)*8*s,y+Math.sin(base)*8*s,30*s,'#E8A6A1','#C79A5B',6,.3);
+  for(let i=0;i<12;i++){const a=base-1+R()*2,d=(78+R()*38)*s;ctx.fillStyle=cols[(i+2)%5];ctx.beginPath();ctx.arc((x+Math.cos(a)*d)*K,(y+Math.sin(a)*d)*K,(2+R()*3)*s*K,0,7);ctx.fill()}
+  ctx.restore();
+}
+function decoFleurs(F){
+  bouquet(58,58,Math.PI/4,1.45);
+  bouquet(736,58,Math.PI*3/4,1.25);
+  // fine guirlande sous le pied de page
+  const R=rnd(11),cols=['#E8A6A1','#F2C9B5','#D98C8C','#C9A7C9'];
+  for(let i=0;i<9;i++){const x=250+i*37,y=1093+Math.sin(i)*3;if(i%2)feuille(x,y,16,-0.4+(R()-.5),'#A9BFA0');else fleur(x,y,9,cols[i%4],'#C79A5B',5,R()*3)}
+}
+const COULEURS_ENFANT=['#E8897A','#F2B84B','#7FB8A4','#7FA3D6','#C49BD6'];
+function etoile(x,y,r,col,rot){ctx.save();ctx.translate(x*K,y*K);ctx.rotate(rot||0);ctx.fillStyle=col;ctx.beginPath();
+  for(let i=0;i<10;i++){const rr=(i%2?r*.45:r)*K,a=i*Math.PI/5-Math.PI/2;i?ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr):ctx.moveTo(Math.cos(a)*rr,Math.sin(a)*rr)}
+  ctx.closePath();ctx.fill();ctx.restore()}
+function nuage(x,y,s){ctx.save();ctx.fillStyle='rgba(255,255,255,.92)';ctx.strokeStyle='rgba(127,163,214,.45)';ctx.lineWidth=2*K;
+  ctx.beginPath();for(const [dx,dy,r] of [[0,0,18],[20,-10,22],[44,-2,17],[24,8,16],[-14,6,12],[58,8,11]]){ctx.moveTo((x+(dx+r)*s)*K,(y+dy*s)*K);ctx.arc((x+dx*s)*K,(y+dy*s)*K,r*s*K,0,7)}
+  ctx.stroke();ctx.fill();ctx.restore()}
+function decoEnfant(F){
+  // arc-en-ciel derrière le titre
+  ctx.save();ctx.globalAlpha=.32;ctx.lineCap='round';
+  COULEURS_ENFANT.forEach((c,i)=>{ctx.strokeStyle=c;ctx.lineWidth=11*K;ctx.beginPath();ctx.arc(397*K,190*K,(150-i*12)*K,Math.PI*1.08,Math.PI*1.92);ctx.stroke()});
+  ctx.restore();
+  nuage(70,70,1);nuage(690,92,.8);
+  const R=rnd(7);
+  const pts=[[36,300],[757,340],[30,560],[762,610],[40,820],[752,860],[120,1010],[680,1010],[250,40],[560,36]];
+  pts.forEach(([x,y],i)=>etoile(x,y,7+R()*6,COULEURS_ENFANT[i%5],R()));
+  // cadre pointillé arrondi
+  ctx.save();ctx.strokeStyle=COULEURS_ENFANT[3];ctx.globalAlpha=.55;ctx.lineWidth=3*K;ctx.setLineDash([2*K,10*K]);ctx.lineCap='round';
+  ctx.beginPath();ctx.roundRect(22*K,22*K,(794-44)*K,(1123-44)*K,30*K);ctx.stroke();ctx.restore();
+}
+function cadreClassique(F){
+  ctx.strokeStyle=F.ligne;ctx.lineWidth=K;ctx.strokeRect(26*K,26*K,(794-52)*K,(1123-52)*K);
+  ctx.globalAlpha=.6;ctx.strokeRect(31*K,31*K,(794-62)*K,(1123-62)*K);ctx.globalAlpha=1;
+}
+const THEMES={
+  classique:{titre:'AH Play',corps:'AH Corm',refrain:'italic',rappel:'italic',deco:cadreClassique,rayon:0,titreMax:620,haut:58,lh:1.34},
+  fleurs:{titre:'AH Play',corps:'AH Corm',refrain:'italic',rappel:'italic',deco:decoFleurs,rayon:18,titreMax:420,haut:70,lh:1.34,boite:'rgba(255,255,255,.55)',bord:'rgba(201,140,140,.45)'},
+  enfant:{titre:'AH Kid',corps:'AH Kid',refrain:'',rappel:'',deco:decoEnfant,rayon:26,titreMax:440,haut:74,lh:1.38,boite:'rgba(255,255,255,.75)',bord:'rgba(242,184,75,.7)',multicolore:true,poids:'400'}
+};
+
+/* ---------- modèles en colonnes (classique, fleurs, enfantin) ---------- */
+function classique(F,p,T){
+  T=T||THEMES.classique;
+  const titre=$('titre').value.trim(),pour=$('pour').value.trim();
+  const P=(st,f,fam)=>{ctx.font=`${st} ${T.poids&&fam==='AH Kid'?T.poids:''} ${f*K}px "${fam}"`.replace(/\s+/g,' ')};
+  T.deco(F);
+  // titre
+  let y=T.haut;
+  let tt=T.multicolore?50:46;P('',tt,T.titre);while(largeur(titre)>T.titreMax&&tt>20){tt--;P('',tt,T.titre)}
+  ctx.textAlign='center';ctx.textBaseline='alphabetic';
+  if(T.multicolore){ctx.font=`600 ${tt*K}px "AH Kid"`;const tw=ctx.measureText(titre).width;let x=W/2-tw/2;ctx.textAlign='left';
+    [...titre].forEach((ch,i)=>{ctx.fillStyle=COULEURS_ENFANT[i%5];ctx.fillText(ch,x,(y+tt*.85)*K);x+=ctx.measureText(ch).width});ctx.textAlign='center'}
+  else{ctx.fillStyle=F.txt;ctx.fillText(titre,W/2,(y+tt*.85)*K)}
+  y+=tt*1.02;
+  if(pour){if(T.multicolore){P('',15,'AH Kid');ctx.fillStyle=F.doux;ctx.fillText(pour,W/2,(y+14)*K)}else{police('',10,'AH Mont');espacement(3);ctx.fillStyle=F.doux;ctx.fillText(pour.toUpperCase(),W/2,(y+12)*K);espacement(0)}y+=22}
+  // ornement
+  y+=12;
+  if(T.multicolore){[-40,-20,0,20,40].forEach((dx,i)=>etoile(397+dx,y,i===2?7:5,COULEURS_ENFANT[i],0))}
+  else{ctx.strokeStyle=T.bord||F.doux;ctx.lineWidth=K*.8;ctx.beginPath();ctx.moveTo((397-80)*K,y*K);ctx.lineTo((397-12)*K,y*K);ctx.moveTo((397+12)*K,y*K);ctx.lineTo((397+80)*K,y*K);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(397*K,(y-5)*K);ctx.lineTo(402*K,y*K);ctx.lineTo(397*K,(y+5)*K);ctx.lineTo(392*K,y*K);ctx.closePath();ctx.stroke()}
+  y+=22;
+  const bas=1123-122, dispo=bas-y, larg=794-128;
+  const items=p.items.map(i=>i.type==='refrainDef'?{type:'rappel'}:i);
+  const avecBoite=!!p.refrain;
+  function mesurer(f){
+    const lh=f*T.lh, gap=f*.85;
+    let hBoite=0;
+    if(avecBoite){P(T.refrain,f,T.corps);const wmax=Math.max(...p.refrain.map(largeur));if(wmax>larg*.78-40)return null;hBoite=28+p.refrain.length*lh+18+24}
+    const hauteurs=items.map(it=>it.type==='rappel'?f*1.6:it.lignes.length*lh+gap);
+    P('',f,T.corps);
+    const total=hauteurs.reduce((a,b)=>a+b,0);
+    const nbLignes=items.reduce((a,it)=>a+(it.type==='rappel'?1:it.lignes.length),0);
+    const cols=nbLignes>14?2:1, colW=cols===2?(larg-56)/2:larg;
+    const wmax=Math.max(0,...items.filter(i=>i.type==='couplet').flatMap(i=>i.lignes.map(largeur)));
+    if(wmax>colW-8)return null;
+    let coupe=items.length,hCols=total;
+    if(cols===2){let best=1e9,acc=0;for(let i=1;i<items.length;i++){acc+=hauteurs[i-1];const m=Math.max(acc,total-acc);if(m<best){best=m;coupe=i}}hCols=best}
+    const hTot=hBoite+hCols;
+    if(hTot>dispo)return null;
+    return {f,lh,gap,hBoite,cols,colW,coupe,hTot};
+  }
+  let lo=10,hi=30,best=null;
+  for(let i=0;i<22;i++){const m=(lo+hi)/2;const r=mesurer(m);if(r){best=r;lo=m}else hi=m}
+  if(!best){best=mesurer(10)||{f:10,lh:13.4,gap:8.5,hBoite:avecBoite?28+p.refrain.length*13.4+42:0,cols:2,colW:(larg-56)/2,coupe:Math.ceil(items.length/2),hTot:dispo};$('info').innerHTML='<span class="alerte">Texte très long : pense à raccourcir ou à passer sur 2 pages.</span>'}
+  else $('info').textContent='A4 · 300 dpi · texte en '+Math.round(best.f*0.75*10)/10+' pt';
+  y+=Math.max(0,(dispo-best.hTot)/2*0.5);
+  if(avecBoite){
+    const bw=larg*.78,bx=397-bw/2,bh=best.hBoite-24;
+    ctx.fillStyle=T.boite||F.boite;ctx.strokeStyle=T.bord||F.ligne;ctx.lineWidth=(T.multicolore?2:1)*K;
+    ctx.beginPath();ctx.roundRect(bx*K,y*K,bw*K,bh*K,T.rayon*K);ctx.fill();ctx.stroke();
+    if(T.multicolore){P('',12,'AH Kid');ctx.fillStyle=COULEURS_ENFANT[0];ctx.fillText('♪ Refrain ♪',W/2,(y+22)*K)}
+    else{police('',9.5,'AH Mont');espacement(3.2);ctx.fillStyle=F.doux;ctx.fillText('REFRAIN',W/2,(y+22)*K);espacement(0)}
+    P(T.refrain,best.f,T.corps);ctx.fillStyle=F.txt;
+    let yy=y+28+best.lh*.8;for(const l of p.refrain){ctx.fillText(l,W/2,yy*K);yy+=best.lh}
+    y+=best.hBoite;
+  }
+  const colonnes=best.cols===2?[items.slice(0,best.coupe),items.slice(best.coupe)]:[items];
+  colonnes.forEach((col,ci)=>{
+    const cx=best.cols===2?(64+best.colW/2+ci*(best.colW+56)):397;
+    let yy=y+best.f;
+    for(const it of col){
+      if(it.type==='rappel'){P(T.rappel,best.f*.82,T.corps);ctx.fillStyle=T.multicolore?COULEURS_ENFANT[0]:F.doux;ctx.fillText(T.multicolore?'♪ Refrain ♪':'— Refrain —',cx*K,(yy+best.f*.1)*K);yy+=best.f*1.6;continue}
+      P('',best.f,T.corps);ctx.fillStyle=F.txt;
+      for(const l of it.lignes){ctx.fillText(l,cx*K,yy*K);yy+=best.lh}
+      yy+=best.gap;
+    }
+  });
+  if(best.cols===2){ctx.save();ctx.strokeStyle=T.bord||F.ligne;ctx.globalAlpha=.7;ctx.lineWidth=K*(T.multicolore?2:.8);if(T.multicolore){ctx.setLineDash([2*K,9*K]);ctx.lineCap='round'}
+    ctx.beginPath();ctx.moveTo(397*K,(y+4)*K);ctx.lineTo(397*K,(y+best.hTot-best.hBoite-6)*K);ctx.stroke();ctx.restore()}
+  ctx.textAlign='left';
+  pied(F,false,T);
+}
+
+/* ---------- modèle cœur ---------- */
+function heartPath(c,cx,cy,s){c.beginPath();for(let i=0;i<=720;i++){const t=i/720*2*Math.PI;const x=16*Math.pow(Math.sin(t),3),y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);i?c.lineTo(cx+x*s,cy-y*s):c.moveTo(cx+x*s,cy-y*s)}c.closePath()}
+function coeur(F,p){
+  const cx=W/2,cy=455*K,sc=23*K;
+  heartPath(ctx,cx,cy,sc*1.03);ctx.fillStyle=F.sil;ctx.fill();
+  const m=document.createElement('canvas');m.width=W;m.height=H;const mx=m.getContext('2d');heartPath(mx,cx,cy,sc);mx.fill();
+  const data=mx.getImageData(0,0,W,H).data;
+  const cache={};function spans(y){y=Math.max(0,Math.min(H-1,Math.round(y)));if(cache[y])return cache[y];const out=[];let st=-1;for(let x=0;x<W;x++){const on=data[(y*W+x)*4+3]>128;if(on&&st<0)st=x;if(!on&&st>=0){out.push([st,x]);st=-1}}return cache[y]=out}
+  const mots=texteContinu(p).split(/\s+/).filter(Boolean);
+  function poser(f,draw){
+    const fs=f*K,lh=fs*1.18;let wi=0;ctx.font=`italic ${fs}px "AH Corm"`;
+    const top=cy-12.5*sc,bot=cy+17*sc;
+    for(let y=top+fs;y<bot;y+=lh){
+      const segs=spans(y-fs*.35).filter(s=>s[1]-s[0]>fs*5);
+      for(const [a,b] of segs){const pad=fs*.3,w=b-a-2*pad;const ligne=[];
+        while(wi<mots.length){const t=[...ligne,mots[wi]].join(' ');if(ctx.measureText(t).width>w&&ligne.length)break;ligne.push(mots[wi]);wi++;if(ctx.measureText(t).width>w)break}
+        if(!ligne.length)continue;
+        if(draw){const tw=ctx.measureText(ligne.join(' ')).width;const g=ligne.length-1;const fin=wi>=mots.length;
+          const just=g>=2&&!fin&&(w-tw)/g<fs*1.2;let x=a+pad,extra=just?(w-tw)/g:0;if(!just)x=a+pad+(w-tw)/2;
+          for(const wd of ligne){ctx.fillStyle=wd==='♥'?F.acc:F.txt;ctx.fillText(wd,x,y);x+=ctx.measureText(wd+' ').width+extra}}
+      }
+      if(wi>=mots.length)return true;
+    }
+    return wi>=mots.length;
+  }
+  let lo=6,hi=40;for(let i=0;i<18;i++){const mid=(lo+hi)/2;if(poser(mid,false))lo=mid;else hi=mid}
+  ctx.textAlign='left';poser(lo,true);
+  $('info').textContent='A4 · 300 dpi · texte en '+Math.round(lo*.75*10)/10+' pt';
+  // titre sous le cœur
+  const titre=$('titre').value.trim();ctx.textAlign='center';
+  let tt=40;police('',tt,'AH Play');while(largeur(titre)>620&&tt>20){tt--;police('',tt,'AH Play')}
+  ctx.fillStyle=F.txt;ctx.fillText(titre,W/2,(1123-170)*K);
+  ctx.textAlign='left';pied(F,true);
+}
+
+/* ---------- modèle vinyle ---------- */
+function vinyle(F,p){
+  const cx=W/2,cy=470*K,R0=330*K,Rin=128*K;
+  const g=ctx.createRadialGradient(cx-80*K,cy-90*K,20*K,cx,cy,R0);g.addColorStop(0,'#3b302b');g.addColorStop(1,'#1d1714');
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R0,0,7);ctx.fill();
+  ctx.strokeStyle='rgba(255,255,255,.035)';ctx.lineWidth=K*.8;for(let r=Rin-10*K;r<R0;r+=3*K){ctx.beginPath();ctx.arc(cx,cy,r,0,7);ctx.stroke()}
+  ctx.save();ctx.globalAlpha=.07;ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R0,-2.2,-1.6);ctx.fill();ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R0,.95,1.5);ctx.fill();ctx.restore();
+  const txt=texteContinu(p);
+  function spirale(f,draw){const fs=f*K;ctx.font=`italic ${fs}px "AH Corm"`;let r=R0-18*K,ang=-Math.PI/2;const pas=fs*1.32;
+    for(let i=0;i<txt.length;i++){const ch=txt[i];const w=ctx.measureText(ch).width;
+      if(draw){ctx.save();ctx.translate(cx,cy);ctx.rotate(ang+(w/2)/r);ctx.translate(0,-r);ctx.fillStyle=ch==='♥'?'#e3a3a3':'#efe3c8';ctx.fillText(ch,-w/2,0);ctx.restore()}
+      const da=w/r;ang+=da;r-=pas*da/(2*Math.PI);if(r<Rin)return false}
+    return true}
+  let lo=5,hi=40;for(let k=0;k<20;k++){const m=(lo+hi)/2;if(spirale(m,false))lo=m;else hi=m}
+  ctx.textAlign='left';spirale(lo,true);
+  $('info').textContent='A4 · 300 dpi · texte en '+Math.round(lo*.75*10)/10+' pt';
+  // étiquette
+  const lab=F.bg==='#2F2622'?'#B86A6A':F.acc;
+  ctx.fillStyle=lab;ctx.beginPath();ctx.arc(cx,cy,112*K,0,7);ctx.fill();
+  ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=K;ctx.beginPath();ctx.arc(cx,cy,104*K,0,7);ctx.stroke();
+  ctx.fillStyle='#F7F1E6';ctx.textAlign='center';
+  const titre=$('titre').value.trim();let tt=30;police('',tt,'AH Play');while(largeur(titre)>180&&tt>12){tt--;police('',tt,'AH Play')}
+  ctx.fillText(titre,cx,cy-24*K);
+  const pour=$('pour').value.trim();if(pour){police('',9,'AH Mont');espacement(1.5);ctx.fillText(pour.toUpperCase(),cx,cy+28*K);espacement(0)}
+  if($('signature').checked){police('',22,'AH Sig');ctx.fillText('Alex Harper',cx,cy+62*K)}
+  ctx.beginPath();ctx.arc(cx,cy,5*K,0,7);ctx.fill();
+  ctx.textAlign='left';
+  // pied sans double signature
+  const ded=$('dedicace').value.trim();
+  if(ded){ctx.textAlign='center';police('italic',19,'AH Corm');ctx.fillStyle=F.doux;ctx.fillText(ded,W/2,(1123-120)*K)}
+  if($('signature').checked){ctx.textAlign='center';police('',8.5,'AH Mont');espacement(2.2);ctx.fillStyle=F.doux;ctx.fillText('PAROLES & MUSIQUE · ALEX HARPER',W/2,(1123-92)*K);espacement(0)}
+  ctx.textAlign='left';
+}
+
+/* ---------- rendu ---------- */
+let minuterie;
+function dessiner(){
+  bloquerNuit();
+  const F=FONDS[etat.fond],p=lire();
+  ctx.setTransform(1,0,0,1,0,0);ctx.textBaseline='alphabetic';espacement(0);
+  fond(F);
+  if(etat.modele==='coeur')coeur(F,p);else if(etat.modele==='vinyle')vinyle(F,p);else classique(F,p,THEMES[etat.modele]||THEMES.classique);
+  sauver();
+}
+function planifier(){clearTimeout(minuterie);minuterie=setTimeout(dessiner,250)}
+
+/* ---------- mémoire du dernier travail (sur cet appareil) ---------- */
+const CLE='alexharper-atelier-paroles';
+function sauver(){try{const d={etat,sig:$('signature').checked};champs.forEach(c=>d[c]=$(c).value);localStorage.setItem(CLE,JSON.stringify(d))}catch(e){}}
+function restaurer(){try{const d=JSON.parse(localStorage.getItem(CLE)||'null');if(!d)return false;champs.forEach(c=>{if(typeof d[c]==='string')$(c).value=d[c]});if(d.etat)etat=d.etat;$('signature').checked=d.sig!==false;return true}catch(e){return false}}
+
+function bloquerNuit(){
+  const b=document.querySelector('#fonds [data-v="nuit"]');const interdit=etat.modele==='vinyle';
+  b.disabled=interdit;b.style.opacity=interdit?.35:1;b.title=interdit?'Trop sombre pour le vinyle':'';
+  if(interdit&&etat.fond==='nuit'){etat.fond='creme';document.querySelectorAll('#fonds button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v==='creme'?'true':'false'))}
+}
+function groupes(id,cle){
+  const g=$(id);
+  g.querySelectorAll('button').forEach(b=>{
+    b.setAttribute('aria-pressed',b.dataset.v===etat[cle]?'true':'false');
+    b.addEventListener('click',()=>{etat[cle]=b.dataset.v;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));dessiner()});
+  });
+}
+
+function nomFichier(ext){const t=($('titre').value||'paroles').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'').toLowerCase();return `paroles-${t}-${etat.modele}.${ext}`}
+$('png').addEventListener('click',()=>{cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=nomFichier('png');a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)},'image/png')});
+$('pdf').addEventListener('click',()=>{
+  if(!window.jspdf){alert("Le module PDF n'a pas pu se charger. Utilise « Télécharger en image ».");return}
+  const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+  doc.addImage(cv.toDataURL('image/jpeg',0.95),'JPEG',0,0,210,297);doc.save(nomFichier('pdf'));
+});
+
+if(!restaurer())$('paroles').value=EXEMPLE;
+groupes('modeles','modele');groupes('fonds','fond');
+champs.forEach(c=>$(c).addEventListener('input',planifier));
+$('signature').addEventListener('change',dessiner);
+Promise.all(['400 20px "AH Corm"','italic 400 20px "AH Corm"','20px "AH Play"','20px "AH Sig"','20px "AH Mont"','400 20px "AH Kid"','600 20px "AH Kid"'].map(f=>document.fonts.load(f))).then(()=>{dessiner();document.body.dataset.pret=1});
+})();
+</script>
+</body>
+</html>

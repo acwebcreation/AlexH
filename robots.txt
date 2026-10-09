@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /pour/
+Disallow: /outils/
 
 Sitemap: https://alexharper.fr/sitemap.xml
