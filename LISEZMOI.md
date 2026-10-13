@@ -1,4 +1,13 @@
-# alexharper.fr — nouvelle version (octobre 2026)
+# alexharper.fr — version artiste (octobre 2026)
+
+Site recentré sur la musique uniquement : plus de poèmes, plus de livres.
+- index.html — page d'artiste : dernière sortie, titres, thèmes, albums, chanson personnalisée, vidéos, l'artiste
+- musique.html — remplace boutique.html (singles + albums). boutique.html redirige vers musique.html.
+- Liens « Bientôt » à compléter : chercher « LIEN À RENSEIGNER » dans index.html et musique.html.
+
+---
+
+# Version précédente (octobre 2026)
 
 Site recentré sur les chansons personnalisées + boutique (albums et livres).
 Tout ce qui concernait les poèmes personnalisés, le blog et « Recevoir 5 poèmes » a été retiré.

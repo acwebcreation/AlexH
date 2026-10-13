@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alex Harper — Chansons personnalisées, albums et livres</title>
-<meta name="description" content="Une chanson écrite pour quelqu'un, à partir de vos souvenirs : pour un amour, une maman, un enfant, une rupture ou un adieu. Albums et livres d'Alex Harper.">
+<title>Alex Harper — Chansons françaises sur ce qu'on ne dit pas</title>
+<meta name="description" content="Alex Harper, auteur-compositeur depuis Bruxelles : chansons françaises intimes sur l'amour, la rupture, le deuil et les mots qu'on garde pour soi. Albums, singles et chansons personnalisées.">
 <link rel="canonical" href="https://alexharper.fr/">
-<meta property="og:title" content="Alex Harper — Une chanson écrite pour quelqu'un">
-<meta property="og:description" content="Vous me racontez vos souvenirs, j'en fais une chanson. Amour, maman, enfants, rupture, deuil…">
+<meta property="og:title" content="Alex Harper — Chansons françaises sur ce qu'on ne dit pas">
+<meta property="og:description" content="L'amour, la rupture, le deuil, la famille : des chansons intimes, chantées en français.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexharper.fr/">
+<meta property="og:image" content="https://alexharper.fr/images/single-ce-que-je-range.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -23,8 +24,9 @@
     <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     <nav class="nav-liens" aria-label="Menu principal">
       <a href="index.html" aria-current="page">Accueil</a>
+      <a href="musique.html">Musique</a>
       <a href="chansons.html">Chansons personnalisées</a>
-      <a href="boutique.html">Ma boutique</a>
+      <a href="index.html#apropos">L'artiste</a>
       <a href="contact.html">Contact</a>
       <a href="chanson-sur-mesure.html" class="nav-cta">Commander</a>
     </nav>
@@ -33,93 +35,133 @@
 
 <main>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="conteneur">
-    <p class="signature">Alex Harper</p>
-    <h1>Une chanson écrite pour quelqu'un, à partir de vos souvenirs</h1>
-    <p class="chapeau">Vous me racontez la personne, ce que vous avez vécu ensemble et ce que vous n'avez jamais su lui dire. J'en fais une chanson, avec ma voix, rien que pour elle.</p>
-    <div class="groupe-btn">
-      <a class="btn btn-plein" href="chansons.html">Choisir une occasion</a>
-      <a class="btn btn-contour" href="boutique.html">Écouter mes chansons</a>
+<!-- HERO : la dernière sortie -->
+<section class="hero-artiste">
+  <div class="conteneur hero-grille">
+    <div class="hero-texte">
+      <span class="surtitre">Auteur · compositeur · interprète</span>
+      <h1>Des chansons pour ce qu'on n'a jamais su dire</h1>
+      <p class="chapeau">L'amour, la rupture, l'absence, la famille. Des chansons françaises intimes, piano ou guitare, chantées à voix basse comme une lettre qu'on n'a pas envoyée.</p>
+      <div class="groupe-btn">
+        <a class="btn btn-plein" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">▶ Écouter le dernier titre</a>
+        <a class="btn btn-contour" href="musique.html">Toute la musique</a>
+      </div>
+      <ul class="plateformes" aria-label="Disponible sur">
+        <li>Spotify</li><li>Apple Music</li><li>Deezer</li><li>YouTube Music</li><li>Amazon Music</li>
+      </ul>
     </div>
-    <p class="prix-note">29,99 € · la chanson en MP3 + ses paroles à imprimer et encadrer</p>
+    <a class="hero-pochette" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener" aria-label="Écouter Ce que je range">
+      <img src="images/single-ce-que-je-range.jpg" alt="Pochette du single Ce que je range" width="800" height="800">
+      <span class="pochette-legende"><span class="type">Dernier single</span><strong>Ce que je range</strong><span>Extrait de l'album « Ce que je n'ai jamais dit »</span></span>
+    </a>
   </div>
 </section>
 
-<!-- OCCASIONS -->
+<!-- DERNIÈRES SORTIES -->
 <section>
   <div class="conteneur">
-    <div class="entete-section centre">
-      <span class="surtitre">Chansons personnalisées</span>
-      <h2>Pour quelle occasion ?</h2>
-      <p class="chapeau">Chaque chanson part de votre histoire. Le ton s'adapte au moment : doux, joyeux ou intime.</p>
+    <div class="entete-section entete-ligne">
+      <div>
+        <span class="surtitre">Dernières sorties</span>
+        <h2>À écouter maintenant</h2>
+      </div>
+      <a class="lien-fleche" href="musique.html">Toute la discographie →</a>
     </div>
-
-    <div class="grille-occasions">
-      <a class="occasion apparait" href="chansons.html#amoureux" style="--teinte:var(--t-amoureux)">
-        <span><span class="icone" aria-hidden="true">♡</span><h3>Pour les amoureux</h3><p>Dire je t'aime autrement</p></span>
-        <span class="fleche">Découvrir →</span>
+    <div class="grille-titres">
+      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">
+        <div class="couverture"><img src="images/single-ce-que-je-range.jpg" alt="" loading="lazy" width="800" height="800"><span class="play" aria-hidden="true">▶</span></div>
+        <h3>Ce que je range</h3>
+        <p>Ce qu'on trie, ce qu'on garde, et ce qu'on n'arrive pas à jeter.</p>
       </a>
-      <a class="occasion apparait" href="chansons.html#maman" style="--teinte:var(--t-maman)">
-        <span><span class="icone" aria-hidden="true">✿</span><h3>Pour maman</h3><p>Tout ce qu'on ne lui dit pas assez</p></span>
-        <span class="fleche">Découvrir →</span>
+      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/a-distance" target="_blank" rel="noopener">
+        <div class="couverture c-nuit"><span class="c-titre">À distance</span><span class="c-auteur">Alex Harper</span><span class="play" aria-hidden="true">▶</span></div>
+        <h3>À distance</h3>
+        <p>Aimer quelqu'un de loin, et faire avec.</p>
       </a>
-      <a class="occasion apparait" href="chansons.html#papa" style="--teinte:var(--t-papa)">
-        <span><span class="icone" aria-hidden="true">☼</span><h3>Pour papa</h3><p>Les mots qu'il garde pour lui</p></span>
-        <span class="fleche">Découvrir →</span>
+      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/les-fissures-au-plafond" target="_blank" rel="noopener">
+        <div class="couverture c-or"><span class="c-titre">Les fissures au plafond</span><span class="c-auteur">Alex Harper</span><span class="play" aria-hidden="true">▶</span></div>
+        <h3>Les fissures au plafond</h3>
+        <p>Les nuits où l'on compte les fissures plutôt que les moutons.</p>
       </a>
-      <a class="occasion apparait" href="chansons.html#enfants" style="--teinte:var(--t-enfants)">
-        <span><span class="icone" aria-hidden="true">★</span><h3>Pour les enfants</h3><p>Son prénom, son petit monde</p></span>
-        <span class="fleche">Découvrir →</span>
-      </a>
-      <a class="occasion apparait" href="chansons.html#anniversaire" style="--teinte:var(--t-anniversaire)">
-        <span><span class="icone" aria-hidden="true">✦</span><h3>Anniversaire</h3><p>Une vie racontée en chanson</p></span>
-        <span class="fleche">Découvrir →</span>
-      </a>
-      <a class="occasion apparait" href="chansons.html#mariage" style="--teinte:var(--t-mariage)">
-        <span><span class="icone" aria-hidden="true">∞</span><h3>Mariage</h3><p>Votre histoire, le jour du oui</p></span>
-        <span class="fleche">Découvrir →</span>
-      </a>
-      <a class="occasion apparait" href="chansons.html#rupture" style="--teinte:var(--t-rupture)">
-        <span><span class="icone" aria-hidden="true">✉</span><h3>Rupture</h3><p>La lettre qu'on n'enverra pas</p></span>
-        <span class="fleche">Découvrir →</span>
-      </a>
-      <a class="occasion apparait" href="chansons.html#deuil" style="--teinte:var(--t-deuil)">
-        <span><span class="icone" aria-hidden="true">❧</span><h3>Deuil</h3><p>Garder vivant un souvenir</p></span>
-        <span class="fleche">Découvrir →</span>
+      <!-- LIEN À RENSEIGNER : lien DistroKid HyperFollow de « Je t'aurais dit » -->
+      <a class="titre apparait" href="#">
+        <div class="couverture"><img src="images/single-je-taurais-dit.jpg" alt="" loading="lazy" width="800" height="800"><span class="badge-coin">Bientôt</span></div>
+        <h3>Je t'aurais dit</h3>
+        <p>Pour tout ce qui n'a pas été dit à temps.</p>
       </a>
     </div>
   </div>
 </section>
 
-<!-- COMMENT ÇA MARCHE -->
+<!-- THÈMES -->
 <section class="section-claire">
   <div class="conteneur">
+    <div class="entete-section centre">
+      <span class="surtitre">Mes chansons parlent de…</span>
+      <h2>Une chanson pour chaque chose qu'on garde pour soi</h2>
+    </div>
+    <div class="grille-themes">
+      <article class="theme apparait" style="--teinte:var(--t-amoureux)">
+        <span class="icone" aria-hidden="true">♡</span>
+        <h3>L'amour</h3>
+        <p>Les « je t'aime » dits trop tard, ou à voix trop basse.</p>
+        <ul><li>Je t'ai aimé en silence</li><li>À distance</li><li>Je t'aurais dit</li></ul>
+      </article>
+      <article class="theme apparait" style="--teinte:var(--t-rupture)">
+        <span class="icone" aria-hidden="true">✉</span>
+        <h3>La rupture</h3>
+        <p>Ce qui reste quand l'autre est parti : les silences, les objets, la politesse.</p>
+        <ul><li>La politesse du vide</li><li>Séparation</li><li>Ce que je range</li></ul>
+      </article>
+      <article class="theme apparait" style="--teinte:var(--t-deuil)">
+        <span class="icone" aria-hidden="true">❧</span>
+        <h3>L'absence</h3>
+        <p>Pour garder vivants ceux qui ne sont plus là, sans en faire un poids.</p>
+        <ul><li>Il y a des deuils</li><li>Le portrait</li><li>Acceptation</li></ul>
+      </article>
+      <article class="theme apparait" style="--teinte:var(--t-maman)">
+        <span class="icone" aria-hidden="true">✿</span>
+        <h3>La famille</h3>
+        <p>Les mots qu'on n'a jamais dits à ses parents, et qu'on chante enfin.</p>
+        <ul><li>À ma mère</li><li>À mon père</li><li>Ce qu'on dit pas assez</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ALBUMS -->
+<section>
+  <div class="conteneur">
     <div class="entete-section">
-      <span class="surtitre">Comment ça se passe</span>
-      <h2>Trois étapes, et une chanson qui reste</h2>
+      <span class="surtitre">Albums</span>
+      <h2>Deux albums, deux saisons du cœur</h2>
     </div>
-    <div class="etapes">
-      <div class="etape apparait">
-        <h3>Vous racontez</h3>
-        <p>Un questionnaire d'une dizaine de minutes : la personne, vos souvenirs, ce que vous voulez lui dire.</p>
-      </div>
-      <div class="etape apparait">
-        <h3>J'écris les paroles</h3>
-        <p>Vos souvenirs deviennent des paroles. Vous les lisez et les validez avant que la musique commence.</p>
-      </div>
-      <div class="etape apparait">
-        <h3>Vous offrez la chanson</h3>
-        <p>Vous recevez la chanson en MP3 et ses paroles mises en page, prêtes à imprimer et à encadrer.</p>
-      </div>
-    </div>
-    <div class="encart-prix apparait">
-      <div>
-        <div class="montant">29,99 €</div>
-        <p>La chanson personnalisée en MP3 + ses paroles à imprimer, offertes</p>
-      </div>
-      <a class="btn btn-plein" href="chanson-sur-mesure.html">Raconter mon histoire</a>
+    <div class="albums">
+      <article class="album apparait">
+        <div class="couverture c-nuit"><span class="c-titre">Ce que je n'ai jamais dit</span><span class="c-auteur">Alex Harper</span></div>
+        <div class="album-corps">
+          <span class="type">Album · 15 titres · sorties en cours</span>
+          <h3>Ce que je n'ai jamais dit</h3>
+          <p>Quinze chansons sur les mots qu'on garde, les lettres qu'on n'envoie pas et les gens qu'on aime en silence.</p>
+          <details class="liste-titres">
+            <summary>Voir les titres</summary>
+            <ol class="pistes">
+              <li>Ce que je range</li><li>Les fissures au plafond</li><li>À distance</li><li>Avaler</li><li>Je t'aurais dit</li><li>La politesse du vide</li><li>Je t'ai aimé en silence</li><li>Silence dans la rue</li><li>À ma mère</li><li>Acceptation</li><li>Ce qu'on dit pas assez</li><li>Il y a des deuils</li><li>Le portrait</li><li>À mon père</li><li>Séparation</li>
+            </ol>
+          </details>
+          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="musique.html#ce-que-je-nai-jamais-dit">Écouter les titres sortis</a></div>
+        </div>
+      </article>
+      <article class="album apparait">
+        <div class="couverture c-noel"><span class="c-titre">Joyeux Noël quand même</span><span class="c-auteur">Alex Harper</span></div>
+        <div class="album-corps">
+          <span class="badge">Bientôt</span>
+          <span class="type">Album de Noël · 10 titres</span>
+          <h3>Joyeux Noël quand même</h3>
+          <p>Un album de Noël tendre et un peu mélancolique, pour ceux qui fêtent avec une chaise vide, le cœur ailleurs, ou simplement l'envie d'y croire encore.</p>
+          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://www.youtube.com/playlist?list=PLQJ8Ajf64fVc" target="_blank" rel="noopener">Écouter sur YouTube</a></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -132,57 +174,71 @@
   </div>
 </section>
 
-<!-- BOUTIQUE (aperçu) -->
+<!-- CHANSON PERSONNALISÉE -->
 <section>
   <div class="conteneur">
-    <div class="entete-section">
-      <span class="surtitre">Ma boutique</span>
-      <h2>Mes chansons et mes livres</h2>
-      <p class="chapeau">Des chansons à écouter, des recueils à garder sur la table de nuit, des carnets à offrir.</p>
+    <div class="bandeau-perso apparait">
+      <div>
+        <span class="surtitre">Chanson personnalisée</span>
+        <h2>Et si la prochaine chanson était pour quelqu'un que vous aimez ?</h2>
+        <p>Vous me racontez la personne et vos souvenirs. J'écris les paroles, vous les validez, puis je la chante. Pour un amour, une maman, un enfant, un mariage ou un adieu.</p>
+        <div class="groupe-btn">
+          <a class="btn btn-plein" href="chansons.html">Choisir une occasion</a>
+          <a class="btn btn-contour" href="chanson-sur-mesure.html">Raconter mon histoire</a>
+        </div>
+      </div>
+      <div class="bandeau-prix">
+        <div class="montant">29,99 €</div>
+        <p>La chanson en MP3<br>+ ses paroles mises en page, à imprimer et encadrer</p>
+      </div>
     </div>
-    <div class="grille-produits">
-      <article class="produit apparait">
-        <div class="couverture"><img src="images/single-ce-que-je-range.jpg" alt="Pochette du single Ce que je range" loading="lazy" width="800" height="800"></div>
-        <div class="produit-corps">
-          <span class="type">Single</span>
-          <h3>Ce que je range</h3>
-          <p>Extrait de l'album « Ce que je n'ai jamais dit ». Des chansons intimes sur les mots qu'on garde pour soi.</p>
-          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter</a><a class="btn btn-contour btn-petit" href="boutique.html#albums">Toutes mes chansons</a></div>
-        </div>
-      </article>
-      <article class="produit apparait">
-        <div class="couverture c-noel"><span class="c-titre">Joyeux Noël quand même</span><span class="c-auteur">Alex Harper</span></div>
-        <div class="produit-corps">
-          <span class="type">Livre · album bientôt</span>
-          <h3>Joyeux Noël quand même</h3>
-          <p>Pour celles et ceux à qui Noël fait un peu mal.</p>
-          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://link.amazon/B0iGDJKsG" target="_blank" rel="noopener">Voir sur Amazon</a></div>
-        </div>
-      </article>
-      <article class="produit apparait">
-        <div class="couverture c-or"><span class="c-titre">Raconte-moi ton Noël</span><span class="c-auteur">Alex Harper</span></div>
-        <div class="produit-corps">
-          <span class="type">Livres à offrir</span>
-          <h3>Papy &amp; Mamie, raconte-moi ton Noël</h3>
-          <p>Des carnets pour que les grands-parents racontent leurs souvenirs.</p>
-          <div class="groupe-btn"><a class="btn btn-contour btn-petit" href="boutique.html#livres">Voir les livres</a></div>
-        </div>
-      </article>
+  </div>
+</section>
+
+<!-- VIDÉOS -->
+<section class="section-claire">
+  <div class="conteneur">
+    <div class="entete-section entete-ligne">
+      <div>
+        <span class="surtitre">En vidéo</span>
+        <h2>Les chansons sur YouTube et TikTok</h2>
+        <p class="chapeau">Des extraits chantés, des paroles à l'écran, et les albums en entier le dimanche.</p>
+      </div>
     </div>
-    <p class="centre" style="margin-top:2.2rem;"><a class="btn btn-plein" href="boutique.html">Toute la boutique</a></p>
+    <div class="grille-reseaux">
+      <a class="reseau apparait" href="https://www.youtube.com/@AlexH.Universe" target="_blank" rel="noopener">
+        <span class="reseau-icone" aria-hidden="true">▶</span>
+        <span><strong>YouTube</strong><span>@AlexH.Universe · clips, extraits, albums complets</span></span>
+        <span class="fleche">S'abonner →</span>
+      </a>
+      <a class="reseau apparait" href="https://www.tiktok.com/@alexharper.studio" target="_blank" rel="noopener">
+        <span class="reseau-icone" aria-hidden="true">♪</span>
+        <span><strong>TikTok</strong><span>@alexharper.studio · un extrait par jour</span></span>
+        <span class="fleche">Suivre →</span>
+      </a>
+      <a class="reseau apparait" href="https://www.youtube.com/playlist?list=PLQJ8Ajf64fVc" target="_blank" rel="noopener">
+        <span class="reseau-icone" aria-hidden="true">❄</span>
+        <span><strong>Playlist de Noël</strong><span>« Joyeux Noël quand même » en entier</span></span>
+        <span class="fleche">Écouter →</span>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- À PROPOS -->
-<section class="section-claire">
+<section id="apropos">
   <div class="conteneur apropos">
     <div class="centre"><p class="signature">Alex</p></div>
     <div>
-      <span class="surtitre">Qui écrit vos chansons</span>
+      <span class="surtitre">L'artiste</span>
       <h2>La voix derrière les mots</h2>
-      <p>Tout a commencé par des phrases griffonnées la nuit, jamais montrées à personne. Puis un jour, une phrase écrite pour soi a fini par parler à quelqu'un d'autre.</p>
-      <p>Depuis Bruxelles, j'écris des chansons et des livres qui partent tous du même endroit : ce qu'on tait, jusqu'au jour où on ne peut plus le taire. Aujourd'hui, j'écris aussi pour vous, pour la personne que vous aimez.</p>
-      <a class="btn btn-contour" href="chansons.html">Découvrir les chansons personnalisées</a>
+      <p>Tout a commencé par des phrases griffonnées la nuit, jamais montrées à personne. Puis un jour, une phrase écrite pour soi a fini par parler à quelqu'un d'autre, et elle est devenue une chanson.</p>
+      <p>Depuis Bruxelles, j'écris des chansons qui partent toutes du même endroit : ce qu'on tait, jusqu'au jour où on ne peut plus le taire. Pas de grands discours, pas de héros : juste quelqu'un d'un peu maladroit qui essaie de dire les choses avant qu'il soit trop tard.</p>
+      <div class="groupe-btn">
+        <a class="btn btn-plein" href="musique.html">Écouter mes chansons</a>
+        <a class="btn btn-contour" href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a>
+      </div>
+      <p class="note-livres">J'écris aussi des livres : recueils, carnets à offrir et un roman, tous sur ma page auteur Amazon.</p>
     </div>
   </div>
 </section>
@@ -193,24 +249,24 @@
   <div class="conteneur">
     <div>
       <a class="marque" href="index.html">Alex Harper</a>
-      <p class="legal">Chansons personnalisées, albums et livres.<br>Un site ActivityWeb Studio — BCE 0558.805.548<br>© <span id="annee">2026</span> Alex Harper</p>
+      <p class="legal">Chansons françaises et chansons personnalisées.<br>Un site ActivityWeb Studio — BCE 0558.805.548<br>© <span id="annee">2026</span> Alex Harper</p>
     </div>
     <div>
       <h4>Le site</h4>
       <ul>
+        <li><a href="musique.html">Musique</a></li>
         <li><a href="chansons.html">Chansons personnalisées</a></li>
-        <li><a href="boutique.html">Ma boutique</a></li>
         <li><a href="chanson-sur-mesure.html">Commander une chanson</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
-      <h4>Me suivre</h4>
+      <h4>Écouter &amp; suivre</h4>
       <ul>
-        <li><a href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a></li>
-        <li><a href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Écouter « Ce que je range »</a></li>
+        <li><a href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">Spotify, Apple Music, Deezer…</a></li>
         <li><a href="https://www.youtube.com/@AlexH.Universe" target="_blank" rel="noopener">YouTube</a></li>
         <li><a href="https://www.tiktok.com/@alexharper.studio" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://www.amazon.fr/stores/Alex-Harper/author/B0HGG8LVZB?shoppingPortalEnabled=true&amp;linkCode=sl2&amp;tag=alexharper-21&amp;linkId=1d0946f02e3f74601f52a2429202b837&amp;ref_=as_li_ss_tl" target="_blank" rel="noopener">Mes livres sur Amazon</a></li>
       </ul>
     </div>
   </div>

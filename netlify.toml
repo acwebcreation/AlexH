@@ -16,3 +16,8 @@
   from = "/article-*"
   to = "/"
   status = 301
+
+[[redirects]]
+  from = "/boutique.html"
+  to = "/musique.html"
+  status = 301
