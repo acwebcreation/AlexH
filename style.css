@@ -491,3 +491,27 @@ ol.pistes li::before{ content: counter(piste, decimal-leading-zero) "  "; font-f
 .reseau .fleche{ font-family: var(--sans); font-size: .75rem; color: var(--rose-fonce); }
 #apropos{ scroll-margin-top: 80px; }
 .note-livres{ margin-top: 1.2rem; font-size: 1.02rem; font-style: italic; color: var(--encre-douce); }
+
+/* ---------- accueil simplifié : liste de titres ---------- */
+.conteneur-etroit{ max-width: 820px; }
+.liste-pistes{ list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ligne); }
+.liste-pistes li{ border-bottom: 1px solid var(--ligne); }
+.piste{ display: grid; grid-template-columns: 56px 1fr auto; gap: 1.1rem; align-items: center; padding: .9rem .4rem; text-decoration: none; color: var(--encre); border-radius: 10px; transition: background .2s; }
+.piste:hover{ background: var(--carte); color: var(--encre); }
+.vignette{ width: 56px; height: 56px; border-radius: 8px; overflow: hidden; background: var(--fond-2); display: flex; align-items: center; justify-content: center; }
+.vignette img{ width: 100%; height: 100%; object-fit: cover; }
+.vignette-vide{ color: var(--rose); font-size: 1.2rem; }
+.piste-texte strong{ display: block; font-family: var(--titre); font-weight: 400; font-size: 1.2rem; line-height: 1.25; }
+.piste-texte span{ display: block; font-size: 1rem; color: var(--encre-douce); line-height: 1.35; }
+.piste .ecouter{ font-family: var(--sans); font-size: .78rem; color: var(--rose-fonce); white-space: nowrap; }
+.piste .badge{ margin: 0; }
+.piste[aria-disabled="true"]{ pointer-events: none; }
+@media (max-width: 520px){ .piste .ecouter{ font-size: 0; } .piste .ecouter::before{ content: "▶"; font-size: .9rem; } }
+
+.albums-simples{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+@media (max-width: 640px){ .albums-simples{ grid-template-columns: 1fr; } }
+.album-ligne{ display: block; text-decoration: none; color: var(--encre); background: var(--carte); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1.2rem 1.3rem; transition: border-color .2s; }
+.album-ligne:hover{ border-color: var(--or); color: var(--encre); }
+.album-ligne .type{ display: block; font-family: var(--sans); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: .4rem; }
+.album-ligne strong{ display: block; font-family: var(--titre); font-weight: 400; font-size: 1.3rem; }
+.album-ligne span:last-child{ color: var(--encre-douce); font-size: 1rem; }

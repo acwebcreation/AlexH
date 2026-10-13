@@ -35,59 +35,64 @@
 
 <main>
 
-<!-- HERO : la dernière sortie -->
-<section class="hero-artiste">
-  <div class="conteneur hero-grille">
-    <div class="hero-texte">
-      <span class="surtitre">Auteur · compositeur · interprète</span>
-      <h1>Des chansons pour ce qu'on n'a jamais su dire</h1>
-      <p class="chapeau">L'amour, la rupture, l'absence, la famille. Des chansons françaises intimes, piano ou guitare, chantées à voix basse comme une lettre qu'on n'a pas envoyée.</p>
-      <div class="groupe-btn">
-        <a class="btn btn-plein" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">▶ Écouter le dernier titre</a>
-        <a class="btn btn-contour" href="musique.html">Toute la musique</a>
-      </div>
-      <ul class="plateformes" aria-label="Disponible sur">
-        <li>Spotify</li><li>Apple Music</li><li>Deezer</li><li>YouTube Music</li><li>Amazon Music</li>
-      </ul>
+<!-- HERO -->
+<section class="hero">
+  <div class="conteneur">
+    <p class="signature">Alex Harper</p>
+    <h1>Des chansons pour ce qu'on n'a jamais su dire</h1>
+    <p class="chapeau">L'amour, la rupture, l'absence, la famille. Des chansons françaises intimes, chantées à voix basse comme une lettre qu'on n'a pas envoyée.</p>
+    <div class="groupe-btn">
+      <a class="btn btn-plein" href="#ecouter">▶ Écouter</a>
+      <a class="btn btn-contour" href="chansons.html">Une chanson pour quelqu'un</a>
     </div>
-    <a class="hero-pochette" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener" aria-label="Écouter Ce que je range">
-      <img src="images/single-ce-que-je-range.jpg" alt="Pochette du single Ce que je range" width="800" height="800">
-      <span class="pochette-legende"><span class="type">Dernier single</span><strong>Ce que je range</strong><span>Extrait de l'album « Ce que je n'ai jamais dit »</span></span>
-    </a>
+    <p class="prix-note">Sur Spotify, Apple Music, Deezer, YouTube Music et Amazon Music</p>
   </div>
 </section>
 
-<!-- DERNIÈRES SORTIES -->
-<section>
-  <div class="conteneur">
+<!-- À ÉCOUTER -->
+<section id="ecouter">
+  <div class="conteneur conteneur-etroit">
     <div class="entete-section entete-ligne">
       <div>
         <span class="surtitre">Dernières sorties</span>
-        <h2>À écouter maintenant</h2>
+        <h2>À écouter</h2>
       </div>
-      <a class="lien-fleche" href="musique.html">Toute la discographie →</a>
+      <a class="lien-fleche" href="musique.html">Toute la musique →</a>
     </div>
-    <div class="grille-titres">
-      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">
-        <div class="couverture"><img src="images/single-ce-que-je-range.jpg" alt="" loading="lazy" width="800" height="800"><span class="play" aria-hidden="true">▶</span></div>
-        <h3>Ce que je range</h3>
-        <p>Ce qu'on trie, ce qu'on garde, et ce qu'on n'arrive pas à jeter.</p>
+    <ol class="liste-pistes">
+      <li><a class="piste" href="https://distrokid.com/hyperfollow/alexh5/ce-que-je-range" target="_blank" rel="noopener">
+        <span class="vignette"><img src="images/single-ce-que-je-range.jpg" alt="" loading="lazy" width="112" height="112"></span>
+        <span class="piste-texte"><strong>Ce que je range</strong><span>Ce qu'on trie, ce qu'on garde, et ce qu'on n'arrive pas à jeter.</span></span>
+        <span class="ecouter">▶ Écouter</span>
+      </a></li>
+      <li><a class="piste" href="https://distrokid.com/hyperfollow/alexh5/a-distance" target="_blank" rel="noopener">
+        <span class="vignette"><span class="vignette-vide" aria-hidden="true">♪</span></span>
+        <span class="piste-texte"><strong>À distance</strong><span>Aimer quelqu'un de loin, et faire avec.</span></span>
+        <span class="ecouter">▶ Écouter</span>
+      </a></li>
+      <li><a class="piste" href="https://distrokid.com/hyperfollow/alexh5/les-fissures-au-plafond" target="_blank" rel="noopener">
+        <span class="vignette"><span class="vignette-vide" aria-hidden="true">♪</span></span>
+        <span class="piste-texte"><strong>Les fissures au plafond</strong><span>Les nuits où l'on compte les fissures plutôt que les moutons.</span></span>
+        <span class="ecouter">▶ Écouter</span>
+      </a></li>
+      <!-- LIEN À RENSEIGNER : lien DistroKid HyperFollow de « Je t'aurais dit » (puis retirer etat Bientôt) -->
+      <li><a class="piste" href="#">
+        <span class="vignette"><img src="images/single-je-taurais-dit.jpg" alt="" loading="lazy" width="112" height="112"></span>
+        <span class="piste-texte"><strong>Je t'aurais dit</strong><span>Pour tout ce qui n'a pas été dit à temps.</span></span>
+        <span class="badge">Bientôt</span>
+      </a></li>
+    </ol>
+
+    <div class="albums-simples">
+      <a class="album-ligne" href="musique.html#ce-que-je-nai-jamais-dit">
+        <span class="type">Album · 15 titres · sorties en cours</span>
+        <strong>Ce que je n'ai jamais dit</strong>
+        <span>Les mots qu'on garde, les gens qu'on aime en silence.</span>
       </a>
-      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/a-distance" target="_blank" rel="noopener">
-        <div class="couverture c-nuit"><span class="c-titre">À distance</span><span class="c-auteur">Alex Harper</span><span class="play" aria-hidden="true">▶</span></div>
-        <h3>À distance</h3>
-        <p>Aimer quelqu'un de loin, et faire avec.</p>
-      </a>
-      <a class="titre apparait" href="https://distrokid.com/hyperfollow/alexh5/les-fissures-au-plafond" target="_blank" rel="noopener">
-        <div class="couverture c-or"><span class="c-titre">Les fissures au plafond</span><span class="c-auteur">Alex Harper</span><span class="play" aria-hidden="true">▶</span></div>
-        <h3>Les fissures au plafond</h3>
-        <p>Les nuits où l'on compte les fissures plutôt que les moutons.</p>
-      </a>
-      <!-- LIEN À RENSEIGNER : lien DistroKid HyperFollow de « Je t'aurais dit » -->
-      <a class="titre apparait" href="#">
-        <div class="couverture"><img src="images/single-je-taurais-dit.jpg" alt="" loading="lazy" width="800" height="800"><span class="badge-coin">Bientôt</span></div>
-        <h3>Je t'aurais dit</h3>
-        <p>Pour tout ce qui n'a pas été dit à temps.</p>
+      <a class="album-ligne" href="https://www.youtube.com/playlist?list=PLQJ8Ajf64fVc" target="_blank" rel="noopener">
+        <span class="type">Album de Noël · 10 titres · bientôt</span>
+        <strong>Joyeux Noël quand même</strong>
+        <span>À écouter en entier sur YouTube en attendant la sortie.</span>
       </a>
     </div>
   </div>
@@ -124,43 +129,6 @@
         <h3>La famille</h3>
         <p>Les mots qu'on n'a jamais dits à ses parents, et qu'on chante enfin.</p>
         <ul><li>À ma mère</li><li>À mon père</li><li>Ce qu'on dit pas assez</li></ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ALBUMS -->
-<section>
-  <div class="conteneur">
-    <div class="entete-section">
-      <span class="surtitre">Albums</span>
-      <h2>Deux albums, deux saisons du cœur</h2>
-    </div>
-    <div class="albums">
-      <article class="album apparait">
-        <div class="couverture c-nuit"><span class="c-titre">Ce que je n'ai jamais dit</span><span class="c-auteur">Alex Harper</span></div>
-        <div class="album-corps">
-          <span class="type">Album · 15 titres · sorties en cours</span>
-          <h3>Ce que je n'ai jamais dit</h3>
-          <p>Quinze chansons sur les mots qu'on garde, les lettres qu'on n'envoie pas et les gens qu'on aime en silence.</p>
-          <details class="liste-titres">
-            <summary>Voir les titres</summary>
-            <ol class="pistes">
-              <li>Ce que je range</li><li>Les fissures au plafond</li><li>À distance</li><li>Avaler</li><li>Je t'aurais dit</li><li>La politesse du vide</li><li>Je t'ai aimé en silence</li><li>Silence dans la rue</li><li>À ma mère</li><li>Acceptation</li><li>Ce qu'on dit pas assez</li><li>Il y a des deuils</li><li>Le portrait</li><li>À mon père</li><li>Séparation</li>
-            </ol>
-          </details>
-          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="musique.html#ce-que-je-nai-jamais-dit">Écouter les titres sortis</a></div>
-        </div>
-      </article>
-      <article class="album apparait">
-        <div class="couverture c-noel"><span class="c-titre">Joyeux Noël quand même</span><span class="c-auteur">Alex Harper</span></div>
-        <div class="album-corps">
-          <span class="badge">Bientôt</span>
-          <span class="type">Album de Noël · 10 titres</span>
-          <h3>Joyeux Noël quand même</h3>
-          <p>Un album de Noël tendre et un peu mélancolique, pour ceux qui fêtent avec une chaise vide, le cœur ailleurs, ou simplement l'envie d'y croire encore.</p>
-          <div class="groupe-btn"><a class="btn btn-plein btn-petit" href="https://www.youtube.com/playlist?list=PLQJ8Ajf64fVc" target="_blank" rel="noopener">Écouter sur YouTube</a></div>
-        </div>
       </article>
     </div>
   </div>
