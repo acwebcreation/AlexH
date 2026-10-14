@@ -11,3 +11,8 @@ deuil.mp3
 
 Tant qu'un fichier n'est pas là, son lecteur reste caché sur le site.
 Conseil : extrait de 30 à 60 secondes, MP3 128 kbps (léger).
+
+Extraits des nouveaux singles (accueil + page Musique) — 3 déjà présents, il manque :
+je-ten-ai-voulu-maman.mp3
+Pochettes correspondantes dans images/ :
+single-fier-de-moi.jpg, single-je-taurais-dit-tout-ca.jpg, single-je-ten-ai-voulu-maman.jpg, single-le-portrait.jpg
