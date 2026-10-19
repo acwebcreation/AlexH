@@ -6,7 +6,7 @@
   · nouvelle occasion « Saint-Nicolas, Noël ou fête de classe » (?occasion=fetes), avec ses questions ;
     pour cette occasion, les parties « La personne » et « Les souvenirs » deviennent facultatives
   · nouvelle couleur « Festif » (drôle et décalée), proposée seulement dans le formulaire
-  · choix de livraison : standard 7 jours (29,99 €) / express 48 h (39,99 €)
+  · choix de livraison : standard 7 jours (29 €) / express 48 h (39 €)
   · après l'envoi : redirection automatique vers le paiement Stripe, avec un numéro de commande
     (AH-AAMMJJ-XXXX) présent à la fois dans l'e-mail reçu et dans le paiement Stripe
 - commande-config.js : les liens Stripe (seul fichier à modifier pour les prix/liens)
@@ -14,9 +14,9 @@
 - TikTok retiré de toutes les pages
 
 ## À faire dans Stripe
-1. Lien de paiement 29,99 € → Modifier → « Après le paiement » → « Ne pas afficher de page de confirmation »,
+1. Lien de paiement 29 € → Modifier → « Après le paiement » → « Ne pas afficher de page de confirmation »,
    rediriger vers : https://alexharper.fr/commande-confirmee.html
-2. Pour l'express : créer un 2e lien à 39,99 € (même réglage de redirection), puis coller son adresse
+2. Pour l'express : créer un 2e lien à 39 € (même réglage de redirection), puis coller son adresse
    dans commande-config.js (lienExpress). Tant que c'est vide, l'express n'apparaît pas sur le site.
 
 ---

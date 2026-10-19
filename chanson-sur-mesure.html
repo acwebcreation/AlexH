@@ -244,8 +244,8 @@
     <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     <nav class="nav-liens" aria-label="Menu principal">
       <a href="index.html">Accueil</a>
-      <a href="musique.html">Musique</a>
       <a href="chansons.html">Chansons personnalisées</a>
+      <a href="musique.html">Musique</a>
       <a href="index.html#apropos">L'artiste</a>
       <a href="contact.html">Contact</a>
       <a href="chanson-sur-mesure.html" class="nav-cta" aria-current="page">Commander</a>
@@ -258,7 +258,7 @@
   <h1>Racontez-moi votre histoire, j'en ferai une chanson</h1>
   <p>Chaque chanson naît de vos mots. Tendre, lumineuse ou profonde, pour un enfant comme pour un grand-parent, elle part toujours de vos souvenirs.</p>
   <p>Chaque chanson est écrite à partir de vos souvenirs. Ne cherchez pas à bien écrire : des détails simples et vrais valent mieux que de belles phrases. Si une question ne vous parle pas, passez-la.</p>
-  <p class="duree">Environ 10 à 15 minutes · vos réponses sont enregistrées au fur et à mesure sur cet appareil · paiement sécurisé à la fin (29,99 €)</p>
+  <p class="duree">Environ 10 à 15 minutes · vos réponses sont enregistrées au fur et à mesure sur cet appareil · paiement sécurisé à la fin (29 €)</p>
 </header>
 
 <main>
@@ -348,8 +348,8 @@
     <div class="champ">
       <span class="question">La livraison <span class="requis">*</span></span>
       <div class="choix">
-        <label><input type="radio" name="livraison" value="Standard — 7 jours" data-formule="standard" checked required> <span>Standard · 29,99 €<small>La chanson est livrée en 7 jours</small></span></label>
-        <label data-express><input type="radio" name="livraison" value="Express — 48 h" data-formule="express"> <span>Express 48 h · 39,99 €<small>Pour une date proche. Les paroles arrivent vite : pensez à les valider rapidement.</small></span></label>
+        <label><input type="radio" name="livraison" value="Standard — 7 jours" data-formule="standard" checked required> <span>Standard · 29 €<small>La chanson est livrée en 7 jours</small></span></label>
+        <label data-express><input type="radio" name="livraison" value="Express — 48 h" data-formule="express"> <span>Express 48 h · 39 €<small>Pour une date proche. Les paroles arrivent vite : pensez à les valider rapidement.</small></span></label>
       </div>
     </div>
     <div class="champ">
@@ -620,9 +620,17 @@
       </div>
     </div>
 
-    <div class="champ">
+    <div class="champ" id="voix-fixe">
       <span class="question">La voix</span>
       <p class="note-voix">Chaque chanson est chantée avec la voix d'Alex Harper : masculine, chaleureuse et proche, comme une confidence.</p>
+    </div>
+    <div class="champ" id="voix-choix" hidden>
+      <span class="question">La voix</span>
+      <span class="aide">Pour une chanson d'enfant ou de fête, vous avez le choix.</span>
+      <div class="choix">
+        <label><input type="radio" name="voix" value="Voix d'Alex Harper" checked> <span>La voix d'Alex Harper<small>Masculine, chaleureuse et proche</small></span></label>
+        <label><input type="radio" name="voix" value="Chœur d'enfants"> <span>Un chœur d'enfants<small>Des voix d'enfants joyeuses, comme dans une chorale d'école. Écoutez « Les lutins de Noël » sur la page des chansons.</small></span></label>
+      </div>
     </div>
 
     <div class="champ">
@@ -694,7 +702,7 @@
   </fieldset>
 
   <p class="recap-paiement">Après l'envoi, vous êtes redirigé vers le paiement sécurisé (Stripe). Je commence à écrire dès que le paiement est reçu.</p>
-  <button type="submit" id="envoyer">Envoyer mon histoire et payer 29,99 €</button>
+  <button type="submit" id="envoyer">Envoyer mon histoire et payer 29 €</button>
   <p class="brouillon" id="etat-brouillon" aria-live="polite"></p>
   <p class="erreur" id="erreur" role="alert" hidden></p>
 </form>
@@ -744,7 +752,11 @@
   var erreur = document.getElementById('erreur');
   var CLE = 'alexharper-chanson-brouillon';
 
+  var OCCASIONS_CHOEUR = ['enfant', 'fetes', 'naissance'];
   function afficherModule() {
+    var choeur = OCCASIONS_CHOEUR.indexOf(occasion.value) !== -1;
+    document.getElementById('voix-choix').hidden = !choeur;
+    document.getElementById('voix-fixe').hidden = choeur;
     modules.forEach(function (m) {
       m.classList.toggle('actif', m.dataset.occasion.split(' ').indexOf(occasion.value) !== -1);
     });
@@ -872,6 +884,7 @@
 
     // Sujet de l'e-mail : occasion + prénom, pour retrouver la commande facilement
     var prenomCible = (fd.get('dest_prenom') || '').toString().trim();
+    if (document.getElementById('voix-choix').hidden) fd.set('voix', "Voix d'Alex Harper");
     var formule = formuleChoisie();
     var numero = numeroCommande();
     var lien = (formule === 'express' ? CONFIG.lienExpress : CONFIG.lienStandard) || CONFIG.lienStandard;
