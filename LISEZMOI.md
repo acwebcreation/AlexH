@@ -1,3 +1,26 @@
+# Mise à jour du 19 octobre 2026 — chansons personnalisées + paiement
+
+- chansons.html : nouveaux onglets « Noël & fêtes » (affiché en premier pour la saison) et « Diplôme ».
+  Extraits audio : voir audio/LISEZMOI.txt. Délai affiché sous chaque prix.
+- chanson-sur-mesure.html :
+  · nouvelle occasion « Saint-Nicolas, Noël ou fête de classe » (?occasion=fetes), avec ses questions ;
+    pour cette occasion, les parties « La personne » et « Les souvenirs » deviennent facultatives
+  · nouvelle couleur « Festif » (drôle et décalée), proposée seulement dans le formulaire
+  · choix de livraison : standard 7 jours (29,99 €) / express 48 h (39,99 €)
+  · après l'envoi : redirection automatique vers le paiement Stripe, avec un numéro de commande
+    (AH-AAMMJJ-XXXX) présent à la fois dans l'e-mail reçu et dans le paiement Stripe
+- commande-config.js : les liens Stripe (seul fichier à modifier pour les prix/liens)
+- commande-confirmee.html : page affichée après le paiement
+- TikTok retiré de toutes les pages
+
+## À faire dans Stripe
+1. Lien de paiement 29,99 € → Modifier → « Après le paiement » → « Ne pas afficher de page de confirmation »,
+   rediriger vers : https://alexharper.fr/commande-confirmee.html
+2. Pour l'express : créer un 2e lien à 39,99 € (même réglage de redirection), puis coller son adresse
+   dans commande-config.js (lienExpress). Tant que c'est vide, l'express n'apparaît pas sur le site.
+
+---
+
 # alexharper.fr — version artiste (octobre 2026)
 
 Site recentré sur la musique uniquement : plus de poèmes, plus de livres.
