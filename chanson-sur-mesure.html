@@ -626,7 +626,7 @@
     </div>
     <div class="champ" id="voix-choix" hidden>
       <span class="question">La voix</span>
-      <span class="aide">Pour une chanson d'enfant ou de fête, vous avez le choix.</span>
+      <span class="aide">Vous avez le choix : par exemple, quand ce sont les enfants qui offrent la chanson à leur papa ou leur maman, un chœur d'enfants est souvent plus touchant.</span>
       <div class="choix">
         <label><input type="radio" name="voix" value="Voix d'Alex Harper" checked> <span>La voix d'Alex Harper<small>Masculine, chaleureuse et proche</small></span></label>
         <label><input type="radio" name="voix" value="Chœur d'enfants"> <span>Un chœur d'enfants<small>Des voix d'enfants joyeuses, comme dans une chorale d'école. Écoutez « Les lutins de Noël » sur la page des chansons.</small></span></label>
@@ -765,7 +765,7 @@
   var erreur = document.getElementById('erreur');
   var CLE = 'alexharper-chanson-brouillon';
 
-  var OCCASIONS_CHOEUR = ['enfant', 'fetes', 'naissance'];
+  var OCCASIONS_CHOEUR = ['enfant', 'fetes', 'naissance', 'maman', 'papa', 'anniversaire', 'diplome'];
   function afficherModule() {
     var choeur = OCCASIONS_CHOEUR.indexOf(occasion.value) !== -1;
     document.getElementById('voix-choix').hidden = !choeur;
