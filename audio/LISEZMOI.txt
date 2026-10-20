@@ -1,21 +1,17 @@
 EXTRAITS DES CHANSONS PERSONNALISÉES (page chansons.html)
-Dépose ici tes extraits MP3, avec exactement ces noms :
 
+En ligne :
+anniversaire-garcon.mp3     → carte « Joyeux anniversaire Luca » (haut de page)
+lutins-de-noel.mp3          → carte « Les lutins de Noël » (haut de page)
+maman.mp3                   → carte « La fête des mamans » (haut de page) + onglet Maman
 saint-nicolas-fratrie.mp3   → onglets « Noël & fêtes » et « Enfants »
-lutins-de-noel.mp3          → onglet « Noël & fêtes » (version classe de maternelle)
-maman.mp3                   → onglet « Maman » (fête des mamans)
-anniversaire-garcon.mp3     → onglets « Anniversaire » et « Enfants »
-anniversaire-18-ans.mp3     → onglet « Anniversaire » (les 18 ans de Luca)
-diplome.mp3                 → onglet « Diplôme » (jeune diplômée)
 
 Pas encore d'extrait (le lecteur reste caché tant que le fichier manque) :
-amoureux.mp3, papa.mp3, mariage.mp3, rupture.mp3, deuil.mp3
+diplome.mp3, amoureux.mp3, papa.mp3, mariage.mp3, rupture.mp3, deuil.mp3
 
-Conseil : extrait de 30 à 60 secondes, MP3 128 kbps (léger).
-Vérifie avec le client avant de publier un extrait avec un vrai prénom.
+Conseil : extrait de 25 à 40 secondes centré sur le refrain, MP3 128 kbps.
 
 EXTRAITS DES SINGLES (accueil + page Musique), 25 secondes à partir du refrain :
 fier-de-moi.mp3, je-taurais-dit-tout-ca.mp3, le-portrait.mp3, je-ten-ai-voulu-maman.mp3,
 a-distance.mp3, les-fissures-au-plafond.mp3, je-tai-aime-en-silence.mp3,
 la-politesse-du-vide.mp3, ce-que-je-range.mp3
-Pochettes correspondantes dans images/ : single-<même nom>.jpg

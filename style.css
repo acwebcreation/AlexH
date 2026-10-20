@@ -555,3 +555,13 @@ button.vignette.sans-extrait .extrait-icone{ display: none; }
 .bandeau-noel .surtitre{ color: var(--or-pale); }
 .btn-clair{ color: var(--brun-texte); border-color: rgba(244,234,219,.6); }
 .btn-clair:hover{ background: rgba(244,234,219,.12); color: var(--brun-texte); }
+
+/* ---------- 3 chansons d'exemple (chansons.html) ---------- */
+.exemples-section{ padding-bottom: 1rem; }
+.grille-exemples{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.2rem; }
+@media (max-width: 900px){ .grille-exemples{ grid-template-columns: 1fr; } }
+.exemple{ background: var(--fond); border: 1px solid var(--ligne); border-top: 6px solid var(--teinte, var(--rose-pale)); border-radius: var(--rayon); padding: 1.6rem 1.5rem; display: flex; flex-direction: column; gap: .7rem; }
+.exemple h3{ font-size: 1.5rem; margin: 0; }
+.exemple p{ margin: 0; color: var(--encre-douce); font-size: 1.05rem; flex-grow: 1; }
+.exemple audio{ width: 100%; }
+.exemple .lien-fleche{ font-family: var(--sans); font-size: .85rem; align-self: flex-start; }
