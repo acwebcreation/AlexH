@@ -6,6 +6,11 @@ lutins-de-noel.mp3          → carte « Les lutins de Noël » (haut de page)
 maman.mp3                   → carte « La fête des mamans » (haut de page) + onglet Maman
 saint-nicolas-fratrie.mp3   → onglets « Noël & fêtes » et « Enfants »
 
+DÉMOS À PERSONNALISER (haut de page + onglets) — album « Ça se fête ! » :
+mon-toujours.mp3        → carte « Mon toujours » + onglet Amoureux
+ma-reine.mp3            → carte « Ma reine » + onglet Maman
+le-roi-de-la-fete.mp3   → carte « Le roi de la fête » + onglet Papa
+
 Pas encore d'extrait (le lecteur reste caché tant que le fichier manque) :
 diplome.mp3, amoureux.mp3, papa.mp3, mariage.mp3, rupture.mp3, deuil.mp3
 

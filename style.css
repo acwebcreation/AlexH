@@ -565,3 +565,7 @@ button.vignette.sans-extrait .extrait-icone{ display: none; }
 .exemple p{ margin: 0; color: var(--encre-douce); font-size: 1.05rem; flex-grow: 1; }
 .exemple audio{ width: 100%; }
 .exemple .lien-fleche{ font-family: var(--sans); font-size: .85rem; align-self: flex-start; }
+
+/* Démos à personnaliser (novembre 2026) */
+.ecoute small{ display: block; margin-top: .55rem; font-size: .8rem; line-height: 1.45; }
+.note-saison.centre{ border-left: 0; border-top: 3px solid var(--or); max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }

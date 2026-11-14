@@ -325,6 +325,16 @@
       </select>
     </div>
     <div class="champ">
+      <label for="base">Partir d'une de mes chansons ?</label>
+      <span class="aide">Je garde l'esprit de la chanson choisie et j'y mets son prénom et vos souvenirs. Ou je compose une chanson toute nouvelle.</span>
+      <select id="base" name="base">
+        <option value="Création 100 % nouvelle">Non, une chanson toute nouvelle</option>
+        <option value="Mon toujours">« Mon toujours » (pour mon amour)</option>
+        <option value="Ma reine">« Ma reine » (pour maman ou mamie)</option>
+        <option value="Le roi de la fête">« Le roi de la fête » (pour papa ou papy)</option>
+      </select>
+    </div>
+    <div class="champ">
       <label for="age_groupe">L'âge de la personne <span class="requis">*</span></label>
       <span class="aide">Le ton et la musique s'adaptent : une comptine pour un enfant, une rétrospective de vie pour un grand-parent.</span>
       <select id="age_groupe" name="age_groupe" required>
@@ -842,6 +852,13 @@
       var age = document.getElementById('age_groupe');
       if (occParam === 'enfant' && age && !age.value) age.value = 'enfant';
     }
+  } catch (e) {}
+  // Chanson de départ : chanson-sur-mesure.html?base=ma-reine
+  try {
+    var baseParam = new URLSearchParams(window.location.search).get('base');
+    var bases = { 'mon-toujours': 'Mon toujours', 'ma-reine': 'Ma reine', 'le-roi-de-la-fete': 'Le roi de la fête' };
+    var selBase = document.getElementById('base');
+    if (baseParam && bases[baseParam] && selBase) selBase.value = bases[baseParam];
   } catch (e) {}
   // Lien direct par couleur : chanson-sur-mesure.html?couleur=lumineux
   try {
