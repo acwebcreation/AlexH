@@ -10,7 +10,7 @@ window.AH_COMMANDE = {
   // Livraison express (48 h) — 39 €
   // Crée un 2e lien de paiement Stripe à 39 € et colle-le entre les guillemets.
   // Tant que c'est vide, l'option express n'apparaît nulle part sur le site.
-  lienExpress: "",
+  lienExpress: "https://buy.stripe.com/9B628segXazxf4p2dP83C0g",
   prixExpress: "39 €"
 };
 
